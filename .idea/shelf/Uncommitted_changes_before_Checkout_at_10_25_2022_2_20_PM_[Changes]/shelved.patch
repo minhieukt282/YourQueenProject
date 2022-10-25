@@ -1,0 +1,26 @@
+Index: .idea/workspace.xml
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	
++++ b/.idea/workspace.xml	
+@@ -4,10 +4,7 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="ed4f7873-d893-4b2b-98dd-a53e95fecfb2" name="Changes" comment="">
+-      <change afterPath="$PROJECT_DIR$/view/error/error.html" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/view/index.html" afterDir="false" />
+-    </list>
++    <list default="true" id="ed4f7873-d893-4b2b-98dd-a53e95fecfb2" name="Changes" comment="" />
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+@@ -65,7 +62,7 @@
+       <option name="presentableId" value="Default" />
+       <updated>1666605076839</updated>
+       <workItem from="1666605078136" duration="806000" />
+-      <workItem from="1666681745337" duration="336000" />
++      <workItem from="1666681745337" duration="665000" />
+     </task>
+     <servers />
+   </component>
