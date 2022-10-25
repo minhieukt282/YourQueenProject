@@ -1,0 +1,24 @@
+{
+  "name": "gittestproject",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/minhieukt282/gitTestProject.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/minhieukt282/gitTestProject/issues"
+  },
+  "homepage": "https://github.com/minhieukt282/gitTestProject#readme",
+  "description": "",
+  "dependencies": {
+    "mysql": "^2.18.1",
+    "qs": "^6.11.0"
+  }
+}
