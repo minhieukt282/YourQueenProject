@@ -1,0 +1,15 @@
+Index: note.txt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>viet cdg vào dây cung dc. ghi tên rõ ra r gõ xong push lên\r\n//HI?u
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>ISO-8859-1
+===================================================================
+diff --git a/note.txt b/note.txt
+--- a/note.txt	(revision 29c39159bb66332ff73873f594071341e81a9cca)
++++ b/note.txt	(date 1666682477892)
+@@ -1,2 +1,2 @@
+-viet cdg vào dây cung dc. ghi tên rõ ra r gõ xong push lên
++viet cdg v?o d?y cung dc. ghi t?n r? ra r g? xong push l?n
+ //HI?u
+\ No newline at end of file
