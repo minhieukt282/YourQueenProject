@@ -4,14 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ed4f7873-d893-4b2b-98dd-a53e95fecfb2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/text" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/handle/gfHandle.js" beforeDir="false" afterPath="$PROJECT_DIR$/controller(dieuhuong)/handle/gfHandle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/handle/notfoundHandle.js" beforeDir="false" afterPath="$PROJECT_DIR$/controller(dieuhuong)/handle/notfoundHandle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/routerHandle.js" beforeDir="false" afterPath="$PROJECT_DIR$/controller(dieuhuong)/routerHandle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/gfService.js" beforeDir="false" afterPath="$PROJECT_DIR$/service(logic)/gfService.js" afterDir="false" />
-    </list>
+    <list default="true" id="ed4f7873-d893-4b2b-98dd-a53e95fecfb2" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -37,7 +30,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2GZnfSDbuM0i5nL6KaZdcMq425A" />
-  <component name="ProjectLevelVcsManager">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
