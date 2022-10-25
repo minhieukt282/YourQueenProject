@@ -1,0 +1,115 @@
+create schema YourQueen;
+use YourQueen;
+create table role
+(
+    role_id   int auto_increment primary key not null,
+    role_name varchar(20)                    not null
+);
+create table status
+(
+    status_id   int auto_increment primary key not null,
+    status_name varchar(10)                    not null
+);
+create table account
+(
+    id        int primary key auto_increment not null,
+    username  varchar(20)                    not null,
+    password  varchar(20)                    not null,
+    role_id   int                            not null,
+    foreign key (role_id) references role (role_id),
+    status_id int                            not null,
+    foreign key (status_id) references status (status_id)
+);
+create table sex
+(
+    id   int primary key not null auto_increment,
+    name varchar(10)     not null
+);
+create table userDetails
+(
+    user_id  int,
+    name     varchar(40) not null,
+    sex_id   int,
+    birthday date        not null,
+    height   int,
+    weight   int,
+    foreign key (user_id) references account (id),
+    foreign key (sex_id) references sex (id)
+);
+create table product
+(
+    product_id  int primary key auto_increment not null,
+    name        varchar(40)                    not null,
+    price       int                            not null,
+    provider_id int                            not null,
+    foreign key (product_id) references account (id),
+    description varchar(150)
+);
+create table invoice
+(
+    invoice_id  int primary key auto_increment not null,
+    date        date                           not null,
+    provider_id int                            not null,
+    user_id     int                            not null,
+    foreign key (provider_id) references account (id),
+    foreign key (user_id) references account (id)
+);
+create table invoiceDetails
+(
+    invoice_id int,
+    product_id int,
+    discount   int,
+    foreign key (invoice_id) references invoice (invoice_id),
+    foreign key (product_id) references product (product_id)
+);
+
+
+INSERT INTO role (role_name)
+VALUES ('admin');
+INSERT INTO role (role_name)
+VALUES ('provider');
+INSERT INTO role (role_name)
+VALUES ('user');
+
+INSERT INTO sex (name)
+VALUES ('male');
+INSERT INTO sex (name)
+VALUES ('female');
+
+INSERT INTO status (status_name)
+VALUES ('ready');
+INSERT INTO status (status_name)
+VALUES ('not ready');
+
+INSERT INTO account (username, password, role_id, status_id)
+VALUES ('admin', '1', 1, 1);
+INSERT INTO account (username, password, role_id, status_id)
+VALUES ('ad', '1', 2, 1);
+INSERT INTO account (username, password, role_id, status_id)
+VALUES ('as', '1', 3, 2);
+
+INSERT INTO userdetails (user_id, name, sex_id, birthday, height, weight)
+VALUES (2, 'Huong', 2, '2006-06-20 00:00:00', 170, 45);
+INSERT INTO userdetails (user_id, name, sex_id, birthday, height, weight)
+VALUES (3, 'Vu', 1, '2006-06-20 00:00:00', 180, 75);
+
+INSERT INTO product (name, price, provider_id, description)
+VALUES ('Nắm tay', 30, 2,'Chỉ là nắm tay thôi');
+INSERT INTO product (name, price, provider_id, description)
+VALUES ('Hôn môi', 50, 2,'Hôn thôi ông ê, tay chân để nguyên vị trí');
+INSERT INTO product (name, price, provider_id, description)
+VALUES ('Đi tour', 5000, 2,'Du lịch 2 ngày 1 đêm');
+
+INSERT INTO invoice (date, provider_id, user_id)
+VALUES ('2016-06-20', 2, 3);
+INSERT INTO invoice (date, provider_id, user_id)
+VALUES ('2022-08-31', 2, 3);
+
+INSERT INTO invoicedetails (invoice_id, product_id)
+VALUES (1, 1);
+INSERT INTO invoicedetails (invoice_id, product_id)
+VALUES (1, 2);
+INSERT INTO invoicedetails (invoice_id, product_id)
+VALUES (1, 3);
+INSERT INTO invoicedetails (invoice_id, product_id)
+VALUES (2, 3);

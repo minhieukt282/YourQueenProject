@@ -4,7 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ed4f7873-d893-4b2b-98dd-a53e95fecfb2" name="Changes" comment="" />
+    <list default="true" id="ed4f7873-d893-4b2b-98dd-a53e95fecfb2" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/controller/handle/notFoundRouting.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/model/connection.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_10_25_2022_2_20_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_10_25_2022_2_20_PM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller(dieuhuong)/handle/gfHandle.js" beforeDir="false" afterPath="$PROJECT_DIR$/controller/handle/homePage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller(dieuhuong)/handle/notfoundHandle.js" beforeDir="false" afterPath="$PROJECT_DIR$/controller/router.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller(dieuhuong)/routerHandle.js" beforeDir="false" afterPath="$PROJECT_DIR$/service/homeService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/connectDatabase.js" beforeDir="false" afterPath="$PROJECT_DIR$/sql/database.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service(logic)/gfService.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/error/error.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/error/error.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/index.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -37,22 +50,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/adnin/Desktop/Case Study/gitTestProject&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "javascript.nodejs.core.library.configured.version": "18.8.0",
+    "javascript.nodejs.core.library.typings.version": "18.8.0",
+    "last_opened_file_path": "C:/Users/adnin/Desktop/Case Study/gitTestProject",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
+    ]
   }
-}</component>
+}]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -63,6 +83,7 @@
       <updated>1666605076839</updated>
       <workItem from="1666605078136" duration="806000" />
       <workItem from="1666681745337" duration="336000" />
+      <workItem from="1666688101796" duration="2308000" />
     </task>
     <servers />
   </component>
