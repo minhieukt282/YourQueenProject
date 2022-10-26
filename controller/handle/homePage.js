@@ -3,9 +3,7 @@ const HOME_SERVICE = require('../../service/homeService');
 const qs = require('qs')
 
 class HomePage {
-
-
-     homePage(req, res) {
+    homePage(req, res) {
         console.log("home page")
     }
 
@@ -31,14 +29,12 @@ class HomePage {
                 } else {
                     let account = qs.parse(chunkAccount)
                     let checkGate = await HOME_SERVICE.checkGate(account)
-                    console.log(account)
-                    console.log(checkGate)
                     if (checkGate) {
                         console.log("gate open")
-                        // res.writeHead(301, {'location': 'user'});
-                        // res.end()
+                        res.writeHead(301, {'location': 'home'});
+                        res.end()
                     } else {
-                        console.log('Name account or password is incorrect!!!')
+                        console.log('incorrect!!!')
                     }
                 }
             })
@@ -84,7 +80,6 @@ class HomePage {
                             res.end();
                         }
                     }
-
                 }
             })
         }
