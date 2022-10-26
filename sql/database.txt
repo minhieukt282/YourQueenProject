@@ -62,6 +62,29 @@ create table invoiceDetails
     foreign key (invoice_id) references invoice (invoice_id),
     foreign key (product_id) references product (product_id)
 );
+create table picture(
+    id_img int not null primary key auto_increment,
+    link text not null ,
+    user_id int,
+    foreign key (user_id) references account(id)
+);
+
+ALTER TABLE account
+    MODIFY COLUMN username varchar(20) not null unique;
+
+create view user as
+select ac.id,
+       ac.username,
+       ac.password,
+       u.name,
+       u.sex_id,
+       u.birthday,
+       u.height,
+       u.weight,
+       ac.role_id,
+       ac.status_id
+from account as ac
+         join userdetails u on ac.id = u.user_id;
 
 
 INSERT INTO role (role_name)

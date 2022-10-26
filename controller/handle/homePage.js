@@ -3,17 +3,15 @@ const HOME_SERVICE = require('../../service/homeService');
 const qs = require('qs')
 
 class HomePage {
-
-
-     homePage(req, res) {
-        console.log("home page")
-    }
-
-     login(req, res) {
+    homePage(req, res) {
 
     }
 
-     register(req, res) {
+    login(req, res) {
+        console.log("login")
+    }
+
+    register(req, res) {
         if (req.method === 'GET') {
             fs.readFile('./views/register/register.html', "utf-8", async (err, registerHtml) => {
                 if (err) {
@@ -34,22 +32,28 @@ class HomePage {
                     console.log(err)
                 } else {
                     let accounts = qs.parse(chunkAccount);
-                    console.log(accounts)
-                    if (accounts.password === accounts.confirmPassword) {
-                        await HOME_SERVICE.createAccount(accounts)
-                        res.writeHead(301, {'location': 'home'});
-                        res.end();
-                    } else {
-                        console.log('Password incorrect')
+                    let isCheckUsername = await HOME_SERVICE.checkAccount(accounts)
+                    if (isCheckUsername) {
+                        console.log("ten da trung")
+                        console.log("______________")
                         res.writeHead(301, {'location': 'register'});
                         res.end();
-
+                    } else {
+                        if (accounts.password === accounts.confirmPassword) {
+                            await HOME_SERVICE.createAccount(accounts)
+                            res.writeHead(301, {'location': 'login'});
+                            res.end();
+                        } else {
+                            console.log('Password incorrect')
+                            console.log("______________")
+                            res.writeHead(301, {'location': 'register'});
+                            res.end();
+                        }
                     }
-
                 }
             })
         }
     }
 }
 
-module.exports =new HomePage();
+module.exports = new HomePage();
