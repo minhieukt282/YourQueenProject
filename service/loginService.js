@@ -13,7 +13,7 @@ class LoginService {
         return false
     }
 
-    async checkGate(account) {
+    async isCheckGate(account) {
         let listAccount = await this.getAccount();
         for (let i = 0; i < listAccount.length; i++) {
             if (account.username === listAccount[i].username && account.password === listAccount[i].password) {
@@ -51,6 +51,21 @@ class LoginService {
             })
         })
     };
+
+    findByUsername(username) {
+        let sql = `select account.id, account.role_id, account.status_id
+                   from account
+                   where username = '${username}'`
+        return new Promise((resolve, reject) => {
+            connection.query(sql, (err, dataUser) => {
+                if (err) reject(err)
+                else resolve(dataUser)
+            })
+        })
+    }
+
+
+
 }
 
 module.exports = new LoginService()
