@@ -5,10 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ed4f7873-d893-4b2b-98dd-a53e95fecfb2" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/controller/handle/loginPage.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service/loginService.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controller/handle/homePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/controller/handle/homePage.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/service/homeService.js" beforeDir="false" afterPath="$PROJECT_DIR$/service/homeService.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/login/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/login/login.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,8 +18,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="HTML File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
