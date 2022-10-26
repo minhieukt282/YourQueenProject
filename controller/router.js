@@ -1,8 +1,8 @@
-const PRODUCT_ROUTING = require('./handle/homePage');
+const HOME_PAGE = require('./handle/homePage');
 const handler = {
-    "home": PRODUCT_ROUTING.homePage,
-    "login": PRODUCT_ROUTING.login,
-    "register": PRODUCT_ROUTING.register
+    "home": HOME_PAGE.homePage,
+    "login": HOME_PAGE.login,
+    "register": HOME_PAGE.register
 }
 
 module.exports = handler;
