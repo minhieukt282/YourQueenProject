@@ -3,12 +3,46 @@ const HOME_SERVICE = require('../../service/homeService');
 const qs = require('qs')
 
 class HomePage {
-    homePage(req, res) {
 
+
+     homePage(req, res) {
+        console.log("home page")
     }
 
     login(req, res) {
-        console.log("login")
+        if (req.method === 'GET') {
+            fs.readFile('./views/login/login.html', "utf-8", async (err, loginHtml) => {
+                if (err) {
+                    console.log(err)
+                } else {
+                    res.writeHead(200, 'text/html');
+                    res.write(loginHtml);
+                    res.end()
+                }
+            })
+        } else {
+            let chunkAccount = '';
+            req.on('data', chunk => {
+                chunkAccount += chunk
+            });
+            req.on('end', async (err) => {
+                if (err) {
+                    console.log(err)
+                } else {
+                    let account = qs.parse(chunkAccount)
+                    let checkGate = await HOME_SERVICE.checkGate(account)
+                    console.log(account)
+                    console.log(checkGate)
+                    if (checkGate) {
+                        console.log("gate open")
+                        // res.writeHead(301, {'location': 'user'});
+                        // res.end()
+                    } else {
+                        console.log('Name account or password is incorrect!!!')
+                    }
+                }
+            })
+        }
     }
 
     register(req, res) {
@@ -50,6 +84,7 @@ class HomePage {
                             res.end();
                         }
                     }
+
                 }
             })
         }
