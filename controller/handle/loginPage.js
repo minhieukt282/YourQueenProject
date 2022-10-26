@@ -3,7 +3,7 @@ const LOGIN_SERVICE = require('../../service/loginService');
 const qs = require('qs')
 
 class LoginPage{
-    login(req, res) {
+    static login(req, res) {
         if (req.method === 'GET') {
             fs.readFile('./views/login/login.html', "utf-8", async (err, loginHtml) => {
                 if (err) {
@@ -37,7 +37,7 @@ class LoginPage{
         }
     }
 
-    register(req, res) {
+   static register(req, res) {
         if (req.method === 'GET') {
             fs.readFile('./views/register/register.html', "utf-8", async (err, registerHtml) => {
                 if (err) {
@@ -82,4 +82,4 @@ class LoginPage{
     }
 }
 
-module.exports = new LoginPage();
+module.exports = LoginPage;

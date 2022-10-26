@@ -1,7 +1,7 @@
 const fs = require('fs')
 
 class NotFoundRouting {
-    showNotFound(req, res) {
+    static showNotFound(req, res) {
         fs.readFile('./views/error/error.html', 'utf-8', (err, notFoundHtml) => {
             if (err) {
                 console.log(err);
@@ -14,4 +14,4 @@ class NotFoundRouting {
     }
 }
 
-module.exports = new NotFoundRouting()
+module.exports = NotFoundRouting;
