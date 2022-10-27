@@ -1,11 +1,15 @@
 const http = require('http');
 const url = require('url');
+
 const fs = require('fs')
+
+const cookieParser = require('cookie-parser');
+
 const HANDLER = require('./controller/router');
 const NOT_FOUND_ROUTING = require('./controller/notFoundRouting');
 
 let mimeTypes = {
-    'jpg': 'images/jpg',
+    'jpg': 'images/jpeg',
     'png': 'images/png',
     "js": 'text/javascript',
     'css': 'text/css',
@@ -30,13 +34,11 @@ const SERVER = http.createServer((req, res) => {
     } else {
         trimPath = arrPath[arrPath.length - 1];
     }
-    console.log(trimPath)
     let chosenHandle;
     let urlPath = url.parse(req.url).pathname;
     const fileDefence = urlPath.match("/\.js|\.css|\.png|\.jpg");
-    console.log(fileDefence)
     if (fileDefence) {
-        const extension = mimeTypes[fileDefence[0].toString().split('/')[1]];
+        const extension = mimeTypes[fileDefence[0].toString().slice(1)];
         res.writeHead(200, {'Content-Type': extension});
         fs.createReadStream(__dirname + req.url).pipe(res);
     } else {

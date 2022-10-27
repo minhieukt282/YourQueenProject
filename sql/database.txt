@@ -69,6 +69,29 @@ create table picture(
     foreign key (user_id) references account(id)
 );
 
+<<<<<<< HEAD
+=======
+ALTER TABLE account
+    MODIFY COLUMN username varchar(20) not null unique;
+
+alter table account
+add column token_Id varchar(30)
+
+create view user as
+select ac.id,
+       ac.username,
+       ac.password,
+       u.name,
+       u.sex_id,
+       u.birthday,
+       u.height,
+       u.weight,
+       ac.role_id,
+       ac.status_id
+from account as ac
+         join userdetails u on ac.id = u.user_id;
+
+>>>>>>> 5517f7de52185f3cea3732cf02332b4077154147
 
 INSERT INTO role (role_name)
 VALUES ('admin');

@@ -1,9 +1,12 @@
 const fs = require('fs');
 const LOGIN_SERVICE = require('../../service/loginService');
 const qs = require('qs')
+const cookie = require("cookie");
 
-class LoginPage{
-    static login(req, res) {
+
+class LoginPage {
+    login(req, res) {
+
         if (req.method === 'GET') {
             fs.readFile('./views/login/login.html', "utf-8", async (err, loginHtml) => {
                 if (err) {
@@ -24,20 +27,33 @@ class LoginPage{
                     console.log(err)
                 } else {
                     let account = qs.parse(chunkAccount)
-                    let checkGate = await LOGIN_SERVICE.checkGate(account)
-                    if (checkGate) {
-                        console.log("gate open")
-                        res.writeHead(301, {'location': 'home'});
-                        res.end()
+                    let isCheckGate = await LOGIN_SERVICE.isCheckGate(account)
+                    if (isCheckGate) {
+                        let expires = Date.now() + 5 * 60;
+                        let dataUser = await LOGIN_SERVICE.findByUsername(account.username)
+                        res.setHeader('Set-Cookie', cookie.serialize('id', `${dataUser[0].id}`, {
+                            httpOnly: true,
+                            maxAge: expires
+                        }));
+                        let cookies = cookie.parse(req.headers.cookie || '');
+                        console.log(cookies)
+                        if (dataUser[0].role_id === 1) {
+                            res.writeHead(301, {'location': 'admin'});
+                            res.end()
+                        } else {
+                            res.writeHead(301, {'location': 'home'});
+                            res.end()
+                        }
                     } else {
-                        console.log('incorrect!!!')
+                        res.writeHead(301, {'location': 'login'});
+                        res.end()
                     }
                 }
             })
         }
     }
 
-   static register(req, res) {
+    register(req, res) {
         if (req.method === 'GET') {
             fs.readFile('./views/register/register.html', "utf-8", async (err, registerHtml) => {
                 if (err) {
@@ -60,8 +76,6 @@ class LoginPage{
                     let accounts = qs.parse(chunkAccount);
                     let isCheckUsername = await LOGIN_SERVICE.checkAccount(accounts)
                     if (isCheckUsername) {
-                        console.log("ten da trung")
-                        console.log("______________")
                         res.writeHead(301, {'location': 'register'});
                         res.end();
                     } else {
@@ -70,8 +84,6 @@ class LoginPage{
                             res.writeHead(301, {'location': 'login'});
                             res.end();
                         } else {
-                            console.log('Password incorrect')
-                            console.log("______________")
                             res.writeHead(301, {'location': 'register'});
                             res.end();
                         }
@@ -80,6 +92,15 @@ class LoginPage{
             })
         }
     }
+
+    logout(req, res) {
+        res.clearCookie('id')
+        let cookies = cookie.parse(req.headers.cookie || '');
+        console.log(cookies)
+        res.writeHead(301, {'location': 'home'});
+        res.end();
+    }
 }
 
-module.exports = LoginPage;
+
+module.exports = new LoginPage();

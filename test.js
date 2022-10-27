@@ -1,22 +1,16 @@
-const validateEmail = (username) => {
-    return username.match(
-        /^[a-z0-9]{6,}$/
-    );
-};
+const http = require('http');
+const cookie = require('cookie');
 
-const validate = () => {
-    const $result = $('#result');
-    const username = $('#email').val();
-    $result.text('');
+const server = http.createServer(function (req, res) {
+    res.setHeader('Set-Cookie', cookie.serialize('name', '20', {
+        httpOnly: true,
+        maxAge: 60 // 60s
+    }));
 
-    if (validateEmail(username)) {
-        $result.text( ' correct :)');
-        $result.css('color', 'green');
-    } else {
-        $result.text(' incorrect :(');
-        $result.css('color', 'red');
-    }
-    return false;
-}
-
-$('#email').on('input', validate);
+    let cookies = cookie.parse(req.headers.cookie || '');
+    console.log(cookies)
+    res.end(`Hello World\n`);
+})
+server.listen(3001, () => {
+    console.log("Server is running !!")
+})

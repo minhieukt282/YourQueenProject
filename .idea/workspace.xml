@@ -12,13 +12,25 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+<<<<<<< HEAD
         <option value="HTML File" />
         <option value="CSS File" />
+=======
+>>>>>>> 5517f7de52185f3cea3732cf02332b4077154147
         <option value="JavaScript File" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
+<<<<<<< HEAD
+=======
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="minhieu" />
+      </map>
+    </option>
+>>>>>>> 5517f7de52185f3cea3732cf02332b4077154147
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -70,8 +82,16 @@
       <created>1666832233795</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
+<<<<<<< HEAD
       <updated>1666832233795</updated>
       <workItem from="1666832236443" duration="18944000" />
+=======
+      <updated>1666605076839</updated>
+      <workItem from="1666605078136" duration="806000" />
+      <workItem from="1666681745337" duration="336000" />
+      <workItem from="1666688101796" duration="2645000" />
+      <workItem from="1666691312635" duration="298000" />
+>>>>>>> 5517f7de52185f3cea3732cf02332b4077154147
     </task>
     <servers />
   </component>
