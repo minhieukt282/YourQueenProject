@@ -3,34 +3,34 @@ const PERSONAL_SERVICE = require('../../service/personalService');
 const qs = require('qs')
 
 class PersonalPage {
-    // getHtmlPersonalPage(products, indexHtml) {
-    //     let tbody = '';
-    //     products.map((product, index) => {
-    //         tbody += `<tr>
-    //         <th scope="row">${index + 1}</th>
-    //         <td>${product.name}</td>
-    //         <td>${product.price}</td>
-    //         <td>${product.quantity}</td>
-    //         <td><a href="/product/edit/${product.id}" class="btn btn-danger">Edit</a></td>
-    //         <td><a href="/product/delete/${product.id}" class="btn btn-danger">Delete</a></td>
-    //     </tr>`
-    //     });
-    //     indexHtml = indexHtml.replace('{products}', tbody);
-    //     return indexHtml;
-    // }
-    // personalPage(req, res){
-    //     fs.readFile('./views/index.html', 'utf-8', async (err, indexHtml) => {
-    //         if (err) {
-    //             console.log(err);
-    //         } else {
-    //             let products = await PERSONAL_SERVICE.getProduct();
-    //             indexHtml = this.getHtmlPersonalPage(products, indexHtml);
-    //             res.writeHead(200, 'text/html');
-    //             res.write(indexHtml);
-    //             res.end();
-    //         }
-    //     })
-    // }
+    getHtmlPersonalPage(products, indexHtml) {
+        // let tbody = '';
+        // products.map((product, index) => {
+        //     tbody += `<tr>
+        //     <th scope="row">${index + 1}</th>
+        //     <td>${product.name}</td>
+        //     <td>${product.price}</td>
+        //     <td>${product.quantity}</td>
+        //     <td><a href="/product/edit/${product.id}" class="btn btn-danger">Edit</a></td>
+        //     <td><a href="/product/delete/${product.id}" class="btn btn-danger">Delete</a></td>
+        // </tr>`
+        // });
+        // indexHtml = indexHtml.replace('{products}', tbody);
+        // return indexHtml;
+    }
+    personalPage(req, res){
+        fs.readFile('./views/index.html', 'utf-8', async (err, indexHtml) => {
+            if (err) {
+                console.log(err);
+            } else {
+                let products = await PERSONAL_SERVICE.getProduct();
+                indexHtml = this.getHtmlPersonalPage(products, indexHtml);
+                res.writeHead(200, 'text/html');
+                res.write(indexHtml);
+                res.end();
+            }
+        })
+    }
 
     showPage(){
 

@@ -25,8 +25,7 @@ class LoginService {
 
     getAccount() {
         return new Promise((resolve, reject) => {
-            let sql = `select *
-                       from account`
+            let sql = `select *from account`
             connection.query(sql, (err, account) => {
                 if (err) {
                     reject(err)

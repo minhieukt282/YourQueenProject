@@ -5,10 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ed4f7873-d893-4b2b-98dd-a53e95fecfb2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/controller/handle/loginPage.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/service/loginService.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/handle/homePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/controller/handle/homePage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/homeService.js" beforeDir="false" afterPath="$PROJECT_DIR$/service/homeService.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/controller/handle/adminPage.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service/adminService.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/admin/adminDemo.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/profilePsl/profilePersonal.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_10_25_2022_2_20_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_10_25_2022_2_20_PM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/handle/personalPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/controller/handle/personalPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/router.js" beforeDir="false" afterPath="$PROJECT_DIR$/controller/router.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/loginService.js" beforeDir="false" afterPath="$PROJECT_DIR$/service/loginService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/admin/admin.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/admin/admin.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,8 +24,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="JavaScript File" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -50,9 +56,9 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;18.8.0&quot;,
-    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;18.8.0&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/adnin/Desktop/Case Study/gitTestProject&quot;,
+    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;16.17.0&quot;,
+    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;16.18.0&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/admin/WebstormProjects/CaseMd3&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -69,6 +75,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\admin\WebstormProjects\CaseMd3\views\profilePsl" />
       <recent name="E:\test\WS\YourQueenProject\controller" />
     </key>
   </component>
@@ -87,6 +94,16 @@
       <workItem from="1666692530901" duration="374000" />
       <workItem from="1666745806431" duration="712000" />
       <workItem from="1666746543734" duration="12637000" />
+      <workItem from="1666773116033" duration="5576000" />
+      <workItem from="1666793988948" duration="10000" />
+      <workItem from="1666794012611" duration="2650000" />
+      <workItem from="1666796733455" duration="31000" />
+      <workItem from="1666796782184" duration="5733000" />
+      <workItem from="1666802820592" duration="381000" />
+      <workItem from="1666803250250" duration="8000" />
+      <workItem from="1666803318729" duration="2710000" />
+      <workItem from="1666832206684" duration="11000" />
+      <workItem from="1666832228157" duration="2259000" />
     </task>
     <servers />
   </component>
