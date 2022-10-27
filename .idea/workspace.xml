@@ -2,29 +2,88 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ed4f7873-d893-4b2b-98dd-a53e95fecfb2" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_10_25_2022_2_20_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_10_25_2022_2_20_PM__Changes_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/controller/handle/profilePage.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service/profileService.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/css/test.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/test.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/handle/homePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/controller/handle/homePage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/handle/loginPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/controller/handle/loginPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/notFoundRouting.js" beforeDir="false" afterPath="$PROJECT_DIR$/controller/notFoundRouting.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/homeService.js" beforeDir="false" afterPath="$PROJECT_DIR$/service/homeService.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sql/database.txt" beforeDir="false" afterPath="$PROJECT_DIR$/sql/database.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/router.js" beforeDir="false" afterPath="$PROJECT_DIR$/controller/router.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/picture/anh8.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/views/picture/anh8.jpg" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="CSS File" />
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2GhE4xOi2NbzD64U7ATzUblgVuR" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "Project.color": "1d5233",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "javascript.nodejs.core.library.configured.version": "16.17.0",
+    "javascript.nodejs.core.library.typings.version": "16.18.2",
+    "last_opened_file_path": "C:/Users/Admin/Desktop/CodeGym/MD3/13_Thao_tac_voi_database/DemoConectDB",
+    "list.type.of.created.stylesheet": "CSS",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Admin\Desktop\Case333\views" />
+      <recent name="C:\Users\Admin\Desktop\Case333\views\profile" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="server.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/server.js" working-dir="$PROJECT_DIR$">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Node.js.server.js" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ed4f7873-d893-4b2b-98dd-a53e95fecfb2" name="Changes" comment="" />
+      <created>1666832233795</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1666832233795</updated>
+      <workItem from="1666832236443" duration="14899000" />
+    </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="UnknownFeatures">
     <option featureType="com.intellij.fileTypeFactory" implementationName="*.sql" />
