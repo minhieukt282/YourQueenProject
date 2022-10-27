@@ -1,5 +1,6 @@
 const http = require('http');
 const url = require('url');
+const cookieParser = require('cookie-parser');
 const HANDLER = require('./controller/router');
 const NOT_FOUND_ROUTING = require('./controller/notFoundRouting');
 

@@ -1,7 +1,7 @@
 const fs = require('fs');
 const LOGIN_SERVICE = require('../../service/loginService');
-const TOKEN_SERVICE = require('../../service/tokenService')
 const qs = require('qs')
+const cookie = require("cookie");
 
 class LoginPage {
     login(req, res) {
@@ -29,15 +29,12 @@ class LoginPage {
                     if (isCheckGate) {
                         let expires = Date.now() + 5 * 60;
                         let dataUser = await LOGIN_SERVICE.findByUsername(account.username)
-                        let tokenId = TOKEN_SERVICE.createRandomString(20)
-                        let dataContent = {
-                            id: `${dataUser[0].id}`,
-                            role_id: `${dataUser[0].role_id}`,
-                            status_id: `${dataUser[0].status_id}`
-                        }
-                        let tokenSession = "{\"id\":\"" + dataContent.id + "\",\"role_id\":\"" + dataContent.role_id + "\",\"status_id\":\"" + dataContent.status_id + "\",\"token_id\":\"" + tokenId + "\",\"expires\":" + expires + "}";
-                        await TOKEN_SERVICE.createTokenSession(tokenSession, tokenId);
-                        await TOKEN_SERVICE.insertTokenId(dataContent.id, tokenId)
+                        res.setHeader('Set-Cookie', cookie.serialize('id', `${dataUser[0].id}`, {
+                            httpOnly: true,
+                            maxAge: expires
+                        }));
+                        let cookies = cookie.parse(req.headers.cookie || '');
+                        console.log(cookies)
                         if (dataUser[0].role_id === 1) {
                             res.writeHead(301, {'location': 'admin'});
                             res.end()
@@ -46,7 +43,8 @@ class LoginPage {
                             res.end()
                         }
                     } else {
-                        console.log('incorrect!!!')
+                        res.writeHead(301, {'location': 'login'});
+                        res.end()
                     }
                 }
             })
@@ -76,8 +74,6 @@ class LoginPage {
                     let accounts = qs.parse(chunkAccount);
                     let isCheckUsername = await LOGIN_SERVICE.checkAccount(accounts)
                     if (isCheckUsername) {
-                        console.log("ten da trung")
-                        console.log("______________")
                         res.writeHead(301, {'location': 'register'});
                         res.end();
                     } else {
@@ -86,8 +82,6 @@ class LoginPage {
                             res.writeHead(301, {'location': 'login'});
                             res.end();
                         } else {
-                            console.log('Password incorrect')
-                            console.log("______________")
                             res.writeHead(301, {'location': 'register'});
                             res.end();
                         }
@@ -95,6 +89,14 @@ class LoginPage {
                 }
             })
         }
+    }
+
+    logout(req, res){
+        res.clearCookie('id')
+        let cookies = cookie.parse(req.headers.cookie || '');
+        console.log(cookies)
+        res.writeHead(301, {'location': 'home'});
+        res.end();
     }
 }
 
