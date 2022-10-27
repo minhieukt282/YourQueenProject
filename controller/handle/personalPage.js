@@ -3,7 +3,7 @@ const PERSONAL_SERVICE = require('../../service/personalService');
 const qs = require('qs')
 
 class PersonalPage {
-     getHtmlProducts(dataUser, indexHtml) {
+    getHtmlProducts(dataUser, indexHtml) {
         let tbody = '';
         dataUser.map((product, index) => {
             tbody += `<tr>
@@ -19,7 +19,7 @@ class PersonalPage {
         return indexHtml;
     }
 
-     showPage(req, res) {
+    showPage(req, res) {
         fs.readFile('./views/personalPage.html', 'utf-8', async (err, indexHtml) => {
             if (err) {
                 console.log(err);
@@ -32,50 +32,47 @@ class PersonalPage {
             }
         })
     }
-        showEditProfile(req, res, id)
-        {
-            if (req.method === 'GET') {
-                fs.readFile('./views/edit.html', 'utf-8', async (err, editHtml) => {
-                    if (err) {
-                        console.log(err);
-                    } else {
-                        // duong dan dang sai
-                        let product = await PERSONAL_SERVICE.findByIdUser(id);
-                        console.log(product)
-                        // editHtml = editHtml.replace('{name}', product[0].name);
-                        // editHtml = editHtml.replace('{price}', product[0].price);
-                        // editHtml = editHtml.replace('{quantity}', product[0].quantity);
-                        res.writeHead(200, 'text/html');
-                        res.write(editHtml);
-                        res.end();
-                    }
-                })
-            } else {
-                let userEditChunk = '';
-                req.on('data', chunk => {
-                    userEditChunk += chunk
-                });
-                req.on('end', async (err) => {
-                    if (err) {
-                        console.log(err);
-                    } else {
-                        let userEdit = qs.parse(userEditChunk);
-                        await PERSONAL_SERVICE.editProfile(userEdit, id);
-                        res.writeHead(301, {'location': '/home'});
-                        res.end();
-                    }
-                });
-            }
+
+    showEditProfile(req, res, id) {
+        if (req.method === 'GET') {
+            fs.readFile('./views/edit.html', 'utf-8', async (err, editHtml) => {
+                if (err) {
+                    console.log(err);
+                } else {
+                    // duong dan dang sai
+                    let product = await PERSONAL_SERVICE.findByIdUser(id);
+                    console.log(product)
+                    // editHtml = editHtml.replace('{name}', product[0].name);
+                    // editHtml = editHtml.replace('{price}', product[0].price);
+                    // editHtml = editHtml.replace('{quantity}', product[0].quantity);
+                    res.writeHead(200, 'text/html');
+                    res.write(editHtml);
+                    res.end();
+                }
+            })
+        } else {
+            let userEditChunk = '';
+            req.on('data', chunk => {
+                userEditChunk += chunk
+            });
+            req.on('end', async (err) => {
+                if (err) {
+                    console.log(err);
+                } else {
+                    let userEdit = qs.parse(userEditChunk);
+                    await PERSONAL_SERVICE.editProfile(userEdit, id);
+                    res.writeHead(301, {'location': '/home'});
+                    res.end();
+                }
+            });
         }
+    }
 
-        showEditProduct()
-        {
-
-        }
-
+    showEditProduct() {
 
     }
 
-    module
-.
-    exports = PersonalPage
+
+}
+
+module.exports = PersonalPage
