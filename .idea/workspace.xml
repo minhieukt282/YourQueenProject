@@ -6,23 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="ed4f7873-d893-4b2b-98dd-a53e95fecfb2" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/handle/loginPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/controller/handle/loginPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/handle/personalPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/controller/handle/personalPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/notFoundRouting.js" beforeDir="false" afterPath="$PROJECT_DIR$/controller/notFoundRouting.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/router.js" beforeDir="false" afterPath="$PROJECT_DIR$/controller/router.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/loginService.js" beforeDir="false" afterPath="$PROJECT_DIR$/service/loginService.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/personalService.js" beforeDir="false" afterPath="$PROJECT_DIR$/service/personalService.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/tokenService.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.js" beforeDir="false" afterPath="$PROJECT_DIR$/test.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/token/6nfh3rsqezm8o22xpah2.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/token/akqclklaisn812onn1b9.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/token/nzbew2ea1668d9ma0isc.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/token/qmsms42sx2awog5dzk4r.json" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,7 +23,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="linh" />
+        <entry key="$PROJECT_DIR$" value="minhieu" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -98,16 +81,6 @@
       <workItem from="1666681745337" duration="336000" />
       <workItem from="1666688101796" duration="2645000" />
       <workItem from="1666691312635" duration="298000" />
-      <workItem from="1666692530901" duration="374000" />
-      <workItem from="1666745806431" duration="712000" />
-      <workItem from="1666746543734" duration="12637000" />
-      <workItem from="1666793130690" duration="43000" />
-      <workItem from="1666793202856" duration="2010000" />
-      <workItem from="1666796653645" duration="32000" />
-      <workItem from="1666796713762" duration="2936000" />
-      <workItem from="1666832321784" duration="186000" />
-      <workItem from="1666832536271" duration="7452000" />
-      <workItem from="1666845668802" duration="6973000" />
     </task>
     <servers />
   </component>
