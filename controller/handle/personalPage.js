@@ -76,6 +76,4 @@ class PersonalPage {
 
     }
 
-    module
-.
-    exports = PersonalPage
+    module.exports = new PersonalPage

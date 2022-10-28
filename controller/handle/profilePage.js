@@ -1,5 +1,5 @@
 const fs = require('fs');
-const Profile_Page = require('../../service/profileService');
+const PROFILE_PAGE = require('../../service/profileService');
 const qs = require('qs')
 
 class ProfilePage {
@@ -18,29 +18,34 @@ class ProfilePage {
     //     return indexHtml;
     // }
 
-    static profile(req, res) {
-        if (req.method === 'GET') {
-            fs.readFile('./views/profile.html', "utf-8", async (err, profileHtml) => {
-                if (err) {
-                    console.log(err)
-                } else {
-                    res.writeHead(200,{
-                        'Content-type': 'text/html'
-                    });
-                    res.write(profileHtml);
-                    res.end()
-                }
-            })
+    static getDataProfile(infoProfile, infoHTML) {
+        let infoIMG =''
+        infoHTML = infoHTML.replace('{useName}', infoProfile[0].username);
+        infoHTML = infoHTML.replace('{urlAvt}', infoProfile[0].link);
+        infoHTML = infoHTML.replace('{name}', infoProfile[0].name);
+        infoProfile.forEach((item) => {
+            console.log(item.link)
+            infoIMG += `<img src="${item.link}"
+                                  alt="" style="width: 121px; height:121px; object-fit: contain; justify-content: flex-start; margin: auto">`
+        })
+        infoHTML = infoHTML.replace('{img}', infoIMG);
+        return infoHTML;
+    }
 
-            // static login(req, res) {
-            //     console.log("login")
-            // }
-            //
-            // static register(req, res) {
-            //     console.log("register")
-            // }
-        }
+    profilePage(req, res, useName) {
+        fs.readFile('./views/profile.html', "utf-8", async (err, profileHtml) => {
+            if (err) {
+                console.log(err)
+            } else {
+                let infoProfile = await PROFILE_PAGE.findByUserName(useName);
+                console.log("bàng may va", infoProfile)
+                profileHtml = ProfilePage.getDataProfile(infoProfile, profileHtml);
+                res.writeHead(200, {'Content-type': 'text/html'});
+                res.write(profileHtml);
+                res.end()
+            }
+        })
     }
 }
 
-module.exports = ProfilePage;
+module.exports = new ProfilePage;

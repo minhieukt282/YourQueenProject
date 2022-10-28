@@ -10,6 +10,8 @@ let mimeTypes = {
     'jpg': 'images/jpeg',
     'png': 'images/png',
     "js": 'text/javascript',
+    "min.js": 'text/javascript',
+    'min.css': 'text/css',
     'css': 'text/css',
     'svg': 'image/svg+xml',
     'ttf': 'font/ttf',
@@ -27,23 +29,24 @@ function getUrl(req) {
 const SERVER = http.createServer((req, res) => {
     const arrPath = getUrl(req);
     let trimPath = '';
-    if (arrPath.length > 2) {
+    if (arrPath.length > 3) {
         trimPath = arrPath[1] + "/" + arrPath[2];
     } else {
-        trimPath = arrPath[arrPath.length - 1];
+        trimPath = arrPath[1];
     }
     let chosenHandle;
     let urlPath = url.parse(req.url).pathname;
-    const fileDefence = urlPath.match("/\.js|\.css|\.png|\.jpg");
+    const fileDefence = urlPath.match(/\.js|\.css|\.png|\.svg|\.jpg|\.ttf|\.woff|\.woff2|\.eot|\.jpeg|\.min.css|\.min.js/)
     if (fileDefence) {
+        console.log(urlPath)
         const extension = mimeTypes[fileDefence[0].toString().slice(1)];
         res.writeHead(200, {'Content-Type': extension});
         fs.createReadStream(__dirname + req.url).pipe(res);
     } else {
         chosenHandle = typeof HANDLER[trimPath] !== 'undefined' ? HANDLER[trimPath] : NOT_FOUND_ROUTING.showNotFound;
-        chosenHandle(req, res, arrPath[3]);
+        chosenHandle(req, res, arrPath[2]);
+        console.log(arrPath[2])
     }
-
 })
 
 SERVER.listen(3000, () => {

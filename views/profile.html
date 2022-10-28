@@ -7,12 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Dũng</title>
-    <link href="views/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <title>{useName}</title>
+    <link href="../../views/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
             href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
             rel="stylesheet">
-    <link href="views/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="../../views/css/sb-admin-2.min.css" rel="stylesheet">
 </head>
 
 <body id="page-top">
@@ -244,7 +244,7 @@
                             <h6 class="dropdown-header">Trung tâm thông báo</h6>
                             <a class="dropdown-item d-flex align-items-center" href="#">
                                 <div class="dropdown-list-image mr-3">
-                                    <img class="rounded-circle" src="img/undraw_profile_1.svg" alt="..."/>
+                                    <img class="rounded-circle" src="../../views/img/undraw_profile_1.svg" alt="..."/>
                                     <div class="status-indicator bg-success"></div>
                                 </div>
                                 <div class="font-weight-bold">
@@ -254,7 +254,7 @@
                             </a>
                             <a class="dropdown-item d-flex align-items-center" href="#">
                                 <div class="dropdown-list-image mr-3">
-                                    <img class="rounded-circle" src="img/undraw_profile_2.svg" alt="..."/>
+                                    <img class="rounded-circle" src="../../views/img/undraw_profile_2.svg" alt="..."/>
                                     <div class="status-indicator"></div>
                                 </div>
                                 <div>
@@ -264,7 +264,7 @@
                             </a>
                             <a class="dropdown-item d-flex align-items-center" href="#">
                                 <div class="dropdown-list-image mr-3">
-                                    <img class="rounded-circle" src="img/undraw_profile_3.svg" alt="..."/>
+                                    <img class="rounded-circle" src="../../views/img/undraw_profile_3.svg" alt="..."/>
                                     <div class="status-indicator bg-warning"></div>
                                 </div>
                                 <div>
@@ -294,7 +294,7 @@
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="mr-2 d-none d-lg-inline text-gray-600 small">Ngọc Dũng</span>
-                            <img class="img-profile rounded-circle" src="img/undraw_profile.svg"/>
+                            <img class="img-profile rounded-circle" src="../../views/img/undraw_profile.svg"/>
                         </a>
                         <!-- Dropdown - User Information -->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -332,7 +332,7 @@
                         <!-- Project Card Example -->
 
                         <div class="text-center">
-                            <img src="https://playerduo.com/api/upload-service/images/89f8cecd-7938-4c5e-bd79-29458095c757__7a4302c0-23b8-11ed-92ac-1b8d2f5bc2b5__player_avatar.jpg"
+                            <img style="width: 260px; height: 260px; object-fit: contain; margin: auto" src="{urlAvt}"
                                  class="rounded" alt="..."/>
                             <p class="pt-2 text-success font-weight-bold h5">
                                 Đang sẵn sàng
@@ -351,64 +351,14 @@
                     </div>
 
                     <div class="col-lg-5 mb-4">
-                        <!-- Illustrations -->
-                        <div class="mb-4">
-
-
-                            <div class="d-flex justify-content-between">
-                                <h6 class="m-0 font-weight-bold text-primary py-3">
-                                    Tên người
-                                </h6>
-                                <button type="submit"
-                                        style="width: 120px;height: 29px;background-color:#f0564a;border-radius: 20px; padding: 3px 10px 2px; color: white;border: 1px solid #f0564a"
-                                        class="text-center">3 Theo dõi
-                                </button>
-                            </div>
-                            <div class="d-flex justify-content-between">
-                                <div
-                                        style="width:149px;height:42px;box-sizing: border-box; display: block; font-size: 14px; line-height: 1.5;">
-                                        <span style="font-weight: 700; text-transform: uppercase;">số người theo
-                                            dõi</span>
-                                    <span style="color: #f0564a;">297</span>
-                                </div>
-                                <div
-                                        style="width:145px;height:42px;box-sizing: border-box; display: block; font-size: 14px; line-height: 1.5;">
-                                    <span style="font-weight: 700; text-transform: uppercase;">ĐÃ ĐƯỢC THUÊ</span>
-                                    <span style="color: #f0564a;">4321 giờ</span>
-                                </div>
-                                <div
-                                        style="width:149px;height:42px;box-sizing: border-box; display: block; font-size: 14px; line-height: 1.5;">
-                                        <span style="font-weight: 700; text-transform: uppercase;">TỶ LỆ HOÀN
-                                            THÀNH</span>
-                                    <span style="color: #f0564a;">94.34 %</span>
-                                </div>
-                                <div
-                                        style="width:149px;height:42px;box-sizing: border-box; display: block; font-size: 14px; line-height: 1.5;">
-                                        <span style="font-weight: 700; text-transform: uppercase;">TÌNH TRẠNG THIẾT
-                                            BỊ</span>
-                                    <span style="color: #f0564a;">0</span>
-                                </div>
-                            </div>
-                        </div>
-
                         <!-- Approach -->
-
                         <div class="card shadow mb-4">
                             <h6 class="m-0 font-weight-bold text-primary py-3 ml-3">
-                                Thông tin
+                                {name}
                             </h6>
                             <p class="ml-3">𝓛𝓲𝓶𝓲𝓽𝓮𝓭</p>
                             <div class="d-flex justify-content-between" style="margin: 0 5px 10px 5px;">
-                                <img src="https://playerduo.com/api/upload-service/thumbs/medium/89f8cecd-7938-4c5e-bd79-29458095c757__3dba33d0-4fed-11ed-838c-b120e70abb59__player_album.jpg"
-                                     alt="" style="width: 121px; height:121px">
-                                <img src="https://playerduo.com/api/upload-service/thumbs/medium/89f8cecd-7938-4c5e-bd79-29458095c757__1f942220-2dac-11ed-92ac-1b8d2f5bc2b5__player_album.jpg"
-                                     alt="" style="width: 121px; height:121px">
-                                <img src="https://playerduo.com/api/upload-service/thumbs/medium/89f8cecd-7938-4c5e-bd79-29458095c757__b7595610-2c04-11ed-92ac-1b8d2f5bc2b5__player_album.jpg"
-                                     alt="" style="width: 121px; height:121px">
-                                <img src="https://playerduo.com/api/upload-service/thumbs/medium/89f8cecd-7938-4c5e-bd79-29458095c757__b5fc5d90-10ba-11ed-92ac-1b8d2f5bc2b5__player_album.jpg"
-                                     alt="" style="width: 121px; height:121px">
-                                <img src="https://playerduo.com/api/upload-service/thumbs/medium/89f8cecd-7938-4c5e-bd79-29458095c757__a5e26880-db83-11ec-bb39-3799c118b8e8__player_album.jpg"
-                                     alt="" style="width: 121px; height:121px">
+                               {img}
                             </div>
                             <p class="ml-3">♥️ MonDy tên là Quỳnh Nga sinh năm 2002 ở Hà Nội ạ.</p>
                             <p class="ml-3">🎀 Thuê trên 2h giúp em nha♥️ . Đêm 100k/h ạ</p>
@@ -795,18 +745,18 @@
     </div>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="./views/vendor/jquery/jquery.min.js"></script>
-    <script src="./views/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../../views/vendor/jquery/jquery.min.js"></script>
+    <script src="../../views/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="./views/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="../../views/vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
 
 
     <!-- Page level plugins -->
-    <script src="./views/vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="./views/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <script src="../../views/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="../../views/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
     <!-- Page level custom scripts -->
 

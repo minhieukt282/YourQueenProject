@@ -4,7 +4,7 @@ const qs = require('qs')
 
 class HomePage {
 
-    static getHTMLHomePage(userDetails, carouselImage, infoHTML) {
+   static getHTMLHomePage(userDetails, carouselImage, infoHTML) {
         let userHTML = ''
         let carouselHTML = ''
         userDetails.forEach((element) => {
@@ -20,8 +20,8 @@ class HomePage {
                          </div>`
         })
         carouselImage.forEach((item) => {
-            carouselHTML += `<div class="carousel-item active" data-bs-interval="2000">
-                                    <img src="${item.url}" class="d-block w-100" alt="${item.id}">
+            carouselHTML += `<div class="carousel-item active" data-bs-interval="2000" style="border-radius: 10px" ">
+                                    <img style="border-radius: 15px"  src="${item.url}"  class="d-block w-100" alt="${item.id} ">
                                 </div>`
         })
         infoHTML = infoHTML.replace('{userDetail}', userHTML);
@@ -29,7 +29,7 @@ class HomePage {
         return infoHTML;
     }
 
-    static homePage(req, res) {
+    homePage(req, res) {
         fs.readFile('./views/index.html', 'utf-8', async (err, dataHtml) => {
             if (err) {
                 console.log(err);
@@ -44,13 +44,28 @@ class HomePage {
         });
     }
 
-    static login(req, res) {
+    showProfileProvider(req, res, userName) {
+        fs.readFile('./views/profile.html', 'utf-8', async (err, profileHtml) => {
+            if (err) {
+                console.log(err);
+            } else {
+                let products = await HOME_SERVICE.getUserDetails();
+                let carousel = await HOME_SERVICE.getCarouselImage();
+                products = this.getHTMLHomePage(products, carousel, dataHtml);
+                res.writeHead(200, 'text/html');
+                res.write(dataHtml);
+                res.end();
+            }
+        });
+    }
+
+    login(req, res) {
         console.log("login")
     }
 
-    static register(req, res) {
+    register(req, res) {
         console.log("register")
     }
 }
 
-module.exports = HomePage
+module.exports = new HomePage

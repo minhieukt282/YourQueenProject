@@ -3,7 +3,7 @@ let connection = CONNECTION.getConnection()
 CONNECTION.connecting()
 
 class PersonalService {
-    getDataUser(){
+    getDataUser() {
         let sql = `select name, sex_id, birthday, height, weight, role_id, status_id
                    from user`
         return new Promise((resolve, reject) => {
@@ -31,6 +31,8 @@ class PersonalService {
             })
         })
     }
+
+    
 
     editProfile(userEdit, id) {
         return new Promise((resolve, reject) => {
