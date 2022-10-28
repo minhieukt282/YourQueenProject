@@ -135,187 +135,178 @@
     <div id="content-wrapper" class="d-flex flex-column">
         <!-- Main Content -->
         <div id="content">
-            <!-- Topbar -->
-            <!--            <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">-->
-            <!--                &lt;!&ndash; Sidebar Toggle (Topbar) &ndash;&gt;-->
-            <!--                <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">-->
-            <!--                    <i class="fa fa-bars"></i>-->
+
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <div class="container-fluid justify-content-between">
-                    <!-- Left elements -->
-                    <div class="d-flex">
-                        <!-- Brand -->
-                        <a class="navbar-brand me-2 mb-1 d-flex align-items-center" href="#">
-                            <img
-                                    src="https://mdbcdn.b-cdn.net/img/logo/mdb-transaprent-noshadows.webp"
-                                    height="20"
-                                    alt="MDB Logo"
-                                    loading="lazy"
-                                    style="margin-top: 2px;"
-                            />
-                        </a>
 
-                        <!-- Search form -->
-                        <form class="input-group w-auto my-auto d-none d-sm-flex">
-                            <input
-                                    autocomplete="off"
-                                    type="search"
-                                    class="form-control rounded"
-                                    placeholder="Search"
-                                    style="min-width: 125px;"
-                            />
-                            <span class="input-group-text border-0 d-none d-lg-flex"
-                            ><i class="fas fa-search"></i
-                            ></span>
-                        </form>
+                <!-- Topbar Search -->
+                <form
+                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                    <div class="input-group">
+                        <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
+                               aria-label="Search" aria-describedby="basic-addon2"/>
+                        <div class="input-group-append">
+                            <button class="btn btn-primary" type="button">
+                                <i class="fas fa-search fa-sm"></i>
+                            </button>
+                        </div>
                     </div>
-                    <!-- Left elements -->
+                </form>
+                <ul class="navbar-nav ml-auto">
+                    <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+                    <li class="nav-item dropdown no-arrow d-sm-none">
+                        <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <!-- Dropdown - Messages -->
+                        <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
+                             aria-labelledby="searchDropdown">
+                            <form class="form-inline mr-auto w-100 navbar-search">
+                                <div class="input-group">
+                                    <input type="text" class="form-control bg-light border-0 small"
+                                           placeholder="Search for..." aria-label="Search"
+                                           aria-describedby="basic-addon2"/>
+                                    <div class="input-group-append">
+                                        <button class="btn btn-primary" type="button">
+                                            <i class="fas fa-search fa-sm"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </li>
 
-                    <!-- Center elements -->
-                    <ul class="navbar-nav flex-row d-none d-md-flex">
-                        <li class="nav-item me-3 me-lg-1 active">
-                            <a class="nav-link" href="#">
-                                <span><i class="fas fa-home fa-lg"></i></span>
-                                <span class="badge rounded-pill badge-notification bg-danger">1</span>
+                    <!-- Nav Item - Alerts -->
+                    <li class="nav-item dropdown no-arrow mx-1">
+                        <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-bell fa-fw"></i>
+                            <!-- Counter - Alerts -->
+                            <span class="badge badge-danger badge-counter">3+</span>
+                        </a>
+                        <!-- Dropdown - Alerts -->
+                        <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                             aria-labelledby="alertsDropdown">
+                            <h6 class="dropdown-header">Trung tâm cảnh báo</h6>
+                            <a class="dropdown-item d-flex align-items-center" href="#">
+                                <div class="mr-3">
+                                    <div class="icon-circle bg-primary">
+                                        <i class="fas fa-file-alt text-white"></i>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="small text-gray-500">25/10/2022</div>
+                                    <span class="font-weight-bold">...</span>
+                                </div>
                             </a>
-                        </li>
+                            <a class="dropdown-item d-flex align-items-center" href="#">
+                                <div class="mr-3">
+                                    <div class="icon-circle bg-success">
+                                        <i class="fas fa-donate text-white"></i>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="small text-gray-500">25/10/2022</div>
+                                    ...
+                                </div>
+                            </a>
+                            <a class="dropdown-item d-flex align-items-center" href="#">
+                                <div class="mr-3">
+                                    <div class="icon-circle bg-warning">
+                                        <i class="fas fa-exclamation-triangle text-white"></i>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="small text-gray-500">25/10/2022</div>
+                                    ...
+                                </div>
+                            </a>
+                            <a class="dropdown-item text-center small text-gray-500" href="#">Tất cả thông báo</a>
+                        </div>
+                    </li>
 
-                        <li class="nav-item me-3 me-lg-1">
-                            <a class="nav-link" href="#">
-                                <span><i class="fas fa-flag fa-lg"></i></span>
+                    <!-- Nav Item - Messages -->
+                    <li class="nav-item dropdown no-arrow mx-1">
+                        <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-envelope fa-fw"></i>
+                            <!-- Counter - Messages -->
+                            <span class="badge badge-danger badge-counter">7</span>
+                        </a>
+                        <!-- Dropdown - Messages -->
+                        <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                             aria-labelledby="messagesDropdown">
+                            <h6 class="dropdown-header">Trung tâm thông báo</h6>
+                            <a class="dropdown-item d-flex align-items-center" href="#">
+                                <div class="dropdown-list-image mr-3">
+                                    <img class="rounded-circle" src="img/undraw_profile_1.svg" alt="..."/>
+                                    <div class="status-indicator bg-success"></div>
+                                </div>
+                                <div class="font-weight-bold">
+                                    <div class="text-truncate">Xin chào.</div>
+                                    <div class="small text-gray-500">...</div>
+                                </div>
                             </a>
-                        </li>
+                            <a class="dropdown-item d-flex align-items-center" href="#">
+                                <div class="dropdown-list-image mr-3">
+                                    <img class="rounded-circle" src="img/undraw_profile_2.svg" alt="..."/>
+                                    <div class="status-indicator"></div>
+                                </div>
+                                <div>
+                                    <div class="text-truncate">Hello</div>
+                                    <div class="small text-gray-500">...</div>
+                                </div>
+                            </a>
+                            <a class="dropdown-item d-flex align-items-center" href="#">
+                                <div class="dropdown-list-image mr-3">
+                                    <img class="rounded-circle" src="img/undraw_profile_3.svg" alt="..."/>
+                                    <div class="status-indicator bg-warning"></div>
+                                </div>
+                                <div>
+                                    <div class="text-truncate">Hello</div>
+                                    <div class="small text-gray-500">2 ngày trước</div>
+                                </div>
+                            </a>
+                            <a class="dropdown-item d-flex align-items-center" href="#">
+                                <div class="dropdown-list-image mr-3">
+                                    <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60"
+                                         alt="..."/>
+                                    <div class="status-indicator bg-success"></div>
+                                </div>
+                                <div>
+                                    <div class="text-truncate">...</div>
+                                    <div class="small text-gray-500">2 tuần trước</div>
+                                </div>
+                            </a>
+                            <a class="dropdown-item text-center small text-gray-500" href="#">Đọc thêm tin nhắn</a>
+                        </div>
+                    </li>
 
-                        <li class="nav-item me-3 me-lg-1">
-                            <a class="nav-link" href="#">
-                                <span><i class="fas fa-video fa-lg"></i></span>
-                            </a>
-                        </li>
+                    <div class="topbar-divider d-none d-sm-block"></div>
 
-                        <li class="nav-item me-3 me-lg-1">
-                            <a class="nav-link" href="#">
-                                <span><i class="fas fa-shopping-bag fa-lg"></i></span>
+                    <!-- Nav Item - User Information -->
+                    <li class="nav-item dropdown no-arrow">
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">Ngọc Dũng</span>
+                            <img class="img-profile rounded-circle" src="img/undraw_profile.svg"/>
+                        </a>
+                        <!-- Dropdown - User Information -->
+                        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                             aria-labelledby="userDropdown">
+                            <a class="dropdown-item" href="profilePage">
+                                <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                Profile
                             </a>
-                        </li>
-
-                        <li class="nav-item me-3 me-lg-1">
-                            <a class="nav-link" href="#">
-                                <span><i class="fas fa-users fa-lg"></i></span>
-                                <span class="badge rounded-pill badge-notification bg-danger">2</span>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="/" data-toggle="modal" data-target="#logoutModal">
+                                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                Logout
                             </a>
-                        </li>
-                    </ul>
-                    <!-- Center elements -->
-
-                    <!-- Right elements -->
-                    <ul class="navbar-nav flex-row">
-                        <li class="nav-item me-3 me-lg-1">
-                            <a class="nav-link d-sm-flex align-items-sm-center" href="#">
-                                <img
-                                        src="https://mdbcdn.b-cdn.net/img/new/avatars/1.webp"
-                                        class="rounded-circle"
-                                        height="22"
-                                        alt="Black and White Portrait of a Man"
-                                        loading="lazy"
-                                />
-                                <strong class="d-none d-sm-block ms-1">John</strong>
-                            </a>
-                        </li>
-                        <li class="nav-item me-3 me-lg-1">
-                            <a class="nav-link" href="#">
-                                <span><i class="fas fa-plus-circle fa-lg"></i></span>
-                            </a>
-                        </li>
-                        <li class="nav-item dropdown me-3 me-lg-1">
-                            <!--suppress XmlDuplicatedId -->
-                            <a
-                                    class="nav-link dropdown-toggle hidden-arrow"
-                                    href="#"
-                                    id="navbarDropdownMenuLink"
-                                    role="button"
-                                    data-mdb-toggle="dropdown"
-                                    aria-expanded="false"
-                            >
-                                <i class="fas fa-comments fa-lg"></i>
-
-                                <span class="badge rounded-pill badge-notification bg-danger">6</span>
-                            </a>
-                            <ul
-                                    class="dropdown-menu dropdown-menu-end"
-                                    aria-labelledby="navbarDropdownMenuLink"
-                            >
-                                <li>
-                                    <a class="dropdown-item" href="#">Some news</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="#">Another news</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="#">Something else here</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item dropdown me-3 me-lg-1">
-                            <!--suppress XmlDuplicatedId -->
-                            <a
-                                    class="nav-link dropdown-toggle hidden-arrow"
-                                    href="#"
-                                    id="navbarDropdownMenuLink"
-                                    role="button"
-                                    data-mdb-toggle="dropdown"
-                                    aria-expanded="false"
-                            >
-                                <i class="fas fa-bell fa-lg"></i>
-                                <span class="badge rounded-pill badge-notification bg-danger">12</span>
-                            </a>
-                            <ul
-                                    class="dropdown-menu dropdown-menu-end"
-                                    aria-labelledby="navbarDropdownMenuLink"
-                            >
-                                <li>
-                                    <a class="dropdown-item" href="#">Some news</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="#">Another news</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="#">Something else here</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item dropdown me-3 me-lg-1">
-                            <!--suppress XmlDuplicatedId -->
-                            <a
-                                    class="nav-link dropdown-toggle hidden-arrow"
-                                    href="#"
-                                    id="navbarDropdownMenuLink"
-                                    role="button"
-                                    data-mdb-toggle="dropdown"
-                                    aria-expanded="false"
-                            >
-                                <i class="fas fa-chevron-circle-down fa-lg"></i>
-                            </a>
-                            <ul
-                                    class="dropdown-menu dropdown-menu-end"
-                                    aria-labelledby="navbarDropdownMenuLink"
-                            >
-                                <li>
-                                    <a class="dropdown-item" href="#">Some news</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="#">Another news</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="#">Something else here</a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <!-- Right elements -->
-
-                </div>
+                        </div>
+                    </li>
+                </ul>
             </nav>
-
 
             </button>
 
@@ -348,7 +339,7 @@
         <footer class="sticky-footer bg-white">
             <div class="container my-auto">
                 <div class="copyright text-center my-auto">
-                    <span>Copyright &copy; Your Website 2021</span>
+                    <span>Copyright &copy; Your Website 2022</span>
                 </div>
             </div>
         </footer>
@@ -381,7 +372,7 @@
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">
                     Cancel
                 </button>
-                <a class="btn btn-primary" href="login.html">Logout</a>
+                <a class="btn btn-primary" href="/">Logout</a>
             </div>
         </div>
     </div>
