@@ -5,7 +5,8 @@ const PROFILE_PAGE = require('./handle/profilePage');
 
 
 const handler = {
-    // "profilePage":HOME_PAGE.profilePage,
+    "editProfile":HOME_PAGE.editProfile,
+    "admin":HOME_PAGE.adminPage,
     "":HOME_PAGE.homePage,
     "home": HOME_PAGE.userPage,
     "login": LOGIN_PAGE.login,
