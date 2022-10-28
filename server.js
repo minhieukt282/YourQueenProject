@@ -12,10 +12,10 @@ function getUrl(req) {
 const SERVER = http.createServer((req, res) => {
     const arrPath = getUrl(req);
     let trimPath = '';
-    if (arrPath.length > 2) {
+    if (arrPath.length > 3) {
         trimPath = arrPath[1] + "/" + arrPath[2];
     } else {
-        trimPath = arrPath[arrPath.length - 1];
+        trimPath = arrPath[1];
     }
     let chosenHandle;
     if (typeof HANDLER[trimPath] === 'undefined') {

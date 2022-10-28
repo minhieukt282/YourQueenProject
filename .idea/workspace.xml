@@ -5,15 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ed4f7873-d893-4b2b-98dd-a53e95fecfb2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/controller/handle/adminPage.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/service/adminService.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/admin/adminDemo.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/profilePsl/profilePersonal.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_10_25_2022_2_20_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_10_25_2022_2_20_PM__Changes_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/admin/manageProvider.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/admin/manageUser.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/admin/tradeHistory.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/admin/turnoverDay.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/admin/turnoverMonth.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/admin/turnoverYear.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/handle/personalPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/controller/handle/personalPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/handle/adminPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/controller/handle/adminPage.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controller/router.js" beforeDir="false" afterPath="$PROJECT_DIR$/controller/router.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/loginService.js" beforeDir="false" afterPath="$PROJECT_DIR$/service/loginService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/adminService.js" beforeDir="false" afterPath="$PROJECT_DIR$/service/adminService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/views/admin/admin.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/admin/admin.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -49,32 +52,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;16.17.0&quot;,
-    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;16.18.0&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/admin/WebstormProjects/CaseMd3&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "javascript.nodejs.core.library.configured.version": "16.17.0",
+    "javascript.nodejs.core.library.typings.version": "16.18.0",
+    "last_opened_file_path": "C:/Users/admin/WebstormProjects/CaseMd3",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\admin\WebstormProjects\CaseMd3\views\admin" />
       <recent name="C:\Users\admin\WebstormProjects\CaseMd3\views\profilePsl" />
       <recent name="E:\test\WS\YourQueenProject\controller" />
     </key>
@@ -103,7 +107,18 @@
       <workItem from="1666803250250" duration="8000" />
       <workItem from="1666803318729" duration="2710000" />
       <workItem from="1666832206684" duration="11000" />
-      <workItem from="1666832228157" duration="2259000" />
+      <workItem from="1666832228157" duration="25451000" />
+      <workItem from="1666879642536" duration="30000" />
+      <workItem from="1666879683110" duration="310000" />
+      <workItem from="1666881142874" duration="10489000" />
+      <workItem from="1666893802272" duration="1362000" />
+      <workItem from="1666919617560" duration="3000" />
+      <workItem from="1666919633607" duration="8000" />
+      <workItem from="1666919652336" duration="14464000" />
+      <workItem from="1666940655961" duration="719000" />
+      <workItem from="1666941953112" duration="2766000" />
+      <workItem from="1666945412550" duration="5660000" />
+      <workItem from="1666951236715" duration="1023000" />
     </task>
     <servers />
   </component>
@@ -132,5 +147,16 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/controller/handle/adminPage.js</url>
+          <line>104</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

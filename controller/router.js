@@ -1,17 +1,22 @@
 const HOME_PAGE = require('./handle/homePage');
 const LOGIN_PAGE = require('./handle/loginPage')
-const PERSONAL_PAGE = require('./handle/personalPage');
 const ADMIN_PAGE=require('./handle/adminPage')
-
 const handler = {
     "home": HOME_PAGE.homePage,
-    "homeAdmin":ADMIN_PAGE.adminPage,
+    "manageUserByAdmin":ADMIN_PAGE.adminPage,
+    "historyTrade":ADMIN_PAGE.historyTradePage,
+    "manageUserPage":ADMIN_PAGE.userPage,
+    "manageProviderPage":ADMIN_PAGE.providerPage,
+    "turnoverDays":ADMIN_PAGE.turnoverDay,
+    "turnoverMonth":ADMIN_PAGE.turnoverMonth,
+    "turnoverYear":ADMIN_PAGE.turnoverYear,
     "login": LOGIN_PAGE.login,
     "register": LOGIN_PAGE.register,
-    "personalPage": PERSONAL_PAGE.showPage,
-    "userEditProfile": PERSONAL_PAGE.showEditProfile,
-    "userEditProduct": PERSONAL_PAGE.showEditProduct,
+
 
 }
 
 module.exports = handler;
+
+//turnover day/month :doanh thu theo ngay/thang
+//manage user/provider :hien thi nguoi  dung/nguoi cung cap dich vu
