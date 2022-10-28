@@ -3,8 +3,9 @@ const HOME_SERVICE = require('../../service/homeService');
 const qs = require('qs')
 
 class HomePage {
-    static getHTMLHomePage(userDetails, infoHTML) {
+    static getHTMLHomePage(userDetails, carouselImage, infoHTML) {
         let userHTML = ''
+        let carouselHTML = ''
         userDetails.forEach((element) => {
             userHTML += `<div class="col-3">
                             <a href="/profile/${element.username}">
@@ -17,31 +18,49 @@ class HomePage {
                             </a>
                          </div>`
         })
+        carouselImage.forEach((item, i) => {
+            if (i === 0) {
+                carouselHTML += `<div class="carousel-item active" data-bs-interval="2000">
+                                    <img src="${item.url}" class="d-block w-100" alt="${item.id}">
+                                </div>`
+            } else {
+            carouselHTML += `<div class="carousel-item" data-bs-interval="2000">
+                                    <img src="${item.url}" class="d-block w-100" alt="${item.id}">
+                                </div>`
+            }
+        })
         infoHTML = infoHTML.replace('{userDetail}', userHTML);
+        infoHTML = infoHTML.replace('{carousel}', carouselHTML);
         return infoHTML;
     }
-
-    static homePage(req, res) {
+    homePage(req, res) {
         fs.readFile('./views/index.html', 'utf-8', async (err, dataHtml) => {
             if (err) {
                 console.log(err);
             } else {
                 let products = await HOME_SERVICE.getUserDetails();
-                dataHtml = HomePage.getHTMLHomePage(products, dataHtml);
+                let carousel = await HOME_SERVICE.getCarouselImage();
+                dataHtml = HomePage.getHTMLHomePage(products, carousel, dataHtml);
                 res.writeHead(200, 'text/html');
                 res.write(dataHtml);
                 res.end();
             }
         });
     }
-
-    static login(req, res) {
-        console.log("login")
-    }
-
-    static register(req, res) {
-        console.log("register")
+    userPage(req, res) {
+        fs.readFile('./views/user.html', 'utf-8', async (err, dataHtml) => {
+            if (err) {
+                console.log(err);
+            } else {
+                let products = await HOME_SERVICE.getUserDetails();
+                let carousel = await HOME_SERVICE.getCarouselImage();
+                dataHtml = HomePage.getHTMLHomePage(products, carousel, dataHtml);
+                res.writeHead(200, 'text/html');
+                res.write(dataHtml);
+                res.end();
+            }
+        });
     }
 }
 
-module.exports = HomePage
+module.exports = new HomePage

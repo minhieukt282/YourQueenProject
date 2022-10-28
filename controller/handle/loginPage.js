@@ -97,7 +97,7 @@ class LoginPage {
         res.clearCookie('id')
         let cookies = cookie.parse(req.headers.cookie || '');
         console.log(cookies)
-        res.writeHead(301, {'location': 'home'});
+        res.writeHead(301, {'location': 'user'});
         res.end();
     }
 }
