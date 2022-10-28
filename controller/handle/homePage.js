@@ -47,6 +47,20 @@ class HomePage {
             }
         });
     }
+    userPage(req, res) {
+        fs.readFile('./views/user.html', 'utf-8', async (err, dataHtml) => {
+            if (err) {
+                console.log(err);
+            } else {
+                let products = await HOME_SERVICE.getUserDetails();
+                let carousel = await HOME_SERVICE.getCarouselImage();
+                dataHtml = HomePage.getHTMLHomePage(products, carousel, dataHtml);
+                res.writeHead(200, 'text/html');
+                res.write(dataHtml);
+                res.end();
+            }
+        });
+    }
 }
 
 module.exports = new HomePage
