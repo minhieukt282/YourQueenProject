@@ -3,10 +3,8 @@ const HOME_SERVICE = require('../../service/homeService');
 const qs = require('qs')
 
 class HomePage {
-
-    static getHTMLHomePage(userDetails, carouselImage, infoHTML) {
+    static getHTMLHomePage(userDetails, infoHTML) {
         let userHTML = ''
-        let carouselHTML = ''
         userDetails.forEach((element) => {
             userHTML += `<div class="col-3">
                             <a href="/profile/${element.username}">
@@ -19,13 +17,7 @@ class HomePage {
                             </a>
                          </div>`
         })
-        carouselImage.forEach((item) => {
-            carouselHTML += `<div class="carousel-item active" data-bs-interval="2000">
-                                    <img src="${item.url}" class="d-block w-100" alt="${item.id}">
-                                </div>`
-        })
         infoHTML = infoHTML.replace('{userDetail}', userHTML);
-        infoHTML = infoHTML.replace('{carousel}', carouselHTML);
         return infoHTML;
     }
 
@@ -35,8 +27,7 @@ class HomePage {
                 console.log(err);
             } else {
                 let products = await HOME_SERVICE.getUserDetails();
-                let carousel = await HOME_SERVICE.getCarouselImage();
-                dataHtml = HomePage.getHTMLHomePage(products, carousel, dataHtml);
+                dataHtml = HomePage.getHTMLHomePage(products, dataHtml);
                 res.writeHead(200, 'text/html');
                 res.write(dataHtml);
                 res.end();

@@ -41,7 +41,7 @@ const SERVER = http.createServer((req, res) => {
         fs.createReadStream(__dirname + req.url).pipe(res);
     } else {
         chosenHandle = typeof HANDLER[trimPath] !== 'undefined' ? HANDLER[trimPath] : NOT_FOUND_ROUTING.showNotFound;
-        chosenHandle(req, res, arrPath[3]);
+        chosenHandle(req, res);
     }
 
 })
