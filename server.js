@@ -8,8 +8,10 @@ const NOT_FOUND_ROUTING = require('./controller/notFoundRouting');
 
 let mimeTypes = {
     'jpg': 'images/jpeg',
+    'jpeg': 'images/jpeg',
     'png': 'images/png',
     "js": 'text/javascript',
+    "min.js": 'text/javascript',
     'css': 'text/css',
     'svg': 'image/svg+xml',
     'ttf': 'font/ttf',
@@ -34,7 +36,7 @@ const SERVER = http.createServer((req, res) => {
     }
     let chosenHandle;
     let urlPath = url.parse(req.url).pathname;
-    const fileDefence = urlPath.match("/\.js|\.css|\.png|\.jpg");
+    const fileDefence = urlPath.match("/\.js|\.css|\.png|\.jpg|\.woff|\.woff2|\.ttf|\.min.js|\.jpeg");
     if (fileDefence) {
         const extension = mimeTypes[fileDefence[0].toString().slice(1)];
         res.writeHead(200, {'Content-Type': extension});
