@@ -1,4 +1,5 @@
 const CONNECTION = require('../model/connection')
+const cookie = require("cookie");
 CONNECTION.connecting()
 let connection = CONNECTION.getConnection();
 
@@ -62,6 +63,19 @@ class LoginService {
                 else resolve(dataUser)
             })
         })
+    }
+
+    async getCookie(req) {
+        let isStatus = false
+        let cookies = cookie.parse(req.headers.cookie || '');
+        let listAccount = await this.getAccount()
+        for (let i = 0; i < listAccount.length; i++) {
+            if (listAccount[i].id === +cookies.id) {
+                isStatus = true
+                return isStatus
+            }
+        }
+        return isStatus
     }
 
 }

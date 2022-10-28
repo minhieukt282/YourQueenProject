@@ -69,8 +69,7 @@ create table picture(
     foreign key (user_id) references account(id)
 );
 
-<<<<<<< HEAD
-=======
+
 ALTER TABLE account
     MODIFY COLUMN username varchar(20) not null unique;
 
@@ -91,7 +90,14 @@ select ac.id,
 from account as ac
          join userdetails u on ac.id = u.user_id;
 
->>>>>>> 5517f7de52185f3cea3732cf02332b4077154147
+create table imgcarousel (
+                             id int not null primary key auto_increment unique ,
+                             url text
+);
+insert into imgcarousel(url) value ('https://scontent.fhan15-2.fna.fbcdn.net/v/t39.30808-6/307137007_417997273807839_7247206086903916310_n.jpg?stp=dst-jpg_p640x640&_nc_cat=107&ccb=1-7&_nc_sid=8631f5&_nc_ohc=OX-XLVw4LZkAX-iI2mV&_nc_ht=scontent.fhan15-2.fna&oh=00_AfAZM3xUc1XcHS2RoxMUJb_DuQ_Rq8KJubcBWaTNwENLUA&oe=635F33A8');
+insert into imgcarousel(url) value ('https://scontent.fhan15-1.fna.fbcdn.net/v/t39.30808-6/242118187_4247804481955624_4879521228934339593_n.jpg?stp=dst-jpg_p640x640&_nc_cat=102&ccb=1-7&_nc_sid=8631f5&_nc_ohc=JNmqSQUsSsAAX9LFYx4&_nc_ht=scontent.fhan15-1.fna&oh=00_AfAxdlEVmN3l4r8HLPZUA5NF1wOtBpqHYXQVqk1BbFxyDA&oe=635F4567');
+insert into imgcarousel(url) value ('https://scontent.fhan15-1.fna.fbcdn.net/v/t39.30808-6/242318843_4269679526434786_1095755638687379465_n.jpg?stp=dst-jpg_p640x640&_nc_cat=109&ccb=1-7&_nc_sid=8631f5&_nc_ohc=ON_beGfMg70AX-7slJ8&_nc_ht=scontent.fhan15-1.fna&oh=00_AfCFEn6sCZah0ncpZQH2eGaAqx63mM_0uzgNEC2GV_g6Yg&oe=635F03FA');
+
 
 INSERT INTO role (role_name)
 VALUES ('admin');
