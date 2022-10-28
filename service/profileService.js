@@ -4,7 +4,6 @@ CONNECTION.connecting()
 let connection = CONNECTION.getConnection();
 class ProfileService {
     static getHome() {
-        let connection = CONNECTION.getConnection();
         return new Promise((resolve, reject) => {
             connection.query('select * from picture', (err, products) => {
                 if (err) {

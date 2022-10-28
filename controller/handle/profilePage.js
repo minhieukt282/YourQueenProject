@@ -22,9 +22,8 @@ class ProfilePage {
         let infoIMG =''
         infoHTML = infoHTML.replace('{useName}', infoProfile[0].username);
         infoHTML = infoHTML.replace('{urlAvt}', infoProfile[0].link);
-        infoHTML = infoHTML.replace('{name}', infoProfile[0].name);
+        infoHTML = infoHTML.replaceAll('{name}', infoProfile[0].name);
         infoProfile.forEach((item) => {
-            console.log(item.link)
             infoIMG += `<img src="${item.link}"
                                   alt="" style="width: 121px; height:121px; object-fit: contain; justify-content: flex-start; margin: auto">`
         })
@@ -38,7 +37,6 @@ class ProfilePage {
                 console.log(err)
             } else {
                 let infoProfile = await PROFILE_PAGE.findByUserName(useName);
-                console.log("bàng may va", infoProfile)
                 profileHtml = ProfilePage.getDataProfile(infoProfile, profileHtml);
                 res.writeHead(200, {'Content-type': 'text/html'});
                 res.write(profileHtml);

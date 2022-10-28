@@ -4,7 +4,7 @@ const qs = require('qs')
 
 class HomePage {
 
-   static getHTMLHomePage(userDetails, carouselImage, infoHTML) {
+    static getHTMLHomePage(userDetails, carouselImage, infoHTML) {
         let userHTML = ''
         let carouselHTML = ''
         userDetails.forEach((element) => {
@@ -21,53 +21,53 @@ class HomePage {
         })
         carouselImage.forEach((item) => {
             carouselHTML += `<div class="carousel-item active" data-bs-interval="2000" style="border-radius: 10px" ">
-                                    <img style="border-radius: 15px"  src="${item.url}"  class="d-block w-100" alt="${item.id} ">
-                                </div>`
+                                    <img style="border-radius: 15px"  src="${item.url}"  class="d-block w-100" alt="${item.id} "></div>`
         })
         infoHTML = infoHTML.replace('{userDetail}', userHTML);
         infoHTML = infoHTML.replace('{carousel}', carouselHTML);
         return infoHTML;
     }
 
-    homePage(req, res) {
-        fs.readFile('./views/index.html', 'utf-8', async (err, dataHtml) => {
+    indexPage(req, res) {
+        fs.readFile('./views/index.html', 'utf-8', async (err, dataIndexHtml) => {
             if (err) {
                 console.log(err);
             } else {
                 let products = await HOME_SERVICE.getUserDetails();
                 let carousel = await HOME_SERVICE.getCarouselImage();
-                dataHtml = HomePage.getHTMLHomePage(products, carousel, dataHtml);
+                dataIndexHtml = HomePage.getHTMLHomePage(products, carousel, dataIndexHtml);
                 res.writeHead(200, 'text/html');
-                res.write(dataHtml);
+                res.write(dataIndexHtml);
                 res.end();
             }
         });
     }
-    userPage(req, res) {
-        fs.readFile('./views/user.html', 'utf-8', async (err, dataHtml) => {
+
+    homePage(req, res) {
+        fs.readFile('./views/home.html', 'utf-8', async (err, dataHomeHtml) => {
             if (err) {
                 console.log(err);
             } else {
                 let products = await HOME_SERVICE.getUserDetails();
                 let carousel = await HOME_SERVICE.getCarouselImage();
-                dataHtml = HomePage.getHTMLHomePage(products, carousel, dataHtml);
+                dataHomeHtml = HomePage.getHTMLHomePage(products, carousel, dataHomeHtml);
                 res.writeHead(200, 'text/html');
-                res.write(dataHtml);
+                res.write(dataHomeHtml);
                 res.end();
             }
         });
     }
 
     adminPage(req, res) {
-        fs.readFile('./views/admin/admin.html', 'utf-8', async (err, dataHtml) => {
+        fs.readFile('./views/admin/admin.html', 'utf-8', async (err, dataAdminHtml) => {
             if (err) {
                 console.log(err);
             } else {
                 let products = await HOME_SERVICE.getUserDetails();
                 let carousel = await HOME_SERVICE.getCarouselImage();
-                dataHtml = HomePage.getHTMLHomePage(products, carousel, dataHtml);
+                dataAdminHtml = HomePage.getHTMLHomePage(products, carousel, dataAdminHtml);
                 res.writeHead(200, 'text/html');
-                res.write(dataHtml);
+                res.write(dataAdminHtml);
                 res.end();
             }
         });
@@ -86,20 +86,21 @@ class HomePage {
                 res.end();
             }
         });
-    showProfileProvider(req, res, userName) {
-        fs.readFile('./views/profile.html', 'utf-8', async (err, profileHtml) => {
-            if (err) {
-                console.log(err);
-            } else {
-                let products = await HOME_SERVICE.getUserDetails();
-                let carousel = await HOME_SERVICE.getCarouselImage();
-                products = this.getHTMLHomePage(products, carousel, dataHtml);
-                res.writeHead(200, 'text/html');
-                res.write(dataHtml);
-                res.end();
-            }
-        });
+        // showProfileProvider(req, res, userName) {
+        //     fs.readFile('./views/profile.html', 'utf-8', async (err, profileHtml) => {
+        //         if (err) {
+        //             console.log(err);
+        //         } else {
+        //             let products = await HOME_SERVICE.getUserDetails();
+        //             let carousel = await HOME_SERVICE.getCarouselImage();
+        //             products = HomePage.getHTMLHomePage(products, carousel, dataHtml);
+        //             res.writeHead(200, 'text/html');
+        //             res.write(dataHtml);
+        //             res.end();
+        //         }
+        //     });
+        // }
     }
 }
 
-module.exports = new HomePage
+module.exports = new HomePage()
