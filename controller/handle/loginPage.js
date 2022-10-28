@@ -6,7 +6,6 @@ const cookie = require("cookie");
 
 class LoginPage {
     login(req, res) {
-
         if (req.method === 'GET') {
             fs.readFile('./views/login/login.html', "utf-8", async (err, loginHtml) => {
                 if (err) {
@@ -35,8 +34,6 @@ class LoginPage {
                             httpOnly: true,
                             maxAge: expires
                         }));
-                        let cookies = cookie.parse(req.headers.cookie || '');
-                        console.log(cookies)
                         if (dataUser[0].role_id === 1) {
                             res.writeHead(301, {'location': 'admin'});
                             res.end()
@@ -97,7 +94,7 @@ class LoginPage {
         res.clearCookie('id')
         let cookies = cookie.parse(req.headers.cookie || '');
         console.log(cookies)
-        res.writeHead(301, {'location': 'user'});
+        res.writeHead(301, {'location': ''});
         res.end();
     }
 }
