@@ -12,7 +12,7 @@ const handler = {
     "personalPage": PERSONAL_PAGE.showPage,
     "userEditProfile": PERSONAL_PAGE.showEditProfile,
     "userEditProduct": PERSONAL_PAGE.showEditProduct,
-    "profile":PROFILE_PAGE.profile
+    "profilePage":PROFILE_PAGE.profile
 }
 
 module.exports = handler;

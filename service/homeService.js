@@ -32,20 +32,6 @@ class HomeService {
             });
         })
     }
-
-    getCarouselImage() {
-        let connection = CONNECTION.getConnection();
-        return new Promise((resolve, reject) => {
-            connection.query(`select url, id
-                              from imgcarousel`, (err, userDetails) => {
-                if (err) {
-                    reject(err);
-                } else {
-                    resolve(userDetails);
-                }
-            });
-        })
-    }
 }
 
 module.exports = new HomeService();
