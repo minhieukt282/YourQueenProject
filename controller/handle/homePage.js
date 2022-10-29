@@ -66,20 +66,22 @@ class HomePage {
 
     async adminPage(req, res) {
         let isStatus = await LOGIN_SERVICE.getCookie(req)
-        let isAmin = await LOGIN_SERVICE.checkAdmin(req)
-        if (isStatus === true && isAmin === true) {
-            fs.readFile('./views/admin/admin.html', 'utf-8', async (err, dataAdminHtml) => {
-                if (err) {
-                    console.log(err);
-                } else {
-                    let products = await HOME_SERVICE.getUserDetails();
-                    let carousel = await HOME_SERVICE.getCarouselImage();
-                    dataAdminHtml = HomePage.getHTMLHomePage(products, carousel, dataAdminHtml);
-                    res.writeHead(200, 'text/html');
-                    res.write(dataAdminHtml);
-                    res.end();
-                }
-            });
+        if (isStatus === true) {
+            let isAmin = await LOGIN_SERVICE.checkAdmin(req)
+            if (isAmin === true) {
+                fs.readFile('./views/admin/admin.html', 'utf-8', async (err, dataAdminHtml) => {
+                    if (err) {
+                        console.log(err);
+                    } else {
+                        let products = await HOME_SERVICE.getUserDetails();
+                        let carousel = await HOME_SERVICE.getCarouselImage();
+                        dataAdminHtml = HomePage.getHTMLHomePage(products, carousel, dataAdminHtml);
+                        res.writeHead(200, 'text/html');
+                        res.write(dataAdminHtml);
+                        res.end();
+                    }
+                });
+            }
         } else {
             res.writeHead(301, {'location': 'login'});
             res.end();
