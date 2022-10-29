@@ -91,13 +91,9 @@ from account as ac
          join userdetails u on ac.id = u.user_id;
 
 create table imgcarousel (
-                             id int not null primary key auto_increment unique ,
-                             url text
+    id int not null primary key auto_increment unique ,
+    url text
 );
-insert into imgcarousel(url) value ('https://scontent.fhan15-2.fna.fbcdn.net/v/t39.30808-6/307137007_417997273807839_7247206086903916310_n.jpg?stp=dst-jpg_p640x640&_nc_cat=107&ccb=1-7&_nc_sid=8631f5&_nc_ohc=OX-XLVw4LZkAX-iI2mV&_nc_ht=scontent.fhan15-2.fna&oh=00_AfAZM3xUc1XcHS2RoxMUJb_DuQ_Rq8KJubcBWaTNwENLUA&oe=635F33A8');
-insert into imgcarousel(url) value ('https://scontent.fhan15-1.fna.fbcdn.net/v/t39.30808-6/242118187_4247804481955624_4879521228934339593_n.jpg?stp=dst-jpg_p640x640&_nc_cat=102&ccb=1-7&_nc_sid=8631f5&_nc_ohc=JNmqSQUsSsAAX9LFYx4&_nc_ht=scontent.fhan15-1.fna&oh=00_AfAxdlEVmN3l4r8HLPZUA5NF1wOtBpqHYXQVqk1BbFxyDA&oe=635F4567');
-insert into imgcarousel(url) value ('https://scontent.fhan15-1.fna.fbcdn.net/v/t39.30808-6/242318843_4269679526434786_1095755638687379465_n.jpg?stp=dst-jpg_p640x640&_nc_cat=109&ccb=1-7&_nc_sid=8631f5&_nc_ohc=ON_beGfMg70AX-7slJ8&_nc_ht=scontent.fhan15-1.fna&oh=00_AfCFEn6sCZah0ncpZQH2eGaAqx63mM_0uzgNEC2GV_g6Yg&oe=635F03FA');
-
 
 INSERT INTO role (role_name)
 VALUES ('admin');
@@ -148,11 +144,6 @@ INSERT INTO invoicedetails (invoice_id, product_id)
 VALUES (1, 3);
 INSERT INTO invoicedetails (invoice_id, product_id)
 VALUES (2, 3);
-
-
-///minhanh them
-
-use yourqueen;
 update account
 SET username = 'layla',
     password = '1'
@@ -161,6 +152,7 @@ update account
 SET username = 'layla',
     password = '1'
 WHERE id = 2;
+
 insert into account(username, password, role_id, status_id) value ('anhmt', '1', 2, 2);
 insert into account(username, password, role_id, status_id) value ('baby', '1', 2, 2);
 insert into account(username, password, role_id, status_id) value ('shiro', '1', 2, 2);
@@ -194,4 +186,7 @@ insert into picture(link, user_id) value ('https://scontent.fsgn2-4.fna.fbcdn.ne
 insert into picture(link, user_id) value ('https://scontent.fsgn2-4.fna.fbcdn.net/v/t39.30808-6/277079191_689580712175813_4363856384398448121_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=qsXsNwTzj7wAX-jl_cp&_nc_ht=scontent.fsgn2-4.fna&oh=00_AT_QXmNYEIlF3Ygty7XRU4F3G-mrqeF6SpI6hZ4NPM_3VA&oe=635D71A5', 10);
 insert into picture(link, user_id) value ('https://scontent.fsgn2-5.fna.fbcdn.net/v/t39.30808-6/290861607_747890213011529_2239305119730075386_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=uAwwNhMkvKEAX8AQmYu&_nc_ht=scontent.fsgn2-5.fna&oh=00_AT9zy7_q3JNmXWyjQMN5Vfza-MEuacDguOrp9V2zNwZUGQ&oe=635CEECD', 10);
 insert into picture(link, user_id) value ('https://scontent.fsgn2-2.fna.fbcdn.net/v/t39.30808-6/278648656_706669643800253_354255430990783689_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=174925&_nc_ohc=Do6gGBQySCkAX9afWjV&_nc_ht=scontent.fsgn2-2.fna&oh=00_AT9wmBMZFmSJR1zLiV5AuVzUvPMrJYpUYY80zimLBmjRdw&oe=635D1EC3', 10);
+insert into imgcarousel(url) value ('https://scontent.fhan15-2.fna.fbcdn.net/v/t39.30808-6/307137007_417997273807839_7247206086903916310_n.jpg?stp=dst-jpg_p640x640&_nc_cat=107&ccb=1-7&_nc_sid=8631f5&_nc_ohc=OX-XLVw4LZkAX-iI2mV&_nc_ht=scontent.fhan15-2.fna&oh=00_AfAZM3xUc1XcHS2RoxMUJb_DuQ_Rq8KJubcBWaTNwENLUA&oe=635F33A8');
+insert into imgcarousel(url) value ('https://scontent.fhan15-1.fna.fbcdn.net/v/t39.30808-6/242118187_4247804481955624_4879521228934339593_n.jpg?stp=dst-jpg_p640x640&_nc_cat=102&ccb=1-7&_nc_sid=8631f5&_nc_ohc=JNmqSQUsSsAAX9LFYx4&_nc_ht=scontent.fhan15-1.fna&oh=00_AfAxdlEVmN3l4r8HLPZUA5NF1wOtBpqHYXQVqk1BbFxyDA&oe=635F4567');
+insert into imgcarousel(url) value ('https://scontent.fhan15-1.fna.fbcdn.net/v/t39.30808-6/242318843_4269679526434786_1095755638687379465_n.jpg?stp=dst-jpg_p640x640&_nc_cat=109&ccb=1-7&_nc_sid=8631f5&_nc_ohc=ON_beGfMg70AX-7slJ8&_nc_ht=scontent.fhan15-1.fna&oh=00_AfCFEn6sCZah0ncpZQH2eGaAqx63mM_0uzgNEC2GV_g6Yg&oe=635F03FA');
 

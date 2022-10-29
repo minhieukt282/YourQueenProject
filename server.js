@@ -12,6 +12,7 @@ let mimeTypes = {
     'png': 'images/png',
     "js": 'text/javascript',
     "min.js": 'text/javascript',
+    'min.css': 'text/css',
     'css': 'text/css',
     'svg': 'image/svg+xml',
     'ttf': 'font/ttf',
@@ -29,10 +30,10 @@ function getUrl(req) {
 const SERVER = http.createServer((req, res) => {
     const arrPath = getUrl(req);
     let trimPath = '';
-    if (arrPath.length > 2) {
+    if (arrPath.length > 3) {
         trimPath = arrPath[1] + "/" + arrPath[2];
     } else {
-        trimPath = arrPath[arrPath.length - 1];
+        trimPath = arrPath[1];
     }
     let chosenHandle;
     let urlPath = url.parse(req.url).pathname;
@@ -43,7 +44,7 @@ const SERVER = http.createServer((req, res) => {
         fs.createReadStream(__dirname + req.url).pipe(res);
     } else {
         chosenHandle = typeof HANDLER[trimPath] !== 'undefined' ? HANDLER[trimPath] : NOT_FOUND_ROUTING.showNotFound;
-        chosenHandle(req, res);
+        chosenHandle(req, res, arrPath[2]);
     }
 
 })
