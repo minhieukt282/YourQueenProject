@@ -1,5 +1,6 @@
 const fs = require('fs');
 const HOME_SERVICE = require('../../service/homeService');
+const LOGIN_SERVICE = require('../../service/loginService')
 const qs = require('qs')
 
 class HomePage {
@@ -43,63 +44,72 @@ class HomePage {
         });
     }
 
-    homePage(req, res) {
-        fs.readFile('./views/home.html', 'utf-8', async (err, dataHomeHtml) => {
-            if (err) {
-                console.log(err);
-            } else {
-                let products = await HOME_SERVICE.getUserDetails();
-                let carousel = await HOME_SERVICE.getCarouselImage();
-                dataHomeHtml = HomePage.getHTMLHomePage(products, carousel, dataHomeHtml);
-                res.writeHead(200, 'text/html');
-                res.write(dataHomeHtml);
-                res.end();
-            }
-        });
+    async homePage(req, res) {
+        let isStatus = await LOGIN_SERVICE.getCookie(req)
+        console.log("isStatus home", isStatus)
+        if (isStatus) {
+            fs.readFile('./views/home.html', 'utf-8', async (err, dataHomeHtml) => {
+                if (err) {
+                    console.log(err);
+                } else {
+                    let products = await HOME_SERVICE.getUserDetails();
+                    let carousel = await HOME_SERVICE.getCarouselImage();
+                    dataHomeHtml = HomePage.getHTMLHomePage(products, carousel, dataHomeHtml);
+                    res.writeHead(200, 'text/html');
+                    res.write(dataHomeHtml);
+                    res.end();
+                }
+            });
+        } else {
+            res.writeHead(301, {'location': 'login'});
+            res.end();
+        }
     }
 
-    adminPage(req, res) {
-        fs.readFile('./views/admin/admin.html', 'utf-8', async (err, dataAdminHtml) => {
-            if (err) {
-                console.log(err);
-            } else {
-                let products = await HOME_SERVICE.getUserDetails();
-                let carousel = await HOME_SERVICE.getCarouselImage();
-                dataAdminHtml = HomePage.getHTMLHomePage(products, carousel, dataAdminHtml);
-                res.writeHead(200, 'text/html');
-                res.write(dataAdminHtml);
-                res.end();
-            }
-        });
+    async adminPage(req, res) {
+        let isStatus = await LOGIN_SERVICE.getCookie(req)
+        let isAmin = await LOGIN_SERVICE.checkAdmin(req)
+        if (isStatus === true && isAmin === true) {
+            fs.readFile('./views/admin/admin.html', 'utf-8', async (err, dataAdminHtml) => {
+                if (err) {
+                    console.log(err);
+                } else {
+                    let products = await HOME_SERVICE.getUserDetails();
+                    let carousel = await HOME_SERVICE.getCarouselImage();
+                    dataAdminHtml = HomePage.getHTMLHomePage(products, carousel, dataAdminHtml);
+                    res.writeHead(200, 'text/html');
+                    res.write(dataAdminHtml);
+                    res.end();
+                }
+            });
+        } else {
+            res.writeHead(301, {'location': 'login'});
+            res.end();
+        }
     }
 
-    editProfile(req, res) {
-        fs.readFile('./views/editProfile.html', 'utf-8', async (err, dataHtml) => {
-            if (err) {
-                console.log(err);
-            } else {
-                let products = await HOME_SERVICE.getUserDetails();
-                let carousel = await HOME_SERVICE.getCarouselImage();
-                dataHtml = HomePage.getHTMLHomePage(products, carousel, dataHtml);
-                res.writeHead(200, 'text/html');
-                res.write(dataHtml);
-                res.end();
-            }
-        });
-        // showProfileProvider(req, res, userName) {
-        //     fs.readFile('./views/profile.html', 'utf-8', async (err, profileHtml) => {
-        //         if (err) {
-        //             console.log(err);
-        //         } else {
-        //             let products = await HOME_SERVICE.getUserDetails();
-        //             let carousel = await HOME_SERVICE.getCarouselImage();
-        //             products = HomePage.getHTMLHomePage(products, carousel, dataHtml);
-        //             res.writeHead(200, 'text/html');
-        //             res.write(dataHtml);
-        //             res.end();
-        //         }
-        //     });
-        // }
+    async editProfile(req, res) {
+        let isStatus = await LOGIN_SERVICE.getCookie(req)
+        let isAmin = await LOGIN_SERVICE.checkAdmin(req)
+        console.log("isStatus edit", isStatus)
+        if (isStatus === true && isAmin === false) {
+            fs.readFile('./views/editProfile.html', 'utf-8', async (err, dataHtml) => {
+                if (err) {
+                    console.log(err);
+                } else {
+                    let products = await HOME_SERVICE.getUserDetails();
+                    let carousel = await HOME_SERVICE.getCarouselImage();
+                    dataHtml = HomePage.getHTMLHomePage(products, carousel, dataHtml);
+                    res.writeHead(200, 'text/html');
+                    res.write(dataHtml);
+                    res.end();
+                }
+            });
+        } else {
+            res.writeHead(301, {'location': 'login'});
+            res.end();
+        }
+
     }
 }
 
