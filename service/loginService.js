@@ -1,5 +1,6 @@
 const CONNECTION = require('../model/connection')
 const cookie = require("cookie");
+
 CONNECTION.connecting()
 let connection = CONNECTION.getConnection();
 
@@ -82,6 +83,21 @@ class LoginService {
         })
     }
 
+    findById(id) {
+        return new Promise((resolve, reject) => {
+            let sql = `select *
+                       from account
+                       where id = ${id}`
+            connection.query(sql, (err, account) => {
+                if (err) {
+                    reject(err)
+                } else {
+                    resolve(account)
+                }
+            })
+        })
+    }
+
     async getCookie(req) {
         let isStatus = false
         let cookies = cookie.parse(req.headers.cookie || '');
@@ -106,5 +122,6 @@ class LoginService {
     }
 
 }
+
 
 module.exports = new LoginService()

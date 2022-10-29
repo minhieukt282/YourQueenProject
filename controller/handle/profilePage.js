@@ -4,17 +4,17 @@ const qs = require('qs')
 
 class ProfilePage {
 
-    static getDataProfile(infoProfile, infoHTML) {
+    static getDataProfile(infoProfile, infoHtml) {
         let infoIMG =''
-        infoHTML = infoHTML.replace('{useName}', infoProfile[0].username);
-        infoHTML = infoHTML.replace('{urlAvt}', infoProfile[0].link);
-        infoHTML = infoHTML.replaceAll('{name}', infoProfile[0].name);
+        infoHtml = infoHtml.replace('{useName}', infoProfile[0].username);
+        infoHtml = infoHtml.replace('{urlAvt}', infoProfile[0].link);
+        infoHtml = infoHtml.replaceAll('{name}', infoProfile[0].name);
         infoProfile.forEach((item) => {
             infoIMG += `<img src="${item.link}"
                                   alt="" style="width: 121px; height:121px; object-fit: contain; justify-content: flex-start; margin: auto">`
         })
-        infoHTML = infoHTML.replace('{img}', infoIMG);
-        return infoHTML;
+        infoHtml = infoHtml.replace('{img}', infoIMG);
+        return infoHtml;
     }
 
     profilePage(req, res, useName) {
