@@ -5,19 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ed4f7873-d893-4b2b-98dd-a53e95fecfb2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/views/admin/manageProvider.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/admin/manageUser.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/admin/tradeHistory.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/admin/turnoverDay.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/admin/turnoverMonth.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/admin/turnoverYear.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/handle/adminPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/controller/handle/adminPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/router.js" beforeDir="false" afterPath="$PROJECT_DIR$/controller/router.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/service/adminService.js" beforeDir="false" afterPath="$PROJECT_DIR$/service/adminService.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/admin/admin.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/admin/admin.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/admin/manageUser.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/admin/manageUser.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,7 +57,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "settings.editor.selected.configurable": "editor.preferences.fonts.default",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -118,7 +108,10 @@
       <workItem from="1666940655961" duration="719000" />
       <workItem from="1666941953112" duration="2766000" />
       <workItem from="1666945412550" duration="5660000" />
-      <workItem from="1666951236715" duration="1023000" />
+      <workItem from="1666951236715" duration="1445000" />
+      <workItem from="1667021010451" duration="604000" />
+      <workItem from="1667022116921" duration="2884000" />
+      <workItem from="1667030888322" duration="657000" />
     </task>
     <servers />
   </component>

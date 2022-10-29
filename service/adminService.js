@@ -50,10 +50,12 @@ class AdminService {
     }
     showProvider() {
         return new Promise((resolve, reject) => {
-            let sql = `select a.username as providerName,a.id as providerId,date(i.date) as time,sum(p.price) as totalPrice
+            let sql = `select a.username as providerName, a.id as providerId, date(i.date) as time, sum(p.price) as totalPrice
                        from account a
                            join invoice i on a.id = i.provider_id
-                           join product p on i.provider_id = p.provider_id where a.role_id=2 group by providerName
+                           join product p on i.provider_id = p.provider_id
+                       where a.role_id = 2
+                       group by time;
             `
             connection.query(sql, (err, account) => {
                 if (err) {
@@ -66,12 +68,18 @@ class AdminService {
     }
     showUser(){
         return new Promise((resolve, reject) => {
-            let sql = `select u.name as userName,i.invoice_id as invoiceId, u.user_id as userId, p.name as service,a.username as provider,i.date as timeTrade
+            let sql = `select u.name       as userName,
+                              i.invoice_id as invoiceId,
+                              u.user_id    as userId,
+                              p.name       as service,
+                              a.username   as provider,
+                              i.date       as timeTrade
                        from userdetails u
                                 join invoice i on u.user_id = i.user_id
                                 join invoicedetails i2 on i.invoice_id = i2.invoice_id
                                 join product p on i2.product_id = p.product_id
                                 join account a on i.provider_id = a.id
+                       where a.role_id=3 group by timeTrade
             `
             connection.query(sql, (err, account) => {
                 if (err) {
