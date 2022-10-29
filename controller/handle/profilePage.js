@@ -3,20 +3,6 @@ const PROFILE_PAGE = require('../../service/profileService');
 const qs = require('qs')
 
 class ProfilePage {
-    // static getHtmlGirl(picture, indexHtml) {
-    //     let tbody = '';
-    //     picture.map((picture, index) => {
-    //         tbody += ` <tr>
-    //     <th scope="row">${index+1}</th>
-    //     <td>${picture.name}</td>
-    //    <img src='${picture.link}' class="card-img-top" alt="..." style="width: 226px; height: 226px; object-fit: contain; margin: auto">
-    //
-    //
-    // </tr>`
-    //     });
-    //     indexHtml = indexHtml.replace('{picture}', tbody);
-    //     return indexHtml;
-    // }
 
     static getDataProfile(infoProfile, infoHTML) {
         let infoIMG =''
@@ -46,4 +32,4 @@ class ProfilePage {
     }
 }
 
-module.exports = new ProfilePage;
+module.exports = new ProfilePage();

@@ -1,6 +1,5 @@
 const fs = require('fs');
 const HOME_SERVICE = require('../../service/homeService');
-const LOGIN_SERVICE = require('../../service/loginService');
 const qs = require('qs')
 
 class HomePage {
@@ -35,28 +34,66 @@ class HomePage {
         return infoHTML;
     }
 
-    homePage(req, res) {
-        fs.readFile('./views/index.html', 'utf-8', async (err, dataHtml) => {
+    indexPage(req, res) {
+        fs.readFile('./views/index.html', 'utf-8', async (err, dataIndexHtml) => {
             if (err) {
                 console.log(err);
             } else {
                 let products = await HOME_SERVICE.getUserDetails();
                 let carousel = await HOME_SERVICE.getCarouselImage();
-                dataHtml = HomePage.getHTMLHomePage(products, carousel, dataHtml);
+                dataIndexHtml = HomePage.getHTMLHomePage(products, carousel, dataIndexHtml);
                 res.writeHead(200, 'text/html');
-                res.write(dataHtml);
+                res.write(dataIndexHtml);
                 res.end();
             }
         });
     }
 
-    async userPage(req, res) {
+    homePage(req, res) {
+        fs.readFile('./views/home.html', 'utf-8', async (err, dataHomeHtml) => {
+            if (err) {
+                console.log(err);
+            } else {
+                let products = await HOME_SERVICE.getUserDetails();
+                let carousel = await HOME_SERVICE.getCarouselImage();
+                dataHomeHtml = HomePage.getHTMLHomePage(products, carousel, dataHomeHtml);
+                res.writeHead(200, 'text/html');
+                res.write(dataHomeHtml);
+                res.end();
+            }
+        });
+    }
+
+    async adminPage(req, res) {
         let isStatus = await LOGIN_SERVICE.getCookie(req)
-        console.log("isStatus", isStatus)
-        if (isStatus) {
-            fs.readFile('./views/user.html', 'utf-8', async (error, dataHtml) => {
-                if (error) {
-                    console.log(error);
+        let isAmin = await LOGIN_SERVICE.checkAdmin(req)
+        if (isStatus === true && isAmin === true) {
+            fs.readFile('./views/admin/admin.html', 'utf-8', async (err, dataAdminHtml) => {
+                if (err) {
+                    console.log(err);
+                } else {
+                    let products = await HOME_SERVICE.getUserDetails();
+                    let carousel = await HOME_SERVICE.getCarouselImage();
+                    dataAdminHtml = HomePage.getHTMLHomePage(products, carousel, dataAdminHtml);
+                    res.writeHead(200, 'text/html');
+                    res.write(dataAdminHtml);
+                    res.end();
+                }
+            });
+        } else {
+            res.writeHead(301, {'location': 'login'});
+            res.end();
+        }
+    }
+
+    async editProfile(req, res) {
+        let isStatus = await LOGIN_SERVICE.getCookie(req)
+        let isAmin = await LOGIN_SERVICE.checkAdmin(req)
+        console.log("isStatus edit", isStatus)
+        if (isStatus === true && isAmin === false) {
+            fs.readFile('./views/editProfile.html', 'utf-8', async (err, dataHtml) => {
+                if (err) {
+                    console.log(err);
                 } else {
                     let products = await HOME_SERVICE.getUserDetails();
                     let carousel = await HOME_SERVICE.getCarouselImage();
@@ -70,7 +107,8 @@ class HomePage {
             res.writeHead(301, {'location': 'login'});
             res.end();
         }
+
     }
 }
 
-module.exports = new HomePage
+module.exports = new HomePage()
