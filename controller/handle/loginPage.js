@@ -6,12 +6,12 @@ const cookie = require("cookie");
 
 class LoginPage {
     login(req, res) {
-
         if (req.method === 'GET') {
             fs.readFile('./views/login/login.html', "utf-8", async (err, loginHtml) => {
                 if (err) {
                     console.log(err)
                 } else {
+                    LoginPage.logout(req, res);
                     res.writeHead(200, 'text/html');
                     res.write(loginHtml);
                     res.end()
@@ -29,14 +29,15 @@ class LoginPage {
                     let account = qs.parse(chunkAccount)
                     let isCheckGate = await LOGIN_SERVICE.isCheckGate(account)
                     if (isCheckGate) {
-                        let expires = Date.now() + 5 * 60;
+                        // let expires = Date.now() + 5 * 60;
                         let dataUser = await LOGIN_SERVICE.findByUsername(account.username)
                         res.setHeader('Set-Cookie', cookie.serialize('id', `${dataUser[0].id}`, {
                             httpOnly: true,
-                            maxAge: expires
+                            secure: true,
+                            maxAge: 60*60
                         }));
                         let cookies = cookie.parse(req.headers.cookie || '');
-                        console.log(cookies)
+                        console.log('cookie login', cookies)
                         if (dataUser[0].role_id === 1) {
                             res.writeHead(301, {'location': 'admin'});
                             res.end()
@@ -93,12 +94,14 @@ class LoginPage {
         }
     }
 
-    logout(req, res) {
-        res.clearCookie('id')
+    static logout(req, res) {
         let cookies = cookie.parse(req.headers.cookie || '');
-        console.log(cookies)
-        res.writeHead(301, {'location': 'user'});
-        res.end();
+        res.setHeader('Set-Cookie', cookie.serialize('id', `${cookies.id}`, {
+            httpOnly: true,
+            secure: true,
+            maxAge: 0
+        }));
+        console.log('cookie logout', cookies)
     }
 }
 
