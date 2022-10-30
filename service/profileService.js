@@ -19,6 +19,7 @@ class ProfileService {
         let sql = `select *
                    from account join userdetails u on account.id = u.user_id
                                 join picture p on account.id = p.user_id
+                                join status s on s.status_id = account.status_id
                    where username = '${useName}'`
         return new Promise((resolve, reject) => {
             connection.query(sql, (err, profile) => {

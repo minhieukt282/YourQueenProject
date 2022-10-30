@@ -1,23 +1,24 @@
+DROP DATABASE yourqueen;
 create schema YourQueen;
 use YourQueen;
 create table role
 (
     role_id   int auto_increment primary key not null,
-    role_name varchar(20)                    not null
+    role_name varchar(20) not null
 );
 create table status
 (
     status_id   int auto_increment primary key not null,
-    status_name varchar(10)                    not null
+    status_name varchar(10) not null
 );
 create table account
 (
     id        int primary key auto_increment not null,
-    username  varchar(20)                    not null unique,
-    password  varchar(20)                    not null,
-    role_id   int                            not null,
+    username  varchar(20) not null unique,
+    password  varchar(20) not null,
+    role_id   int         not null,
     foreign key (role_id) references role (role_id),
-    status_id int                            not null,
+    status_id int         not null,
     foreign key (status_id) references status (status_id)
 );
 create table sex
@@ -39,18 +40,18 @@ create table userDetails
 create table product
 (
     product_id  int primary key auto_increment not null,
-    name        varchar(40)                    not null,
-    price       int                            not null,
-    provider_id int                            not null,
+    name        varchar(40) not null,
+    price       int         not null,
+    provider_id int         not null,
     foreign key (product_id) references account (id),
     description varchar(150)
 );
 create table invoice
 (
     invoice_id  int primary key auto_increment not null,
-    date        date                           not null,
-    provider_id int                            not null,
-    user_id     int                            not null,
+    date        date not null,
+    provider_id int  not null,
+    user_id     int  not null,
     foreign key (provider_id) references account (id),
     foreign key (user_id) references account (id)
 );
@@ -62,20 +63,13 @@ create table invoiceDetails
     foreign key (invoice_id) references invoice (invoice_id),
     foreign key (product_id) references product (product_id)
 );
-create table picture(
-    id_img int not null primary key auto_increment,
-    link text not null ,
+create table picture
+(
+    id_img  int  not null primary key auto_increment,
+    link    text not null,
     user_id int,
-    foreign key (user_id) references account(id)
+    foreign key (user_id) references account (id)
 );
-
-
-ALTER TABLE account
-    MODIFY COLUMN username varchar(20) not null unique;
-
-alter table account
-add column token_Id varchar(30)
-
 create view user as
 select ac.id,
        ac.username,
@@ -90,8 +84,9 @@ select ac.id,
 from account as ac
          join userdetails u on ac.id = u.user_id;
 
-create table imgcarousel (
-    id int not null primary key auto_increment unique ,
+create table imgcarousel
+(
+    id  int not null primary key auto_increment unique,
     url text
 );
 
@@ -115,26 +110,60 @@ VALUES ('not ready');
 INSERT INTO account (username, password, role_id, status_id)
 VALUES ('admin', '1', 1, 1);
 INSERT INTO account (username, password, role_id, status_id)
-VALUES ('ad', '1', 2, 1);
+VALUES ('namnam', '1', 2, 1);
 INSERT INTO account (username, password, role_id, status_id)
-VALUES ('as', '1', 3, 2);
+VALUES ('layla', '1', 3, 2);
+INSERT INTO account (username, password, role_id, status_id)
+VALUES ('NganNT', '1', 3, 2);
+INSERT INTO account (username, password, role_id, status_id)
+VALUES ('LinhTM', '1', 3, 2);
+INSERT INTO account (username, password, role_id, status_id)
+VALUES ('baby', '1', 3, 2);
+INSERT INTO account (username, password, role_id, status_id)
+VALUES ('shiro', '1', 3, 2);
+INSERT INTO account (username, password, role_id, status_id)
+VALUES ('yuni', '1', 3, 2);
+INSERT INTO account (username, password, role_id, status_id)
+VALUES ('chaoo', '1', 3, 2);
+INSERT INTO account (username, password, role_id, status_id)
+VALUES ('linhmt', '1', 3, 2);
+
 
 INSERT INTO userdetails (user_id, name, sex_id, birthday, height, weight)
-VALUES (2, 'Huong', 2, '2006-06-20 00:00:00', 170, 45);
+VALUES (2, 'Hương Hương ', 2, '2006-06-20 00:00:00', 170, 45);
 INSERT INTO userdetails (user_id, name, sex_id, birthday, height, weight)
-VALUES (3, 'Vu', 1, '2006-06-20 00:00:00', 180, 75);
+VALUES (3, 'Nguyễn  Thị Khánh Huyền', 1, '2006-06-20 00:00:00', 180, 75);
+INSERT INTO userdetails (user_id, name, sex_id, birthday, height, weight)
+VALUES (4, 'Nguyễn Thu Ngân', 1, '2006-06-20 00:00:00', 180, 75);
+INSERT INTO userdetails (user_id, name, sex_id, birthday, height, weight)
+VALUES (5, 'Nguyễn Phương Anh', 1, '2006-06-20 00:00:00', 180, 75);
+INSERT INTO userdetails (user_id, name, sex_id, birthday, height, weight)
+VALUES (6, 'Trần Mỹ Linh', 1, '2006-06-20 00:00:00', 180, 75);
+INSERT INTO userdetails (user_id, name, sex_id, birthday, height, weight)
+VALUES (7, 'Trần Thanh Hoa', 1, '2006-06-20 00:00:00', 180, 75);
+INSERT INTO userdetails (user_id, name, sex_id, birthday, height, weight)
+VALUES (8, 'Nguyễn Thị Ngọc Trâm', 1, '2006-06-20 00:00:00', 180, 75);
+INSERT INTO userdetails (user_id, name, sex_id, birthday, height, weight)
+VALUES (9, 'Thùy Linh', 1, '2006-06-20 00:00:00', 180, 75);
+INSERT INTO userdetails (user_id, name, sex_id, birthday, height, weight)
+VALUES (10, 'Nguyễn Kiều Linh', 1, '2006-06-20 00:00:00', 180, 75);
 
 INSERT INTO product (name, price, provider_id, description)
-VALUES ('Nắm tay', 30, 2,'Chỉ là nắm tay thôi');
+VALUES ('Nắm tay', 30, 2, 'Chỉ là nắm tay thôi');
 INSERT INTO product (name, price, provider_id, description)
-VALUES ('Hôn môi', 50, 2,'Hôn thôi ông ê, tay chân để nguyên vị trí');
+VALUES ('Hôn môi', 50, 2, 'Hôn thôi ông ê, tay chân để nguyên vị trí');
 INSERT INTO product (name, price, provider_id, description)
-VALUES ('Đi tour', 5000, 2,'Du lịch 2 ngày 1 đêm');
+VALUES ('Đi tour', 5000, 2, 'Du lịch 2 ngày 1 đêm');
 
 INSERT INTO invoice (date, provider_id, user_id)
 VALUES ('2016-06-20', 2, 3);
 INSERT INTO invoice (date, provider_id, user_id)
 VALUES ('2022-08-31', 2, 3);
+INSERT INTO invoice (date, provider_id, user_id)
+VALUES ('2022-08-30', 2, 4);
+INSERT INTO invoice (date, provider_id, user_id)
+VALUES ('2022-08-30', 2, 6);
+
 
 INSERT INTO invoicedetails (invoice_id, product_id)
 VALUES (1, 1);
@@ -144,20 +173,12 @@ INSERT INTO invoicedetails (invoice_id, product_id)
 VALUES (1, 3);
 INSERT INTO invoicedetails (invoice_id, product_id)
 VALUES (2, 3);
-update account
-SET username = 'layla',
-    password = '1'
-WHERE id = 3;
-update account
-SET username = 'layla',
-    password = '1'
-WHERE id = 2;
-
-insert into account(username, password, role_id, status_id) value ('anhmt', '1', 2, 2);
-insert into account(username, password, role_id, status_id) value ('baby', '1', 2, 2);
-insert into account(username, password, role_id, status_id) value ('shiro', '1', 2, 2);
-insert into account(username, password, role_id, status_id) value ('yuni', '1', 2, 2);
-insert into account(username, password, role_id, status_id) value ('chao', '1', 2, 2);
+INSERT INTO invoicedetails (invoice_id, product_id)
+VALUES (2, 1);
+INSERT INTO invoicedetails (invoice_id, product_id)
+VALUES (4, 3);
+INSERT INTO invoicedetails (invoice_id, product_id)
+VALUES (4, 2);
 
 insert into picture(link, user_id) value ('https://scontent.fsgn2-8.fna.fbcdn.net/v/t39.30808-6/313049109_3296367190682505_5710967585206103207_n.jpg?stp=dst-jpg_s1080x2048&_nc_cat=102&ccb=1-7&_nc_sid=5cd70e&_nc_ohc=KL6DTSL56lEAX_78mgy&_nc_ht=scontent.fsgn2-8.fna&oh=00_AT_bL8mKe2LaN2_xa4ZvS4t6Gu19svD20-zKszMkuMvnXg&oe=635DE0A5', 1);
 insert into picture(link, user_id) value ('https://scontent.fsgn2-6.fna.fbcdn.net/v/t1.6435-9/180496505_2881240708861824_8193348717570308990_n.jpg?stp=dst-jpg_s1080x2048&_nc_cat=111&ccb=1-7&_nc_sid=5cd70e&_nc_ohc=mBtbvye0SrMAX8ktW4U&tn=LDvXWjC7JwMpkFk0&_nc_ht=scontent.fsgn2-6.fna&oh=00_AT_UgQsX-m57FS5WT7AoWDZ6Ecu_12iQd4yBW1OG8_LMhA&oe=637E2FAE', 1);
