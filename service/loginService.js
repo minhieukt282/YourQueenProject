@@ -37,6 +37,8 @@ class LoginService {
         })
     }
 
+
+
     createAccount(account) {
         return new Promise((resolve, reject) => {
             let sql = `insert into account(username, password, role_id, status_id)
