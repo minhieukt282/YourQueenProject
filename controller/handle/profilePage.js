@@ -8,7 +8,7 @@ class ProfilePage {
     static getDataProfile(infoProfile, infoHtml, userInfo) {
         let infoIMG = ''
         let products = ''
-        let noData = ""
+        let noData = ''
         // infoHtml = infoHtml.replace('{useName}', infoProfile[0].username);
         infoHtml = infoHtml.replace('{urlAvt}', infoProfile[0].link_avt);
         infoHtml = infoHtml.replaceAll('{nickName}', infoProfile[0].name);
@@ -83,47 +83,48 @@ class ProfilePage {
         let infoIMG = ''
         let products = ''
         let noData = ""
-        // infoHtml = infoHtml.replace('{useName}', infoProfile[0].username);
-        infoHtml = infoHtml.replace('{urlAvt}', userInfo[0].link_avt);
-        infoHtml = infoHtml.replaceAll('{name}', userInfo[0].name);
-        infoHtml = infoHtml.replace('{userName}', userInfo[0].name)
-        infoHtml = infoHtml.replace('{imgAvt}', userInfo[0].link_avt)
-        infoHtml = infoHtml.replace('{isStatus}', userInfo[0].status_name)
-        userInfo.forEach((item, index) => {
-            if (item.text_1 != null) {
-                infoHtml = infoHtml.replace('{text_1}', userInfo[0].text_1);
-            } else {
-                infoHtml = infoHtml.replace('{text_1}', noData);
-            }
-            if (item.text_2 != null) {
-                infoHtml = infoHtml.replace('{text_2}', userInfo[0].text_2);
-            } else {
-                infoHtml = infoHtml.replace('{text_2}', noData);
-            }
-            if (item.text_3 != null) {
-                infoHtml = infoHtml.replace('{text_3}', userInfo[0].text_3);
-            } else {
-                infoHtml = infoHtml.replace('{text_3}', noData);
-            }
+        if (userInfo[0].role_id === 2) {
+            // infoHtml = infoHtml.replace('{useName}', infoProfile[0].username);
+            infoHtml = infoHtml.replace('{urlAvt}', userInfo[0].link_avt);
+            infoHtml = infoHtml.replaceAll('{name}', userInfo[0].name);
+            infoHtml = infoHtml.replace('{userName}', userInfo[0].name)
+            infoHtml = infoHtml.replace('{imgAvt}', userInfo[0].link_avt)
+            infoHtml = infoHtml.replace('{isStatus}', userInfo[0].status_name)
+            userInfo.forEach((item) => {
+                if (item.text_1 != null) {
+                    infoHtml = infoHtml.replace('{text_1}', userInfo[0].text_1);
+                } else {
+                    infoHtml = infoHtml.replace('{text_1}', noData);
+                }
+                if (item.text_2 != null) {
+                    infoHtml = infoHtml.replace('{text_2}', userInfo[0].text_2);
+                } else {
+                    infoHtml = infoHtml.replace('{text_2}', noData);
+                }
+                if (item.text_3 != null) {
+                    infoHtml = infoHtml.replace('{text_3}', userInfo[0].text_3);
+                } else {
+                    infoHtml = infoHtml.replace('{text_3}', noData);
+                }
 
-            if (item.link_pic_1 != null) {
-                infoIMG += `<img src="${item.link_pic_1}"
+                if (item.link_pic_1 != null) {
+                    infoIMG += `<img src="${item.link_pic_1}"
                                   alt="" style="width: 121px; height:121px; object-fit: contain; justify-content: flex-start; margin: auto">`
-            }
-            if (item.link_pic_2 != null) {
-                infoIMG += `<img src="${item.link_pic_2}"
+                }
+                if (item.link_pic_2 != null) {
+                    infoIMG += `<img src="${item.link_pic_2}"
                                   alt="" style="width: 121px; height:121px; object-fit: contain; justify-content: flex-start; margin: auto">`
-            }
-            if (item.link_pic_3 != null) {
-                infoIMG += `<img src="${item.link_pic_3}"
+                }
+                if (item.link_pic_3 != null) {
+                    infoIMG += `<img src="${item.link_pic_3}"
                                   alt="" style="width: 121px; height:121px; object-fit: contain; justify-content: flex-start; margin: auto">`
-            }
-            if (item.link_pic_4 != null) {
-                infoIMG += `<img src="${item.link_pic_4}"
+                }
+                if (item.link_pic_4 != null) {
+                    infoIMG += `<img src="${item.link_pic_4}"
                                   alt="" style="width: 121px; height:121px; object-fit: contain; justify-content: flex-start; margin: auto">`
-            }
+                }
 
-            products += `<tr>
+                products += `<tr>
             <td>${item.product_name}</td>
             <td>${item.price}</td>
             <td>${item.description}</td>
@@ -131,10 +132,56 @@ class ProfilePage {
             <td><a href="/product/delete/${item.product_id}" class="btn btn-danger">Delete</a></td>
         </tr>`
 
-        })
-        infoHtml = infoHtml.replace('{img}', infoIMG);
-        infoHtml = infoHtml.replace('{products}', products)
-        return infoHtml;
+            })
+            infoHtml = infoHtml.replace('{img}', infoIMG);
+            infoHtml = infoHtml.replace('{products}', products)
+            return infoHtml;
+        } else {
+            infoHtml = infoHtml.replace('{urlAvt}', userInfo[0].link_avt);
+            infoHtml = infoHtml.replaceAll('{name}', userInfo[0].name);
+            infoHtml = infoHtml.replace('{userName}', userInfo[0].name)
+            infoHtml = infoHtml.replace('{imgAvt}', userInfo[0].link_avt)
+            infoHtml = infoHtml.replace('{isStatus}', userInfo[0].status_name)
+            userInfo.forEach((item) => {
+                if (item.text_1 != null) {
+                    infoHtml = infoHtml.replace('{text_1}', userInfo[0].text_1);
+                } else {
+                    infoHtml = infoHtml.replace('{text_1}', noData);
+                }
+                if (item.text_2 != null) {
+                    infoHtml = infoHtml.replace('{text_2}', userInfo[0].text_2);
+                } else {
+                    infoHtml = infoHtml.replace('{text_2}', noData);
+                }
+                if (item.text_3 != null) {
+                    infoHtml = infoHtml.replace('{text_3}', userInfo[0].text_3);
+                } else {
+                    infoHtml = infoHtml.replace('{text_3}', noData);
+                }
+
+                if (item.link_pic_1 != null) {
+                    infoIMG += `<img src="${item.link_pic_1}"
+                                  alt="" style="width: 121px; height:121px; object-fit: contain; justify-content: flex-start; margin: auto">`
+                }
+                if (item.link_pic_2 != null) {
+                    infoIMG += `<img src="${item.link_pic_2}"
+                                  alt="" style="width: 121px; height:121px; object-fit: contain; justify-content: flex-start; margin: auto">`
+                }
+                if (item.link_pic_3 != null) {
+                    infoIMG += `<img src="${item.link_pic_3}"
+                                  alt="" style="width: 121px; height:121px; object-fit: contain; justify-content: flex-start; margin: auto">`
+                }
+                if (item.link_pic_4 != null) {
+                    infoIMG += `<img src="${item.link_pic_4}"
+                                  alt="" style="width: 121px; height:121px; object-fit: contain; justify-content: flex-start; margin: auto">`
+                }
+            })
+            infoHtml = infoHtml.replace('{img}', infoIMG);
+            infoHtml = infoHtml.replace('{products}', products)
+            infoHtml = infoHtml.replace('{tableName}', products)
+            return infoHtml;
+        }
+
     }
 
     myProfilePage(req, res) {
@@ -145,7 +192,7 @@ class ProfilePage {
                 let cookies = cookie.parse(req.headers.cookie || '');
                 // console.log("cookies",cookies)
                 let userInfo = await LOGIN_SERVICE.findById(cookies.id)
-                // console.log("info page", userInfo)
+                console.log("info page", userInfo)
                 myProfileHtml = ProfilePage.getDataMyProfile(myProfileHtml, userInfo);
                 res.writeHead(200, {'Content-type': 'text/html'});
                 res.write(myProfileHtml);
