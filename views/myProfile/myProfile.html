@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>{nickName}</title>
+    <title>{name}</title>
     <link href="../../views/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
             href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
@@ -304,7 +304,7 @@
                                 Edit Profile
                             </a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="/">
+                            <a class="dropdown-item" href="/userChangePassword">
                                 <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                 Change Password
                             </a>
@@ -353,23 +353,20 @@
                             <img style="width: 260px; height: 260px; object-fit: contain; margin: auto" src="{urlAvt}"
                                  class="rounded" alt="..."/>
                             <p class="pt-2 text-success font-weight-bold h5">
-                                Đang sẵn sàng
+                                {isStatus}
                             </p>
-                            <a href="https://www.facebook.com/"><img
-                                    src="https://tuvaco.com.vn/wp-content/uploads/2018/01/facebook-icon-1024x1024.png"
-                                    style="width: 32px; height: 32px; border-radius: 50%" alt="..."/></a>
-                            <a href="https://www.facebook.com/">
-                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2hpld-INLhUl3WUenfSZQCSwODRfaz05x5nyHMxXA_g&s"
-                                     style="width: 32px; height: 32px; border-radius: 50%" alt="..."/>
-                            </a>
-
+                            <select name="" id="">
+                                <option value="">Ready</option>
+                                <option value="">Not Ready</option>
+                            </select>
+                            <button class="btn btn-danger">Change Status</button>
                         </div>
                     </div>
                     <div class="col-lg-7 mb-4">
                         <!-- Approach -->
                         <div class="card shadow mb-4">
                             <h6 class="m-0 font-weight-bold text-primary py-3 ml-3">
-                                {nickName}
+                                {name}
                             </h6>
                             <div class="d-flex justify-content-between" style="margin: 0 5px 10px 5px;">
                                 {img}
@@ -386,11 +383,23 @@
                                     <th scope="col">Price</th>
                                     <th scope="col">Description</th>
                                     <th></th>
+                                    <th></th>
                                 </tr>
                                 </thead>
-                                <tbody>
                                 {products}
                             </table>
+                        </div>
+                        <div class="card shadow mb-4">
+                            <form action="" method="post">
+                                <table>
+                                    <tr>
+                                        <td><input type="text" placeholder="Name"></td>
+                                        <td><input type="number" placeholder="Price"></td>
+                                        <td><input type="text" placeholder="Description"></td>
+                                        <td><button type="submit" class="btn btn-danger">Add</button></td>
+                                    </tr>
+                                </table>
+                            </form>
                         </div>
                         <!--                        <div class="card shadow mb-4">-->
                         <!--                            <h6 class="m-0 font-weight-bold text-primary py-3 ml-3">-->

@@ -19,6 +19,7 @@ const handler = {
     "myProfile": PROFILE_PAGE.myProfilePage,
 
     "changePassword": ADMIN_PAGE.changePassword,
+    "userChangePassword": ADMIN_PAGE.userChangePassword,
     "manageUserByAdmin": ADMIN_PAGE.adminPage,
     "historyTrade": ADMIN_PAGE.historyTradePage,
     "manageUserPage": ADMIN_PAGE.userPage,

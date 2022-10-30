@@ -22,6 +22,7 @@ class ProfileService {
                             join userdetails u on account.id = u.user_id
                             join picture p on account.id = p.user_id
                             join product p2 on account.id = p2.provider_id
+                            join status s on account.status_id = s.status_id
                    where username = '${userName}'`
         return new Promise((resolve, reject) => {
             connection.query(sql, (err, profile) => {
@@ -39,6 +40,7 @@ class ProfileService {
                             join userdetails u on account.id = u.user_id
                             join picture p on account.id = p.user_id
                             join product p2 on account.id = p2.provider_id
+                            join status s on account.status_id = s.status_id
                    where id = '${id}'`
         return new Promise((resolve, reject) => {
             connection.query(sql, (err, profile) => {

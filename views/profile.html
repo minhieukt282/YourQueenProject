@@ -304,6 +304,11 @@
                                 My Profile
                             </a>
                             <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="/userChangePassword">
+                                <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                Change Password
+                            </a>
+                            <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="/" data-toggle="modal" data-target="#logoutModal">
                                 <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                 Logout
@@ -348,7 +353,7 @@
                             <img style="width: 260px; height: 260px; object-fit: contain; margin: auto" src="{urlAvt}"
                                  class="rounded" alt="..."/>
                             <p class="pt-2 text-success font-weight-bold h5">
-                                Đang sẵn sàng
+                                {isStatus}
                             </p>
                             <a href="https://www.facebook.com/"><img
                                     src="https://tuvaco.com.vn/wp-content/uploads/2018/01/facebook-icon-1024x1024.png"

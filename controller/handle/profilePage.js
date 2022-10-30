@@ -13,6 +13,7 @@ class ProfilePage {
         infoHtml = infoHtml.replaceAll('{nickName}', infoProfile[0].name);
         infoHtml = infoHtml.replace('{userName}', userInfo[0].name)
         infoHtml = infoHtml.replace('{imgAvt}', userInfo[0].link_avt)
+        infoHtml = infoHtml.replace('{isStatus}', infoProfile[0].status_name)
         infoProfile.forEach((item) => {
             if (item.text_1 != null) {
                 infoHtml = infoHtml.replace('{text_1}', infoProfile[0].text_1);
@@ -68,7 +69,7 @@ class ProfilePage {
                 // console.log("cookies",cookies)
                 let infoProfile = await PROFILE_PAGE.findByUserName(userName);
                 let userInfo = await PROFILE_PAGE.findById(cookies.id)
-                // console.log("info page", userInfo)
+                console.log("info page", userInfo)
                 profileHtml = ProfilePage.getDataProfile(infoProfile, profileHtml, userInfo);
                 res.writeHead(200, {'Content-type': 'text/html'});
                 res.write(profileHtml);
@@ -86,6 +87,7 @@ class ProfilePage {
         infoHtml = infoHtml.replaceAll('{name}', userInfo[0].name);
         infoHtml = infoHtml.replace('{userName}', userInfo[0].name)
         infoHtml = infoHtml.replace('{imgAvt}', userInfo[0].link_avt)
+        infoHtml = infoHtml.replace('{isStatus}', userInfo[0].status_name)
         userInfo.forEach((item) => {
             if (item.text_1 != null) {
                 infoHtml = infoHtml.replace('{text_1}', userInfo[0].text_1);
@@ -123,7 +125,8 @@ class ProfilePage {
             <td>${item.product_name}</td>
             <td>${item.price}</td>
             <td>${item.description}</td>
-            <td><a href="" class="btn btn-danger">Add</a></td>
+            <td><a href="" class="btn btn-danger">Edit</a></td>
+            <td><a href="" class="btn btn-danger">Delete</a></td>
         </tr>`
 
         })
