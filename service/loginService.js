@@ -101,6 +101,7 @@ class LoginService {
     async getCookie(req) {
         let isStatus = false
         let cookies = cookie.parse(req.headers.cookie || '');
+        console.log("da lay cookie", cookies)
         let listAccount = await this.getAccount()
         for (let i = 0; i < listAccount.length; i++) {
             if (listAccount[i].id === +cookies.id) {

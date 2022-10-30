@@ -7,35 +7,44 @@ const cookie = require("cookie");
 
 class HomePage {
 
-    static getHTMLHomePage(userDetails, carouselImage, infoHTML) {
-        let userHTML = ''
+    static getIndexPage(userDetails, carouselImage, infoHtml) {
+        let userHtml = ''
         let carouselHTML = ''
         userDetails.forEach((element) => {
-            userHTML += `<div class="col-3">
-                            <a href="/profile/${element.username}">
-                                <div class="card" style="width: 100%; margin-top: 1rem">
-                                    <img src='${element.link}' class="card-img-top" alt="..." style="width: 226px; height: 226px; object-fit: contain; margin: auto">
+            if (element.text_1 != null) {
+                userHtml += `<div class="col-3">
+                             <div class="card" style="width: 100%; margin-top: 1rem">
+                                <a href="/login">
+                                    <img src='${element.link_avt}' class="card-img-top" alt="..." style="width: 226px; height: 226px; object-fit: contain; margin: auto">
                                     <div class="card-body">
                                         <h5>${element.username}</h5>
                                     </div>
-                                </div>
-                            </a>
+                                </a>
+                                <h6>${element.text_1}</h6>
+                             </div>
                          </div>`
-        })
-        carouselImage.forEach((item, i) => {
-            if (i === 0) {
-                carouselHTML += `<div class="carousel-item active" data-bs-interval="2000">
-                                    <img src="${item.url}" class="d-block w-100" alt="${item.id}">
-                                </div>`
             } else {
-                carouselHTML += `<div class="carousel-item" data-bs-interval="2000">
-                                    <img src="${item.url}" class="d-block w-100" alt="${item.id}">
-                                </div>`
+                userHtml += `<div class="col-3">
+                             <div class="card" style="width: 100%; margin-top: 1rem">
+                                <a href="/login">
+                                    <img src='${element.link_avt}' class="card-img-top" alt="..." style="width: 226px; height: 226px; object-fit: contain; margin: auto">
+                                    <div class="card-body">
+                                        <h5>${element.username}</h5>
+                                    </div>
+                                </a>
+                                <h6> Kết Bạn Bốn Phương </h6>
+                             </div>
+                         </div>`
             }
+
         })
-        infoHTML = infoHTML.replace('{userDetail}', userHTML);
-        infoHTML = infoHTML.replace('{carousel}', carouselHTML);
-        return infoHTML;
+        carouselImage.forEach((item) => {
+            carouselHTML += `<div class="carousel-item active" data-bs-interval="2000" style="border-radius: 10px" ">
+                                    <img style="border-radius: 15px"  src="${item.url}"  class="d-block w-100" alt="${item.id} "></div>`
+        })
+        infoHtml = infoHtml.replace('{userDetail}', userHtml);
+        infoHtml = infoHtml.replace('{carousel}', carouselHTML);
+        return infoHtml;
     }
 
     indexPage(req, res) {
@@ -43,14 +52,56 @@ class HomePage {
             if (err) {
                 console.log(err);
             } else {
-                let products = await HOME_SERVICE.getUserDetails();
+                let products = await HOME_SERVICE.getProviderDetails();
                 let carousel = await HOME_SERVICE.getCarouselImage();
-                dataIndexHtml = HomePage.getHTMLHomePage(products, carousel, dataIndexHtml);
+                dataIndexHtml = HomePage.getIndexPage(products, carousel, dataIndexHtml);
                 res.writeHead(200, 'text/html');
                 res.write(dataIndexHtml);
                 res.end();
             }
         });
+    }
+
+    static getHtmlHomePage(userDetails, carouselImage, infoHtml, userInfo) {
+        let userHtml = ''
+        let carouselHTML = ''
+        userDetails.forEach((element) => {
+            if (element.text_1 != null) {
+                userHtml += `<div class="col-3">
+                             <div class="card" style="width: 100%; margin-top: 1rem">
+                                <a href="/profile/${element.username}">
+                                    <img src='${element.link_avt}' class="card-img-top" alt="..." style="width: 226px; height: 226px; object-fit: contain; margin: auto">
+                                    <div class="card-body">
+                                        <h5>${element.username}</h5>
+                                    </div>
+                                </a>
+                                <h6>${element.text_1}</h6>
+                             </div>
+                         </div>`
+            } else {
+                userHtml += `<div class="col-3">
+                             <div class="card" style="width: 100%; margin-top: 1rem">
+                                <a href="/profile/${element.username}">
+                                    <img src='${element.link_avt}' class="card-img-top" alt="..." style="width: 226px; height: 226px; object-fit: contain; margin: auto">
+                                    <div class="card-body">
+                                        <h5>${element.username}</h5>
+                                    </div>
+                                </a>
+                                <h6> Kết Bạn Bốn Phương </h6>
+                             </div>
+                         </div>`
+            }
+
+        })
+        carouselImage.forEach((item) => {
+            carouselHTML += `<div class="carousel-item active" data-bs-interval="2000" style="border-radius: 10px" ">
+                                    <img style="border-radius: 15px"  src="${item.url}"  class="d-block w-100" alt="${item.id} "></div>`
+        })
+        infoHtml = infoHtml.replace('{userDetail}', userHtml);
+        infoHtml = infoHtml.replace('{carousel}', carouselHTML);
+        infoHtml = infoHtml.replace('{name}', userInfo[0].name)
+        infoHtml = infoHtml.replace('{imgAvt}', userInfo[0].link_avt)
+        return infoHtml;
     }
 
     async homePage(req, res) {

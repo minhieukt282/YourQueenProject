@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>{name}</title>
+    <title>{nickName}</title>
     <link href="../../views/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
             href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
@@ -22,7 +22,6 @@
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/home">
             <div class="sidebar-brand-icon rotate-n-15">
                 <i class="fas fa-laugh-wink"></i>
-<!--                <img src="views/picture/logo2.png" alt="">-->
             </div>
             <div class="sidebar-brand-text mx-3">Danh Mục</div>
         </a>
@@ -294,8 +293,8 @@
                     <li class="nav-item dropdown no-arrow">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">{name}</span>
-                            <img class="img-profile rounded-circle" src="../../views/img/undraw_profile.svg"/>
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">{userName}</span>
+                            <img class="img-profile rounded-circle" src="{imgAvt}" style="width: 40px; height: 40px">
                         </a>
                         <!-- Dropdown - User Information -->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -306,7 +305,7 @@
                             </a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="/">
-                                <i class="fas fa-cog fa-sm fa-fw mr-2 text-gray-400"></i>
+                                <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                 Change Password
                             </a>
                             <div class="dropdown-divider"></div>
@@ -356,21 +355,21 @@
                             <p class="pt-2 text-success font-weight-bold h5">
                                 Đang sẵn sàng
                             </p>
-                            <a href=""><img
+                            <a href="https://www.facebook.com/"><img
                                     src="https://tuvaco.com.vn/wp-content/uploads/2018/01/facebook-icon-1024x1024.png"
                                     style="width: 32px; height: 32px; border-radius: 50%" alt="..."/></a>
-                            <a href="">
+                            <a href="https://www.facebook.com/">
                                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2hpld-INLhUl3WUenfSZQCSwODRfaz05x5nyHMxXA_g&s"
                                      style="width: 32px; height: 32px; border-radius: 50%" alt="..."/>
                             </a>
 
                         </div>
                     </div>
-                    <div class="col-lg-5 mb-4">
+                    <div class="col-lg-7 mb-4">
                         <!-- Approach -->
                         <div class="card shadow mb-4">
                             <h6 class="m-0 font-weight-bold text-primary py-3 ml-3">
-                                {name}
+                                {nickName}
                             </h6>
                             <div class="d-flex justify-content-between" style="margin: 0 5px 10px 5px;">
                                 {img}
@@ -378,8 +377,20 @@
                             <p class="ml-3">{text_1}</p>
                             <p class="ml-3">{text_2}</p>
                             <p class="ml-3">{text_3}</p>
-                            <a class="ml-3"
-                               href="https://www.facebook.com/MonDy2901">https://www.facebook.com/MonDy2901</a>
+                        </div>
+                        <div class="card shadow mb-4">
+                            <table class="table table-dark table-striped-columns">
+                                <thead>
+                                <tr>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Price</th>
+                                    <th scope="col">Description</th>
+                                    <th></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {products}
+                            </table>
                         </div>
                         <!--                        <div class="card shadow mb-4">-->
                         <!--                            <h6 class="m-0 font-weight-bold text-primary py-3 ml-3">-->
@@ -660,54 +671,56 @@
                         <!--                        </div>-->
 
                     </div>
-                    <div class="col-lg-3 mb-4">
-                        <div class="card shadow mb-4">
-                                <span style="font-size: 24px; font-weight: 700; color: #f0564a; margin-left: 5%;"
-                                      class="mt-3">99,000$</span>
-                            <div style="color:#ff9948; margin-bottom: 5px; white-space: nowrap; margin-left: 5%">
-<!--                                <i class="fa-duotone fa-star"></i>-->
-<!--                                <i class="fa-duotone fa-star"></i>-->
-<!--                                <i class="fa-duotone fa-star"></i>-->
-<!--                                <i class="fa-duotone fa-star"></i>-->
-<!--                                <i class="fa-duotone fa-star"></i>-->
-                                <span style="color:#9298a1; font-size: 13px; font-weight: 400; line-height: 1.54;">142
-                                        Like</span>
-                            </div>
-                            <div class="text-center">
-                                <button style="
-                                        background-color:#f0564a; color: #354052; width: 90%; font-size: 16px; 
-                                        font-weight: 700; text-transform: uppercase; border: 0; 
-                                        height:54px; margin: 10px 0 0;
-                                        letter-spacing: normal;line-height: normal;
-                                        font-stretch: normal;
-                                        font-style: normal;
-                                        border-radius: 10px;
-                                        ">
-                                    World Tour
-                                </button>
-                                <button style="
-                                        background-color:#fff; color: #354052; width: 90%; font-size: 16px; 
-                                        font-weight: 700; text-transform: uppercase; border: 1px solid #e2e6ea;; 
-                                        height:54px; margin: 10px 0 0;
-                                        letter-spacing: normal;line-height: normal;
-                                        font-stretch: normal;
-                                        font-style: normal;
-                                        border-radius: 10px;">
-                                    DONATE
-                                </button>
-                                <button style="
-                                        background-color:#fff; color: #354052; width: 90%; font-size: 16px; 
-                                        font-weight: 700; text-transform: uppercase; border: 1px solid #e2e6ea;; 
-                                        height:54px; margin: 10px 0 10px 0;
-                                        letter-spacing: normal;line-height: normal;
-                                        font-stretch: normal;
-                                        font-style: normal;
-                                        border-radius: 10px;">
-                                    CHAT
-                                </button>
-                            </div>
-                        </div>
-                    </div>
+                    <!--                    <div class="col-lg-3 ">-->
+                    <!--                        <div class="card shadow mb-4">-->
+                    <!--                                <span style="font-size: 24px; font-weight: 700; color: #f0564a; margin-left: 5%;"-->
+                    <!--                                      class="mt-3">89,000$-->
+                    <!--                                </span>-->
+                    <!--                            <div style="color:#ff9948; margin-bottom: 5px; white-space: nowrap; margin-left: 5%">-->
+                    <!--                                <i class="fa-duotone fa-star"></i>-->
+                    <!--                                <i class="fa-duotone fa-star"></i>-->
+                    <!--                                <i class="fa-duotone fa-star"></i>-->
+                    <!--                                <i class="fa-duotone fa-star"></i>-->
+                    <!--                                <i class="fa-duotone fa-star"></i>-->
+                    <!--                                <span-->
+                    <!--                                        style="color:#9298a1; font-size: 13px; font-weight: 400; line-height: 1.54;">142-->
+                    <!--                                        Đánh giá</span>-->
+                    <!--                            </div>-->
+                    <!--                            <div class="text-center">-->
+                    <!--                                <button style="-->
+                    <!--                                        background-color:#f0564a; color: #354052; width: 90%; font-size: 16px; -->
+                    <!--                                        font-weight: 700; text-transform: uppercase; border: 0; -->
+                    <!--                                        height:54px; margin: 10px 0 0;-->
+                    <!--                                        letter-spacing: normal;line-height: normal;-->
+                    <!--                                        font-stretch: normal;-->
+                    <!--                                        font-style: normal;-->
+                    <!--                                        border-radius: 10px;-->
+                    <!--                                        ">-->
+                    <!--                                    THUÊ-->
+                    <!--                                </button>-->
+                    <!--                                <button style="-->
+                    <!--                                        background-color:#fff; color: #354052; width: 90%; font-size: 16px; -->
+                    <!--                                        font-weight: 700; text-transform: uppercase; border: 1px solid #e2e6ea;; -->
+                    <!--                                        height:54px; margin: 10px 0 0;-->
+                    <!--                                        letter-spacing: normal;line-height: normal;-->
+                    <!--                                        font-stretch: normal;-->
+                    <!--                                        font-style: normal;-->
+                    <!--                                        border-radius: 10px;">-->
+                    <!--                                    DONATE-->
+                    <!--                                </button>-->
+                    <!--                                <button style="-->
+                    <!--                                        background-color:#fff; color: #354052; width: 90%; font-size: 16px; -->
+                    <!--                                        font-weight: 700; text-transform: uppercase; border: 1px solid #e2e6ea;; -->
+                    <!--                                        height:54px; margin: 10px 0 10px 0;-->
+                    <!--                                        letter-spacing: normal;line-height: normal;-->
+                    <!--                                        font-stretch: normal;-->
+                    <!--                                        font-style: normal;-->
+                    <!--                                        border-radius: 10px;">-->
+                    <!--                                    CHAT-->
+                    <!--                                </button>-->
+                    <!--                            </div>-->
+                    <!--                        </div>-->
+                    <!--                    </div>-->
                 </div>
                 <!-- /.container-fluid -->
             </div>
@@ -717,7 +730,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2022</span>
+                        <span>Copyright &copy; My Queen 2022</span>
                     </div>
                 </div>
             </footer>
@@ -740,6 +753,7 @@
     <script src="../../views/vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
+
 
     <!-- Page level plugins -->
     <script src="../../views/vendor/datatables/jquery.dataTables.min.js"></script>
