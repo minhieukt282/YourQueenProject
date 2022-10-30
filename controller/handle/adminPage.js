@@ -323,8 +323,9 @@ class AdminPage {
                     } else {
                         let cookies = cookie.parse(req.headers.cookie || '');
                         let userInfo = await PROFILE_SERVICE.findById(cookies.id)
+                        console.log(userInfo)
                         //dang loi
-                        changePasswordHtml = ProfilePage.getDataMyProfile(changePasswordHtml, userInfo);
+                        // changePasswordHtml = ProfilePage.getDataMyProfile(changePasswordHtml, userInfo);
                         res.writeHead(200, 'text/html');
                         res.write(changePasswordHtml);
                         res.end()

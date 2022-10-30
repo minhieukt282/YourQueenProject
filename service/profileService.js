@@ -34,6 +34,7 @@ class ProfileService {
             })
         })
     }
+
     findById(id) {
         let sql = `select *
                    from account
@@ -52,6 +53,39 @@ class ProfileService {
             })
         })
     }
+
+    // findByAccount(id) {
+    //     let sql = `select *
+    //                from account
+    //                where id = '${id}'`
+    //     return new Promise((resolve, reject) => {
+    //         connection.query(sql, (err, profile) => {
+    //             if (err) reject(err)
+    //             else {
+    //                 // console.log('Find id done')
+    //                 resolve(profile)
+    //             }
+    //         })
+    //     })
+    // }
+
+    editProduct(product, product_id) {
+        let sql = `update product
+                   set product_name = '${product.product_name}',
+                       price        = '${product.price}',
+                       description  ='${product.description}',
+                       where product_id = '${product_id}'`
+        return new Promise((resolve, reject) => {
+            connection.query(sql, (err, profile) => {
+                if (err) reject(err)
+                else {
+                    // console.log('Find id done')
+                    resolve(profile)
+                }
+            })
+        })
+    }
+
 
 }
 

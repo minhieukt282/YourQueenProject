@@ -71,11 +71,25 @@ class LoginService {
         })
     };
 
-    findByUsername(username) {
-        let sql = `select account.id, account.role_id, account.status_id
-                   from account
-                   where username = '${username}'`
+    updateUserDetails(user_id) {
         return new Promise((resolve, reject) => {
+            let sql = `insert into userdetails (user_id, name, birthday)
+                           value ('${user_id}', 'undefined','2006-01-01')`
+            connection.query(sql, (err, account) => {
+                if (err) {
+                    reject(err)
+                } else {
+                    resolve(account)
+                }
+            })
+        })
+    }
+
+    findByUsername(username) {
+        return new Promise((resolve, reject) => {
+            let sql = `select account.id, account.role_id, account.status_id
+                       from account
+                       where username = '${username}'`
             connection.query(sql, (err, dataUser) => {
                 if (err) reject(err)
                 else resolve(dataUser)
@@ -87,6 +101,9 @@ class LoginService {
         return new Promise((resolve, reject) => {
             let sql = `select *
                        from account
+                                join userdetails u on account.id = u.user_id
+                                join picture p on account.id = p.user_id
+                                join status s on account.status_id = s.status_id
                        where id = ${id}`
             connection.query(sql, (err, account) => {
                 if (err) {

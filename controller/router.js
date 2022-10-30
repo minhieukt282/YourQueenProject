@@ -17,6 +17,8 @@ const handler = {
 
     "profile": PROFILE_PAGE.profilePage,
     "myProfile": PROFILE_PAGE.myProfilePage,
+    "product/edit": PROFILE_PAGE.editProduct,
+    "product/delete": PROFILE_PAGE.deleteProduct,
 
     "changePassword": ADMIN_PAGE.changePassword,
     "userChangePassword": ADMIN_PAGE.userChangePassword,
