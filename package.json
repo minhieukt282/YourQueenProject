@@ -18,6 +18,7 @@
   "homepage": "https://github.com/minhieukt282/gitTestProject#readme",
   "description": "",
   "dependencies": {
+    "bootstrap-icons": "^1.9.1",
     "cookie": "^0.5.0",
     "cookie-parser": "^1.4.6",
     "ejs": "^3.1.8",
