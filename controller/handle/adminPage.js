@@ -4,6 +4,7 @@ const LOGIN_SERVICE = require('../../service/loginService');
 const qs = require("qs");
 
 const cookie = require("cookie");
+const HOME_SERVICE = require("../../service/homeService");
 
 class AdminPage {
     static getHtmlAdminPage(accounts, indexHtml) {
@@ -290,7 +291,7 @@ class AdminPage {
                         console.log("cookie", cookies)
                         let listAccount = await LOGIN_SERVICE.findById(cookies.id)
                         console.log("list account", listAccount)
-                        if (listAccount[0].password === newAccount.password){
+                        if (listAccount[0].password === newAccount.password) {
                             let changeDone = await ADMIN_SERVICE.changePassword(newAccount.newPassword, cookies.id)
                             res.writeHead(301, {'location': 'admin'})
                             res.end()
@@ -309,5 +310,5 @@ class AdminPage {
     }
 }
 
-
-module.exports = new AdminPage();
+module
+    .exports = new AdminPage();

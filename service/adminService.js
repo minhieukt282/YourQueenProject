@@ -185,6 +185,23 @@ class AdminService {
         })
     }
 
+    getListMember() {
+        return new Promise((resolve, reject) => {
+            let sql = `select u.name, account.username, account.password, s.status_name as status
+                       from account
+                                join userdetails u on account.id = u.user_id
+                                join status s on s.status_id = account.status_id
+                       where role_id = 2
+                          or role_id = 3`
+            connection.query(sql, (err, listMember) => {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(listMember);
+                }
+            });
+        })
+    }
 
 }
 

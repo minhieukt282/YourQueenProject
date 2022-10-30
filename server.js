@@ -1,6 +1,6 @@
 const http = require('http');
 const url = require('url');
-const fs = require('fs')
+const fs = require('fs');
 const cookieParser = require('cookie-parser');
 
 const HANDLER = require('./controller/router');
@@ -45,6 +45,7 @@ const SERVER = http.createServer((req, res) => {
     } else {
         chosenHandle = typeof HANDLER[trimPath] !== 'undefined' ? HANDLER[trimPath] : NOT_FOUND_ROUTING.showNotFound;
         chosenHandle(req, res, arrPath[2]);
+        console.log(trimPath);
     }
 
 })

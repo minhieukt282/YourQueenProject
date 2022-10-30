@@ -7,7 +7,6 @@ const handler = {
     "login": LOGIN_PAGE.login,
     "register": LOGIN_PAGE.register,
 
-    "admin": HOME_PAGE.adminPage,
     "": HOME_PAGE.indexPage,
     "home": HOME_PAGE.homePage,
 
@@ -25,8 +24,10 @@ const handler = {
     "manageProviderPage": ADMIN_PAGE.providerPage,
     "turnoverDays": ADMIN_PAGE.turnoverDay,
     "turnoverMonth": ADMIN_PAGE.turnoverMonth,
-    "turnoverYear": ADMIN_PAGE.turnoverYear
+    "turnoverYear": ADMIN_PAGE.turnoverYear,
 
+    //pageAdimin
+    "admin": HOME_PAGE.adminPage,
 }
 
 module.exports = handler;
