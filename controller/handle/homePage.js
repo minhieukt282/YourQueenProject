@@ -1,8 +1,12 @@
 const fs = require('fs');
 const HOME_SERVICE = require('../../service/homeService');
+const LOGIN_SERVICE = require('../../service/loginService');
+const PROFILE_PAGE = require('../../service/profileService');
 const qs = require('qs')
+const cookie = require("cookie");
 
 class HomePage {
+
     static getHTMLHomePage(userDetails, carouselImage, infoHTML) {
         let userHTML = ''
         let carouselHTML = ''
@@ -49,19 +53,28 @@ class HomePage {
         });
     }
 
-    homePage(req, res) {
-        fs.readFile('./views/home.html', 'utf-8', async (err, dataHomeHtml) => {
-            if (err) {
-                console.log(err);
-            } else {
-                let products = await HOME_SERVICE.getUserDetails();
-                let carousel = await HOME_SERVICE.getCarouselImage();
-                dataHomeHtml = HomePage.getHTMLHomePage(products, carousel, dataHomeHtml);
-                res.writeHead(200, 'text/html');
-                res.write(dataHomeHtml);
-                res.end();
-            }
-        });
+    async homePage(req, res) {
+        let isStatus = await LOGIN_SERVICE.getCookie(req)
+        console.log("isStatus home", isStatus)
+        if (isStatus) {
+            fs.readFile('./views/home.html', 'utf-8', async (err, dataHomeHtml) => {
+                if (err) {
+                    console.log(err);
+                } else {
+                    let cookies = cookie.parse(req.headers.cookie || '');
+                    let userInfo = await PROFILE_PAGE.findById(cookies.id)
+                    let products = await HOME_SERVICE.getProviderDetails();
+                    let carousel = await HOME_SERVICE.getCarouselImage();
+                    dataHomeHtml = HomePage.getHtmlHomePage(products, carousel, dataHomeHtml, userInfo);
+                    res.writeHead(200, 'text/html');
+                    res.write(dataHomeHtml);
+                    res.end();
+                }
+            });
+        } else {
+            res.writeHead(301, {'location': 'login'});
+            res.end();
+        }
     }
 
     async adminPage(req, res) {
@@ -73,9 +86,6 @@ class HomePage {
                     if (err) {
                         console.log(err);
                     } else {
-                        let products = await HOME_SERVICE.getUserDetails();
-                        let carousel = await HOME_SERVICE.getCarouselImage();
-                        dataAdminHtml = HomePage.getHTMLHomePage(products, carousel, dataAdminHtml);
                         res.writeHead(200, 'text/html');
                         res.write(dataAdminHtml);
                         res.end();
@@ -97,9 +107,9 @@ class HomePage {
                 if (err) {
                     console.log(err);
                 } else {
-                    let products = await HOME_SERVICE.getUserDetails();
+                    let products = await HOME_SERVICE.getProviderDetails();
                     let carousel = await HOME_SERVICE.getCarouselImage();
-                    dataHtml = HomePage.getHTMLHomePage(products, carousel, dataHtml);
+                    dataHtml = HomePage.getHtmlHomePage(products, carousel, dataHtml);
                     res.writeHead(200, 'text/html');
                     res.write(dataHtml);
                     res.end();
