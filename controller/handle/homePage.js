@@ -2,6 +2,7 @@ const fs = require('fs');
 const HOME_SERVICE = require('../../service/homeService');
 const LOGIN_SERVICE = require('../../service/loginService');
 const PROFILE_PAGE = require('../../service/profileService');
+const ADMIN_SERVICE = require('../../service/adminService');
 const qs = require('qs')
 const cookie = require("cookie");
 
@@ -17,7 +18,7 @@ class HomePage {
                                 <a href="/login">
                                     <img src='${element.link_avt}' class="card-img-top" alt="..." style="width: 226px; height: 226px; object-fit: contain; margin: auto">
                                     <div class="card-body">
-                                        <h5>${element.username}</h5>
+                                        <h5>${element.name}</h5>
                                     </div>
                                 </a>
                                 <h6>${element.text_1}</h6>
@@ -29,7 +30,7 @@ class HomePage {
                                 <a href="/login">
                                     <img src='${element.link_avt}' class="card-img-top" alt="..." style="width: 226px; height: 226px; object-fit: contain; margin: auto">
                                     <div class="card-body">
-                                        <h5>${element.username}</h5>
+                                        <h5>${element.name}</h5>
                                     </div>
                                 </a>
                                 <h6> Kết Bạn Bốn Phương </h6>
@@ -62,17 +63,17 @@ class HomePage {
         });
     }
 
-    static getHtmlHomePage(userDetails, carouselImage, infoHtml, userInfo) {
+    static getHtmlHomePage(provider, carouselImage, infoHtml, userInfo) {
         let userHtml = ''
         let carouselHTML = ''
-        userDetails.forEach((element) => {
+        provider.forEach((element) => {
             if (element.text_1 != null) {
                 userHtml += `<div class="col-3">
                              <div class="card" style="width: 100%; margin-top: 1rem">
                                 <a href="/profile/${element.username}">
                                     <img src='${element.link_avt}' class="card-img-top" alt="..." style="width: 226px; height: 226px; object-fit: contain; margin: auto">
                                     <div class="card-body">
-                                        <h5>${element.username}</h5>
+                                        <h5>${element.name}</h5>
                                     </div>
                                 </a>
                                 <h6>${element.text_1}</h6>
@@ -84,7 +85,7 @@ class HomePage {
                                 <a href="/profile/${element.username}">
                                     <img src='${element.link_avt}' class="card-img-top" alt="..." style="width: 226px; height: 226px; object-fit: contain; margin: auto">
                                     <div class="card-body">
-                                        <h5>${element.username}</h5>
+                                        <h5>${element.name}</h5>
                                     </div>
                                 </a>
                                 <h6> Kết Bạn Bốn Phương </h6>
@@ -114,10 +115,10 @@ class HomePage {
                 } else {
                     let cookies = cookie.parse(req.headers.cookie || '');
                     let userInfo = await LOGIN_SERVICE.findById(cookies.id)
-                    console.log("user info: ",userInfo)
-                    let products = await HOME_SERVICE.getProviderDetails();
+                    // console.log("user info: ", userInfo)
+                    let provider = await HOME_SERVICE.getProviderDetails();
                     let carousel = await HOME_SERVICE.getCarouselImage();
-                    dataHomeHtml = HomePage.getHtmlHomePage(products, carousel, dataHomeHtml, userInfo);
+                    dataHomeHtml = HomePage.getHtmlHomePage(provider, carousel, dataHomeHtml, userInfo);
                     res.writeHead(200, 'text/html');
                     res.write(dataHomeHtml);
                     res.end();
@@ -129,6 +130,22 @@ class HomePage {
         }
     }
 
+    static creatTableMember(arrMember, dataHtml) {
+        let members = ''
+        arrMember.forEach((item, index) => {
+            members += `<div class="row">
+                            <div class="col-1">${index + 1}</div>
+                            <div class="col">${item.name}</div>
+                            <div class="col">${item.username}</div>
+                            <div class="col-2">${item.role}</div>
+                            <div class="col-2">${item.gender}</div>
+                            <div class="col-2">${item.status}</div>
+                        </div>`
+        });
+        dataHtml = dataHtml.replace('{members}', members)
+        return dataHtml;
+    }
+
     async adminPage(req, res) {
         let isStatus = await LOGIN_SERVICE.getCookie(req)
         if (isStatus === true) {
@@ -138,9 +155,10 @@ class HomePage {
                     if (err) {
                         console.log(err);
                     } else {
-
+                        let arrMember = await ADMIN_SERVICE.getListMember();
+                        let dataAdHTML = await HomePage.creatTableMember(arrMember, dataAdminHtml);
                         res.writeHead(200, 'text/html');
-                        res.write(dataAdminHtml);
+                        res.write(dataAdHTML);
                         res.end();
                     }
                 });
@@ -156,7 +174,7 @@ class HomePage {
         let isAmin = await LOGIN_SERVICE.checkAdmin(req)
         console.log("isStatus edit", isStatus)
         if (isStatus === true && isAmin === false) {
-            fs.readFile('./views/editProfile.html', 'utf-8', async (err, dataHtml) => {
+            fs.readFile('../views/editProfile.html', 'utf-8', async (err, dataHtml) => {
                 if (err) {
                     console.log(err);
                 } else {

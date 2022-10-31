@@ -197,22 +197,48 @@ class ProfilePage {
     }
 
     myProfilePage(req, res) {
-        fs.readFile('./views/myProfile/myProfile.html', "utf-8", async (err, myProfileHtml) => {
-            if (err) {
-                console.log(err)
-            } else {
-                let cookies = cookie.parse(req.headers.cookie || '');
-                let userInfo = await LOGIN_SERVICE.findById(cookies.id)
-                if (userInfo[0].role_id === 2) {
-                    userInfo = await PROFILE_PAGE.findById(cookies.id)
+        if (req.method === "GET") {
+            fs.readFile('./views/myProfile/myProfile.html', "utf-8", async (err, myProfileHtml) => {
+                if (err) {
+                    console.log(err)
+                } else {
+                    let cookies = cookie.parse(req.headers.cookie || '');
+                    // console.log("cookies",cookies)
+                    let userInfo = await LOGIN_SERVICE.findById(cookies.id)
+                    if (userInfo[0].role_id ===2){
+                        userInfo = await PROFILE_PAGE.findById(cookies.id)
+                    }
+                    // console.log("info page", userInfo)
+                    myProfileHtml = ProfilePage.getDataMyProfile(myProfileHtml, userInfo);
+                    let status = await PROFILE_PAGE.showStatus();
+                    let statusHTML = await ProfilePage.replaceStatus(status)
+                    myProfileHtml = myProfileHtml.replace('{status}', statusHTML);
+                    // MY_PROFILE_PAGE.editStatus(req, res);
+                    res.writeHead(200, {'Content-type': 'text/html'});
+                    res.write(myProfileHtml);
+                    res.end()
                 }
-                // console.log("info User", userInfo)
-                myProfileHtml = ProfilePage.getDataMyProfile(myProfileHtml, userInfo);
-                res.writeHead(200, {'Content-type': 'text/html'});
-                res.write(myProfileHtml);
-                res.end()
-            }
-        })
+            })
+        } else {
+            let status_name_chunk = '';
+            req.on('data', chunk => {
+                status_name_chunk += chunk
+            });
+            req.on('end', async (err) => {
+                if (err) {
+                    console.log(err);
+                } else {
+                    let status_name = await qs.parse(status_name_chunk);
+                    let cookies = cookie.parse(req.headers.cookie || '');
+                    let userInfo = await LOGIN_SERVICE.findById(cookies.id);
+                    // console.log('user', userInfo);
+                    // console.log('status', status_name);
+                    await PROFILE_PAGE.editStatus(+status_name.status, userInfo[0].id);
+                    res.writeHead(301, {'location': '/myProfile'});
+                    res.end();
+                }
+            });
+        }
     }
 
     editProduct(req, res, product_id) {
@@ -283,6 +309,14 @@ class ProfilePage {
                 }
             });
         }
+    }
+
+    static async replaceStatus(status) {
+        let option = ''
+        for (const item of status) {
+            option += ` <option value="${item.status_id}">${item.status_name}</option>`
+        }
+        return option;
     }
 }
 

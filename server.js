@@ -1,6 +1,6 @@
 const http = require('http');
 const url = require('url');
-const fs = require('fs')
+const fs = require('fs');
 const cookieParser = require('cookie-parser');
 
 const HANDLER = require('./controller/router');
@@ -50,7 +50,6 @@ const SERVER = http.createServer((req, res) => {
             chosenHandle(req, res, arrPath[2]);
         }
     }
-    console.log(arrPath)
 })
 
 SERVER.listen(8080, () => {
