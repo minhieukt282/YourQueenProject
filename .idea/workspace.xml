@@ -6,8 +6,23 @@
   <component name="ChangeListManager">
     <list default="true" id="ed4f7873-d893-4b2b-98dd-a53e95fecfb2" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/handle/adminPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/controller/handle/adminPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/handle/homePage.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/handle/loginPage.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/handle/personalPage.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/router.js" beforeDir="false" afterPath="$PROJECT_DIR$/controller/router.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/service/adminService.js" beforeDir="false" afterPath="$PROJECT_DIR$/service/adminService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/homeService.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/loginService.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/personalService.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/admin/admin.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/admin/admin.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/admin/adminDemo.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/admin/manageProvider.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/admin/manageProvider.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/admin/manageUser.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/admin/manageUser.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/admin/tradeHistory.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/admin/tradeHistory.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/login/login.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/profilePsl/profilePersonal.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/register/register.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,13 +66,13 @@
     "WebServerToolWindowFactoryState": "false",
     "javascript.nodejs.core.library.configured.version": "16.17.0",
     "javascript.nodejs.core.library.typings.version": "16.18.0",
-    "last_opened_file_path": "C:/Users/admin/WebstormProjects/CaseMd3",
+    "last_opened_file_path": "C:/Users/admin/WebstormProjects/case3Test",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "editor.preferences.fonts.default",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -111,7 +126,22 @@
       <workItem from="1666951236715" duration="1445000" />
       <workItem from="1667021010451" duration="604000" />
       <workItem from="1667022116921" duration="2884000" />
-      <workItem from="1667030888322" duration="657000" />
+      <workItem from="1667030888322" duration="2199000" />
+      <workItem from="1667039814050" duration="26000" />
+      <workItem from="1667039851030" duration="379000" />
+      <workItem from="1667045228128" duration="1452000" />
+      <workItem from="1667046990990" duration="10593000" />
+      <workItem from="1667057811381" duration="1094000" />
+      <workItem from="1667058926442" duration="28000" />
+      <workItem from="1667098907811" duration="24000" />
+      <workItem from="1667098942835" duration="1626000" />
+      <workItem from="1667107611434" duration="11000" />
+      <workItem from="1667107636078" duration="3252000" />
+      <workItem from="1667137856432" duration="36000" />
+      <workItem from="1667144985730" duration="358000" />
+      <workItem from="1667150190659" duration="1159000" />
+      <workItem from="1667178136319" duration="124000" />
+      <workItem from="1667178620015" duration="3681000" />
     </task>
     <servers />
   </component>
@@ -140,16 +170,5 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/controller/handle/adminPage.js</url>
-          <line>104</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

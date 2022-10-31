@@ -8,10 +8,9 @@ class AdminPage {
             tbody += `<tr>
             <th scope="row">${index + 1}</th>
             <td>${account.username}</td>
+            <td>${account.id}</td>
             <td>${account.role_name}</td>
             <td>${account.status_name}</td>
-            <td>${account.name}</td>
-            <td>${account.birthday}</td>
    
         </tr>`
         });
@@ -35,12 +34,14 @@ class AdminPage {
             let date = new Date(dataHistory.timeTrade);
             tbody += `<tr>
             <th scope="row">${index + 1}</th>
-            <td>${dataHistory.user}</td>
+            <td>${dataHistory.invoiceId}</td>
+            <td>${date.yyyymmdd()}</td>
+            <td>${dataHistory.userName}</td>
             <td>${dataHistory.userId}</td>
             <td>${dataHistory.provider}</td>
             <td>${dataHistory.providerId}</td>
-            <td>${date.yyyymmdd()}</td>
             <td>${dataHistory.totalPrice}</td>
+         
         </tr>`
         });
         indexHtml = indexHtml.replace('{history}', tbody);
@@ -49,23 +50,13 @@ class AdminPage {
     }
 
     static getInfoProvider(provider, indexHtml) {
-        Date.prototype.yyyymmdd = function () {
-            let mm = this.getMonth() + 1;
-            let dd = this.getDate();
-            return [this.getFullYear(),
-                (mm > 9 ? '' : '0') + mm,
-                (dd > 9 ? '' : '0') + dd
-            ].join('-');
-        };
+
         let tbody = '';
         provider.map((dataProvider, index) => {
-            let date = new Date(dataProvider.time);
-
             tbody += `<tr>
             <th scope="row">${index + 1}</th>
             <td>${dataProvider.providerName}</td>
             <td>${dataProvider.providerId}</td>
-            <td>${date.yyyymmdd()}</td>
             <td>${dataProvider.totalPrice}</td>
         </tr>`
         });
@@ -89,12 +80,13 @@ class AdminPage {
 
             tbody += `<tr>
             <th scope="row">${index + 1}</th>
-            <td>${dataUser.userName}</td>
-            <td>${dataUser.invoiceId}</td>
-            <td>${dataUser.userId}</td>
-            <td>${dataUser.service}</td>
-            <td>${dataUser.provider}</td>
             <td>${date.yyyymmdd()}</td>
+            <td>${dataUser.userName}</td>
+            <td>${dataUser.userId}</td>
+            <td>${dataUser.provider}</td>
+            <td>${dataUser.providerId}</td>
+            <td>${dataUser.service}</td>
+            <td>${dataUser.totalPrice}</td>
         </tr>`
         });
         indexHtml = indexHtml.replace('{users}', tbody);
@@ -164,7 +156,6 @@ class AdminPage {
                 console.log(err)
             } else {
                 let account = await ADMIN_SERVICE.showAll();
-                console.log(account);
                 adminData = AdminPage.getHtmlAdminPage(account, adminData);
                 res.writeHead(200, 'text/html');
                 res.write(adminData);
