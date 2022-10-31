@@ -356,11 +356,14 @@
                             <p class="pt-2 text-success font-weight-bold h5">
                                 {isStatus}
                             </p>
-                            <select name="" id="">
-                                <option value="">Ready</option>
-                                <option value="">Not Ready</option>
-                            </select>
-                            <button class="btn btn-danger">Change Status</button>
+                            <form method="post">
+                                <select name="" id="">
+                                    <option></option>
+                                    {status}
+                                </select>
+                                <button type="reset" class="btn btn-danger">Change Status</button>
+                            </form>
+
                         </div>
                     </div>
                     <div class="col-lg-7 mb-4">
