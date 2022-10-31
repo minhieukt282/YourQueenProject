@@ -1,5 +1,5 @@
 const HOME_PAGE = require('./handle/homePage');
-const LOGIN_PAGE = require('./handle/loginPage')
+const LOGIN_PAGE = require('./handle/loginPage');
 const PROFILE_PAGE = require('./handle/profilePage');
 const MY_PROFILE_PAGE = require('./handle/myProfilePage');
 const ADMIN_PAGE = require('./handle/adminPage')
@@ -7,17 +7,17 @@ const ADMIN_PAGE = require('./handle/adminPage')
 const handler = {
     "login": LOGIN_PAGE.login,
     "register": LOGIN_PAGE.register,
-
     "admin": HOME_PAGE.adminPage,
     "": HOME_PAGE.indexPage,
     "home": HOME_PAGE.homePage,
 
 
     "editProfile": HOME_PAGE.editProfile,
-    "editStatus": MY_PROFILE_PAGE.editStatus,
+    // "editStatus": PROFILE_PAGE.editStatus,
 
     "profile": PROFILE_PAGE.profilePage,
     "myProfile": PROFILE_PAGE.myProfilePage,
+    // "myProfile": PROFILE_PAGE.editStatus,
 
     "changePassword": ADMIN_PAGE.changePassword,
     "userChangePassword": ADMIN_PAGE.userChangePassword,

@@ -4,27 +4,25 @@ const qs = require('qs')
 
 class MyProfilePage {
 
-    static replaceStatus(status, editStatus) {
+    static async replaceStatus(status) {
         let option = ''
-        status.forEach((item) => {
-            option += ` <option value="a">b</option>`
-        })
-        console.log(option)
-        editStatus.replace('{status}', option)
-        return editStatus
+        for (const item of status) {
+            option += ` <option value="${item.status_name}">${item.status_name}</option>`
+        }
+        return option;
     }
 
-    editStatus(req, res, id) {
-
+    editStatus(req, res) {
         if (req.method === "GET") {
-            fs.readFile('./views/myProfile/myProfile.html', "utf-8", async (err, editStatus) => {
+            fs.readFile('./views/myProfile/myProfile.html', "utf-8", async (err, editStatus1) => {
                 if (err) {
                     console.log(err);
                 } else {
                     let status = await MY_PROFILE_PAGE.showStatus();
-                    let statusHTML = await MyProfilePage.replaceStatus(status, editStatus)
+                    let statusHTML = await MyProfilePage.replaceStatus(status)
+                    editStatus1 = editStatus1.replace('{status}', statusHTML);
                     res.writeHead(200, 'text/html');
-                    res.write(statusHTML);
+                    res.write(editStatus1);
                     res.end();
                 }
             });
