@@ -34,7 +34,6 @@ class ProfileService {
             })
         })
     }
-
     findById(id) {
         return new Promise((resolve, reject) => {
             let sql = `select *
@@ -101,6 +100,37 @@ class ProfileService {
             })
         })
     }
+    editStatus(status_Name, id) {
+
+        return new Promise((resolve, reject) => {
+            let sql = `update account
+                   set status_id = ${status_Name}
+                   where id = ${id}`
+            connection.query(sql, (err, myProfile) => {
+                if (err) reject(err)
+                else {
+                    // console.log('Find id done')
+                    resolve(myProfile)
+                }
+            })
+        })
+    }
+
+    showStatus() {
+        let sql =`select *
+                  from status`
+        return new Promise((resolve, reject) => {
+            connection.query(sql, (err, status) => {
+                if (err) reject(err)
+                else {
+                    // console.log('Find id done')
+                    console.log(status)
+                    resolve(status)
+                }
+            })
+        })
+    }
+
 }
 
 module.exports = new ProfileService;

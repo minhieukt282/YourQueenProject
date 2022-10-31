@@ -197,6 +197,45 @@ class ProfilePage {
     }
 
     myProfilePage(req, res) {
+        if (req.method === "GET") {
+            fs.readFile('./views/myProfile/myProfile.html', "utf-8", async (err, myProfileHtml) => {
+                if (err) {
+                    console.log(err)
+                } else {
+                    let cookies = cookie.parse(req.headers.cookie || '');
+                    // console.log("cookies",cookies)
+                    let userInfo = await PROFILE_PAGE.findById(cookies.id)
+                    // console.log("info page", userInfo)
+                    myProfileHtml = ProfilePage.getDataMyProfile(myProfileHtml, userInfo);
+                    let status = await PROFILE_PAGE.showStatus();
+                    let statusHTML = await ProfilePage.replaceStatus(status)
+                    myProfileHtml = myProfileHtml.replace('{status}', statusHTML);
+                    // MY_PROFILE_PAGE.editStatus(req, res);
+                    res.writeHead(200, {'Content-type': 'text/html'});
+                    res.write(myProfileHtml);
+                    res.end()
+                }
+            })
+        } else {
+            let status_name_chunk = '';
+            req.on('data', chunk => {
+                status_name_chunk += chunk
+            });
+            req.on('end', async (err) => {
+                if (err) {
+                    console.log(err);
+                } else {
+                    let status_name = await qs.parse(status_name_chunk);
+                    let cookies = cookie.parse(req.headers.cookie || '');
+                    let userInfo = await LOGIN_SERVICE.findById(cookies.id);
+                    console.log('user', userInfo);
+                    console.log('status', status_name);
+                    await PROFILE_PAGE.editStatus(+status_name.status, userInfo[0].id);
+                    res.writeHead(301, {'location': '/home'});
+                    res.end();
+                }
+            });
+        }
         fs.readFile('./views/myProfile/myProfile.html', "utf-8", async (err, myProfileHtml) => {
             if (err) {
                 console.log(err)
