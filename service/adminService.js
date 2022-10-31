@@ -199,7 +199,8 @@ class AdminService {
                                 join role r on r.role_id = account.role_id
                                 join sex s2 on u.sex_id = s2.id
                        where r.role_id = 2
-                          or r.role_id = 3`
+                          or r.role_id = 3
+                       order by u.name`
             connection.query(sql, (err, listMember) => {
                 if (err) {
                     reject(err);
@@ -210,7 +211,7 @@ class AdminService {
         })
     }
 
-   getBillDay() {
+    getBillDay() {
         return new Promise((resolve, reject) => {
             let sql = `select i.invoice_id, date, sum (p2.price) as total
                        from invoice

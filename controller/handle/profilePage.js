@@ -204,7 +204,10 @@ class ProfilePage {
                 } else {
                     let cookies = cookie.parse(req.headers.cookie || '');
                     // console.log("cookies",cookies)
-                    let userInfo = await PROFILE_PAGE.findById(cookies.id)
+                    let userInfo = await LOGIN_SERVICE.findById(cookies.id)
+                    if (userInfo[0].role_id ===2){
+                        userInfo = await PROFILE_PAGE.findById(cookies.id)
+                    }
                     // console.log("info page", userInfo)
                     myProfileHtml = ProfilePage.getDataMyProfile(myProfileHtml, userInfo);
                     let status = await PROFILE_PAGE.showStatus();
@@ -228,8 +231,8 @@ class ProfilePage {
                     let status_name = await qs.parse(status_name_chunk);
                     let cookies = cookie.parse(req.headers.cookie || '');
                     let userInfo = await LOGIN_SERVICE.findById(cookies.id);
-                    console.log('user', userInfo);
-                    console.log('status', status_name);
+                    // console.log('user', userInfo);
+                    // console.log('status', status_name);
                     await PROFILE_PAGE.editStatus(+status_name.status, userInfo[0].id);
                     res.writeHead(301, {'location': '/myProfile'});
                     res.end();
