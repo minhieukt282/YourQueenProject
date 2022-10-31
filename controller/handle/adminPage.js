@@ -1,10 +1,13 @@
 const fs = require('fs');
 const ADMIN_SERVICE = require('../../service/adminService');
 const LOGIN_SERVICE = require('../../service/loginService');
+const PROFILE_PAGE = require('./profilePage');
+
 const qs = require("qs");
 
 const cookie = require("cookie");
 const HOME_SERVICE = require("../../service/homeService");
+const PROFILE_SERVICE = require("../../service/profileService");
 
 class AdminPage {
     static getHtmlAdminPage(accounts, indexHtml) {
@@ -308,7 +311,61 @@ class AdminPage {
             res.end();
         }
     }
+
+    async userChangePassword(req, res) {
+        let isStatus = await LOGIN_SERVICE.getCookie(req)
+        console.log("isStatus change pass: ", isStatus)
+        console.log("chang password", isStatus)
+        if (isStatus === true) {
+            if (req.method === 'GET') {
+                fs.readFile('./views/myProfile/userChangePass.html', "utf-8", async (err, changePasswordHtml) => {
+                    if (err) {
+                        console.log(err)
+                    } else {
+                        let cookies = cookie.parse(req.headers.cookie || '');
+                        let userInfo = await PROFILE_SERVICE.findById(cookies.id)
+                        console.log(userInfo)
+                        //dang loi
+                        // changePasswordHtml = ProfilePage.getDataMyProfile(changePasswordHtml, userInfo);
+                        res.writeHead(200, 'text/html');
+                        res.write(changePasswordHtml);
+                        res.end()
+                    }
+                })
+            } else {
+                let account = '';
+                req.on('data', chunk => {
+                    account += chunk
+                });
+                req.on('end', async (err) => {
+                    if (err) {
+                        console.log(err)
+                    } else {
+                        let newAccount = qs.parse(account)
+                        let cookies = cookie.parse(req.headers.cookie || '');
+                        console.log("newPassword", newAccount)
+                        console.log("cookie", cookies)
+                        let listAccount = await LOGIN_SERVICE.findById(cookies.id)
+                        console.log("list account", listAccount)
+                        if (listAccount[0].password === newAccount.password) {
+                            let changeDone = await ADMIN_SERVICE.changePassword(newAccount.newPassword, cookies.id)
+                            res.writeHead(301, {'location': 'myProfile'})
+                            res.end()
+                        } else {
+                            console.log("sai mat khau")
+                            res.writeHead(301, {'location': 'userChangePassword'})
+                            res.end()
+                        }
+                    }
+                })
+            }
+        } else {
+            res.writeHead(301, {'location': 'login'});
+            res.end();
+        }
+    }
+
 }
 
-module
-    .exports = new AdminPage();
+
+module.exports = new AdminPage();
