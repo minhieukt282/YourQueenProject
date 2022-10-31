@@ -50,7 +50,7 @@ const SERVER = http.createServer((req, res) => {
             chosenHandle(req, res, arrPath[2]);
         }
     }
-
+    console.log(arrPath)
 })
 
 SERVER.listen(8080, () => {
