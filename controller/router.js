@@ -1,6 +1,7 @@
 const HOME_PAGE = require('./handle/homePage');
 const LOGIN_PAGE = require('./handle/loginPage')
 const PROFILE_PAGE = require('./handle/profilePage');
+const MY_PROFILE_PAGE = require('./handle/myProfilePage');
 const ADMIN_PAGE = require('./handle/adminPage')
 
 const handler = {
@@ -18,6 +19,7 @@ const handler = {
     "myProfile": PROFILE_PAGE.myProfilePage,
     "product/edit": PROFILE_PAGE.editProduct,
     "product/delete": PROFILE_PAGE.deleteProduct,
+    // "myProfile": PROFILE_PAGE.editStatus,
 
     "changePassword": ADMIN_PAGE.changePassword,
     "userChangePassword": ADMIN_PAGE.userChangePassword,

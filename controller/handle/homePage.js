@@ -18,7 +18,7 @@ class HomePage {
                                 <a href="/login">
                                     <img src='${element.link_avt}' class="card-img-top" alt="..." style="width: 226px; height: 226px; object-fit: contain; margin: auto">
                                     <div class="card-body">
-                                        <h5>${element.username}</h5>
+                                        <h5>${element.name}</h5>
                                     </div>
                                 </a>
                                 <h6>${element.text_1}</h6>
@@ -30,7 +30,7 @@ class HomePage {
                                 <a href="/login">
                                     <img src='${element.link_avt}' class="card-img-top" alt="..." style="width: 226px; height: 226px; object-fit: contain; margin: auto">
                                     <div class="card-body">
-                                        <h5>${element.username}</h5>
+                                        <h5>${element.name}</h5>
                                     </div>
                                 </a>
                                 <h6> Kết Bạn Bốn Phương </h6>
@@ -63,17 +63,17 @@ class HomePage {
         });
     }
 
-    static getHtmlHomePage(userDetails, carouselImage, infoHtml, userInfo) {
+    static getHtmlHomePage(provider, carouselImage, infoHtml, userInfo) {
         let userHtml = ''
         let carouselHTML = ''
-        userDetails.forEach((element) => {
+        provider.forEach((element) => {
             if (element.text_1 != null) {
                 userHtml += `<div class="col-3">
                              <div class="card" style="width: 100%; margin-top: 1rem">
                                 <a href="/profile/${element.username}">
                                     <img src='${element.link_avt}' class="card-img-top" alt="..." style="width: 226px; height: 226px; object-fit: contain; margin: auto">
                                     <div class="card-body">
-                                        <h5>${element.username}</h5>
+                                        <h5>${element.name}</h5>
                                     </div>
                                 </a>
                                 <h6>${element.text_1}</h6>
@@ -85,7 +85,7 @@ class HomePage {
                                 <a href="/profile/${element.username}">
                                     <img src='${element.link_avt}' class="card-img-top" alt="..." style="width: 226px; height: 226px; object-fit: contain; margin: auto">
                                     <div class="card-body">
-                                        <h5>${element.username}</h5>
+                                        <h5>${element.name}</h5>
                                     </div>
                                 </a>
                                 <h6> Kết Bạn Bốn Phương </h6>
@@ -115,10 +115,10 @@ class HomePage {
                 } else {
                     let cookies = cookie.parse(req.headers.cookie || '');
                     let userInfo = await LOGIN_SERVICE.findById(cookies.id)
-                    console.log("user info: ", userInfo)
-                    let products = await HOME_SERVICE.getProviderDetails();
+                    // console.log("user info: ", userInfo)
+                    let provider = await HOME_SERVICE.getProviderDetails();
                     let carousel = await HOME_SERVICE.getCarouselImage();
-                    dataHomeHtml = HomePage.getHtmlHomePage(products, carousel, dataHomeHtml, userInfo);
+                    dataHomeHtml = HomePage.getHtmlHomePage(provider, carousel, dataHomeHtml, userInfo);
                     res.writeHead(200, 'text/html');
                     res.write(dataHomeHtml);
                     res.end();

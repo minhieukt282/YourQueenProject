@@ -44,12 +44,14 @@ const SERVER = http.createServer((req, res) => {
         fs.createReadStream(__dirname + req.url).pipe(res);
     } else {
         chosenHandle = typeof HANDLER[trimPath] !== 'undefined' ? HANDLER[trimPath] : NOT_FOUND_ROUTING.showNotFound;
-        chosenHandle(req, res, arrPath[2]);
-        console.log(trimPath);
+        if (arrPath.length === 4) {
+            chosenHandle(req, res, arrPath[3]);
+        } else {
+            chosenHandle(req, res, arrPath[2]);
+        }
     }
-
 })
 
-SERVER.listen(3000, () => {
+SERVER.listen(8080, () => {
     console.log("Server is running !!")
 })

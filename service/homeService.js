@@ -22,6 +22,7 @@ class HomeService {
             let sql = `select *
                        from picture p
                                 join account a on a.id = p.user_id
+                                join userdetails u on a.id = u.user_id
                        where a.role_id = 2
                        group by a.id`
             connection.query(sql, (err, userDetails) => {
