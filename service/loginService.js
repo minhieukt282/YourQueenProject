@@ -85,6 +85,21 @@ class LoginService {
         })
     }
 
+    updatePicture(user_id) {
+        return new Promise((resolve, reject) => {
+            let sql = `insert into picture(user_id, link_avt) value ('${user_id}',
+                                              'https://scontent.fsgn2-2.fna.fbcdn.net/v/t39.30808-6/278648656_706669643800253_354255430990783689_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=174925&_nc_ohc=Do6gGBQySCkAX9afWjV&_nc_ht=scontent.fsgn2-2.fna&oh=00_AT9wmBMZFmSJR1zLiV5AuVzUvPMrJYpUYY80zimLBmjRdw&oe=635D1EC3');
+            `
+            connection.query(sql, (err, account) => {
+                if (err) {
+                    reject(err)
+                } else {
+                    resolve(account)
+                }
+            })
+        })
+    }
+
     findByUsername(username) {
         return new Promise((resolve, reject) => {
             let sql = `select account.id, account.role_id, account.status_id

@@ -114,7 +114,7 @@ class HomePage {
                 } else {
                     let cookies = cookie.parse(req.headers.cookie || '');
                     let userInfo = await LOGIN_SERVICE.findById(cookies.id)
-                    console.log(userInfo)
+                    console.log("user info: ",userInfo)
                     let products = await HOME_SERVICE.getProviderDetails();
                     let carousel = await HOME_SERVICE.getCarouselImage();
                     dataHomeHtml = HomePage.getHtmlHomePage(products, carousel, dataHomeHtml, userInfo);

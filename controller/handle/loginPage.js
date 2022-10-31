@@ -84,6 +84,7 @@ class LoginPage {
                             await LOGIN_SERVICE.createAccount(accounts)
                             let newAccount = await LOGIN_SERVICE.findByUsername(accounts.username)
                             await LOGIN_SERVICE.updateUserDetails(newAccount[0].id)
+                            await LOGIN_SERVICE.updatePicture(newAccount[0].id)
                             res.writeHead(301, {'location': 'login'});
                             res.end();
                         } else {

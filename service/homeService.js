@@ -18,7 +18,6 @@ class HomeService {
     }
 
     getProviderDetails() {
-        let connection = CONNECTION.getConnection();
         return new Promise((resolve, reject) => {
             let sql = `select *
                        from picture p
