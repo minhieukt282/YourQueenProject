@@ -2,6 +2,7 @@ const fs = require('fs');
 const HOME_SERVICE = require('../../service/homeService');
 const LOGIN_SERVICE = require('../../service/loginService');
 const PROFILE_PAGE = require('../../service/profileService');
+const ADMIN_SERVICE = require('../../service/adminService');
 const qs = require('qs')
 const cookie = require("cookie");
 
@@ -129,6 +130,22 @@ class HomePage {
         }
     }
 
+    static creatTableMember(arrMember, dataHtml) {
+        let members = ''
+        arrMember.forEach((item, index) => {
+            members += `<div class="row">
+                            <div class="col-1">${index + 1}</div>
+                            <div class="col">${item.name}</div>
+                            <div class="col">${item.username}</div>
+                            <div class="col-2">${item.role}</div>
+                            <div class="col-2">${item.gender}</div>
+                            <div class="col-2">${item.status}</div>
+                        </div>`
+        });
+        dataHtml = dataHtml.replace('{members}', members)
+        return dataHtml;
+    }
+
     async adminPage(req, res) {
         let isStatus = await LOGIN_SERVICE.getCookie(req)
         if (isStatus === true) {
@@ -138,9 +155,10 @@ class HomePage {
                     if (err) {
                         console.log(err);
                     } else {
-
+                        let arrMember = await ADMIN_SERVICE.getListMember();
+                        let dataAdHTML = await HomePage.creatTableMember(arrMember, dataAdminHtml);
                         res.writeHead(200, 'text/html');
-                        res.write(dataAdminHtml);
+                        res.write(dataAdHTML);
                         res.end();
                     }
                 });
@@ -156,7 +174,7 @@ class HomePage {
         let isAmin = await LOGIN_SERVICE.checkAdmin(req)
         console.log("isStatus edit", isStatus)
         if (isStatus === true && isAmin === false) {
-            fs.readFile('./views/editProfile.html', 'utf-8', async (err, dataHtml) => {
+            fs.readFile('../views/editProfile.html', 'utf-8', async (err, dataHtml) => {
                 if (err) {
                     console.log(err);
                 } else {

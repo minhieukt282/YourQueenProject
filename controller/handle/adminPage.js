@@ -6,6 +6,7 @@ const PROFILE_PAGE = require('./profilePage');
 const qs = require("qs");
 
 const cookie = require("cookie");
+const HOME_SERVICE = require("../../service/homeService");
 const PROFILE_SERVICE = require("../../service/profileService");
 
 class AdminPage {
@@ -117,18 +118,21 @@ class AdminPage {
             ].join('-');
         };
         let tbody = '';
-        day.map((dataTurnoverDay, index) => {
-            let date = new Date(dataTurnoverDay.day);
-
-            tbody += `<tr>
-            <th scope="row">${index + 1}</th>
-            <td>${date.yyyymmdd()}</td>
-            <td>${dataTurnoverDay.totalPrice}</td>
-            <td>${dataTurnoverDay.totalInvoice}</td>
-
-        </tr>`
+        day.map((element) => {
+            let date = new Date(element.date);
+            tbody += ` <div class="row">
+          <div class="col-2">
+            ${element.invoice_id}
+          </div>
+          <div class="col">
+             ${date.yyyymmdd()}
+          </div>
+          <div class="col">
+            ${element.total}
+          </div>
+        </div>`
         });
-        indexHtml = indexHtml.replace('{day}', tbody);
+        indexHtml = indexHtml.replace('{bill}', tbody);
         return indexHtml;
     }
 
@@ -152,10 +156,17 @@ class AdminPage {
         let tbody = '';
         year.map((dataTurnoverDay, index) => {
             tbody += `<tr>
-            <th scope="row">${index + 1}</th>
-            <td>${dataTurnoverDay.year}</td>
-            <td>${dataTurnoverDay.totalPrice}</td>
-            <td>${dataTurnoverDay.totalInvoice}</td>
+            <div class="row">
+    <div class="col">
+      Column
+    </div>
+    <div class="col">
+      Column
+    </div>
+    <div class="col">
+      Column
+    </div>
+  </div>
         </tr>`
         });
         indexHtml = indexHtml.replace('{year}', tbody);
@@ -215,48 +226,6 @@ class AdminPage {
                 userData = AdminPage.getInfoUser(account, userData);
                 res.writeHead(200, 'text/html');
                 res.write(userData);
-                res.end()
-            }
-        })
-    }
-
-    turnoverDay(req, res) {
-        fs.readFile('./views/admin/turnoverDay.html', "utf-8", async (err, dayData) => {
-            if (err) {
-                console.log(err)
-            } else {
-                let account = await ADMIN_SERVICE.turnoverDay();
-                dayData = AdminPage.getTurnoverDay(account, dayData);
-                res.writeHead(200, 'text/html');
-                res.write(dayData);
-                res.end()
-            }
-        })
-    }
-
-    turnoverMonth(req, res) {
-        fs.readFile('./views/admin/turnoverMonth.html', "utf-8", async (err, monthData) => {
-            if (err) {
-                console.log(err)
-            } else {
-                let account = await ADMIN_SERVICE.turnoverMonth();
-                monthData = AdminPage.getTurnoverMonth(account, monthData);
-                res.writeHead(200, 'text/html');
-                res.write(monthData);
-                res.end()
-            }
-        })
-    }
-
-    turnoverYear(req, res) {
-        fs.readFile('./views/admin/turnoverYear.html', "utf-8", async (err, yearData) => {
-            if (err) {
-                console.log(err)
-            } else {
-                let account = await ADMIN_SERVICE.turnoverYear();
-                yearData = AdminPage.getTurnoverYear(account, yearData);
-                res.writeHead(200, 'text/html');
-                res.write(yearData);
                 res.end()
             }
         })
@@ -362,6 +331,20 @@ class AdminPage {
             res.writeHead(301, {'location': 'login'});
             res.end();
         }
+    }
+
+    showBill(req, res) {
+        fs.readFile('./views/admin/bill.html', 'utf-8', async (err, dataBillHtml) => {
+            if (err) {
+                console.log(err);
+            } else {
+                let arrBill = await ADMIN_SERVICE.getBillDay()
+                let billHTML = await AdminPage.getTurnoverDay(arrBill, dataBillHtml)
+                res.writeHead(200, 'text/html');
+                res.write(billHTML);
+                res.end();
+            }
+        })
     }
 
 }
