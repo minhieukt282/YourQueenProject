@@ -115,7 +115,7 @@ class HomePage {
                 } else {
                     let cookies = cookie.parse(req.headers.cookie || '');
                     let userInfo = await LOGIN_SERVICE.findById(cookies.id)
-                    console.log("user info: ",userInfo)
+                    console.log("user info: ", userInfo)
                     let products = await HOME_SERVICE.getProviderDetails();
                     let carousel = await HOME_SERVICE.getCarouselImage();
                     dataHomeHtml = HomePage.getHtmlHomePage(products, carousel, dataHomeHtml, userInfo);
@@ -137,6 +137,8 @@ class HomePage {
                             <div class="col-1">${index + 1}</div>
                             <div class="col">${item.name}</div>
                             <div class="col">${item.username}</div>
+                            <div class="col-2">${item.role}</div>
+                            <div class="col-2">${item.gender}</div>
                             <div class="col-2">${item.status}</div>
                         </div>`
         });
@@ -154,7 +156,7 @@ class HomePage {
                         console.log(err);
                     } else {
                         let arrMember = await ADMIN_SERVICE.getListMember();
-                      let dataAdHTML = await HomePage.creatTableMember(arrMember, dataAdminHtml);
+                        let dataAdHTML = await HomePage.creatTableMember(arrMember, dataAdminHtml);
                         res.writeHead(200, 'text/html');
                         res.write(dataAdHTML);
                         res.end();
@@ -172,7 +174,7 @@ class HomePage {
         let isAmin = await LOGIN_SERVICE.checkAdmin(req)
         console.log("isStatus edit", isStatus)
         if (isStatus === true && isAmin === false) {
-            fs.readFile('./views/editProfile.html', 'utf-8', async (err, dataHtml) => {
+            fs.readFile('../views/editProfile.html', 'utf-8', async (err, dataHtml) => {
                 if (err) {
                     console.log(err);
                 } else {

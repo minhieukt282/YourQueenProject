@@ -187,12 +187,19 @@ class AdminService {
 
     getListMember() {
         return new Promise((resolve, reject) => {
-            let sql = `select u.name, account.username, account.password, s.status_name as status
+            let sql = `select u.name,
+                              account.username,
+                              account.password,
+                              s.status_name as status,
+                              r.role_name   as role,
+                              s2.name       as gender
                        from account
                                 join userdetails u on account.id = u.user_id
                                 join status s on s.status_id = account.status_id
-                       where role_id = 2
-                          or role_id = 3`
+                                join role r on r.role_id = account.role_id
+                                join sex s2 on u.sex_id = s2.id
+                       where r.role_id = 2
+                          or r.role_id = 3`
             connection.query(sql, (err, listMember) => {
                 if (err) {
                     reject(err);
@@ -203,6 +210,24 @@ class AdminService {
         })
     }
 
+   getBillDay() {
+        return new Promise((resolve, reject) => {
+            let sql = `select i.invoice_id, date, sum (p2.price) as total
+                       from invoice
+                           join invoicedetails i
+                       on invoice.invoice_id = i.invoice_id
+                           join product p2 on p2.product_id = i.product_id
+                       group by i.invoice_id`
+            connection.query(sql, (err, listMember) => {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(listMember);
+                }
+            });
+        })
+    }
 }
+
 
 module.exports = new AdminService();
