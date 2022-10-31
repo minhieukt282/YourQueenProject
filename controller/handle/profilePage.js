@@ -231,27 +231,11 @@ class ProfilePage {
                     console.log('user', userInfo);
                     console.log('status', status_name);
                     await PROFILE_PAGE.editStatus(+status_name.status, userInfo[0].id);
-                    res.writeHead(301, {'location': '/home'});
+                    res.writeHead(301, {'location': '/myProfile'});
                     res.end();
                 }
             });
         }
-        fs.readFile('./views/myProfile/myProfile.html', "utf-8", async (err, myProfileHtml) => {
-            if (err) {
-                console.log(err)
-            } else {
-                let cookies = cookie.parse(req.headers.cookie || '');
-                let userInfo = await LOGIN_SERVICE.findById(cookies.id)
-                if (userInfo[0].role_id === 2) {
-                    userInfo = await PROFILE_PAGE.findById(cookies.id)
-                }
-                // console.log("info User", userInfo)
-                myProfileHtml = ProfilePage.getDataMyProfile(myProfileHtml, userInfo);
-                res.writeHead(200, {'Content-type': 'text/html'});
-                res.write(myProfileHtml);
-                res.end()
-            }
-        })
     }
 
     editProduct(req, res, product_id) {
@@ -322,6 +306,14 @@ class ProfilePage {
                 }
             });
         }
+    }
+
+    static async replaceStatus(status) {
+        let option = ''
+        for (const item of status) {
+            option += ` <option value="${item.status_id}">${item.status_name}</option>`
+        }
+        return option;
     }
 }
 
