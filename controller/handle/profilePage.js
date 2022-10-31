@@ -82,9 +82,8 @@ class ProfilePage {
     static getDataMyProfile(infoHtml, userInfo) {
         let infoIMG = ''
         let products = ''
-        let noData = ""
+        let noData = ''
         if (userInfo[0].role_id === 2) {
-            // infoHtml = infoHtml.replace('{useName}', infoProfile[0].username);
             infoHtml = infoHtml.replace('{urlAvt}', userInfo[0].link_avt);
             infoHtml = infoHtml.replaceAll('{name}', userInfo[0].name);
             infoHtml = infoHtml.replace('{userName}', userInfo[0].name)
@@ -125,16 +124,30 @@ class ProfilePage {
                 }
 
                 products += `<tr>
-            <td>${item.product_name}</td>
-            <td>${item.price}</td>
-            <td>${item.description}</td>
-            <td><a href="/product/edit/${item.product_id}" class="btn btn-danger">Edit</a></td>
-            <td><a href="/product/delete/${item.product_id}" class="btn btn-danger">Delete</a></td>
-        </tr>`
+                    <td>${item.product_name}</td>
+                    <td>${item.price}</td>
+                    <td>${item.description}</td>
+                    <td><a href="/product/edit/${item.product_id}" class="btn btn-danger">Edit</a></td>
+                    <td><a href="/product/delete/${item.product_id}" class="btn btn-danger"">Delete</a></td>
+                </tr>`
 
             })
+            let table = `<div class="card shadow mb-4">
+                                <table class="table table-dark table-striped-columns" name="{tableName}">
+                                    <thead>
+                                          <tr>
+                                               <th scope="col">Name</th>
+                                               <th scope="col">Price</th>
+                                               <th scope="col">Description</th>
+                                               <th></th>
+                                               <th></th>
+                                         </tr>
+                                    </thead>
+                                     ${products}
+                               </table>
+                            </div>`
             infoHtml = infoHtml.replace('{img}', infoIMG);
-            infoHtml = infoHtml.replace('{products}', products)
+            infoHtml = infoHtml.replace('{products}', table)
             return infoHtml;
         } else {
             infoHtml = infoHtml.replace('{urlAvt}', userInfo[0].link_avt);
@@ -178,7 +191,6 @@ class ProfilePage {
             })
             infoHtml = infoHtml.replace('{img}', infoIMG);
             infoHtml = infoHtml.replace('{products}', products)
-            infoHtml = infoHtml.replace('{tableName}', products)
             return infoHtml;
         }
 
@@ -190,9 +202,11 @@ class ProfilePage {
                 console.log(err)
             } else {
                 let cookies = cookie.parse(req.headers.cookie || '');
-                // console.log("cookies",cookies)
                 let userInfo = await LOGIN_SERVICE.findById(cookies.id)
-                console.log("info page", userInfo)
+                if (userInfo[0].role_id === 2) {
+                    userInfo = await PROFILE_PAGE.findById(cookies.id)
+                }
+                // console.log("info User", userInfo)
                 myProfileHtml = ProfilePage.getDataMyProfile(myProfileHtml, userInfo);
                 res.writeHead(200, {'Content-type': 'text/html'});
                 res.write(myProfileHtml);
@@ -209,6 +223,10 @@ class ProfilePage {
                 } else {
                     let cookies = cookie.parse(req.headers.cookie || '');
                     let userInfo = await PROFILE_PAGE.findById(cookies.id)
+                    let productInfo = await PROFILE_PAGE.findProductById(product_id)
+                    editProductHtml = editProductHtml.replace('{product_name}', productInfo[0].product_name)
+                    editProductHtml = editProductHtml.replace('{product_price}', productInfo[0].price)
+                    editProductHtml = editProductHtml.replace('{description}', productInfo[0].description)
                     editProductHtml = ProfilePage.getDataMyProfile(editProductHtml, userInfo);
                     res.writeHead(200, {'Content-type': 'text/html'});
                     res.write(editProductHtml);
@@ -225,8 +243,8 @@ class ProfilePage {
                     console.log(err);
                 } else {
                     let newProduct = qs.parse(productChunk);
-                    console.log("lay du lieu", newProduct)
-                    // await PRODUCT_SERVICE.editProduct(product, id);
+                    // console.log("lay du lieu", newProduct)
+                    // console.log("product ID", product_id)
                     await PROFILE_PAGE.editProduct(newProduct, product_id)
                     res.writeHead(301, {'location': '/myProfile'});
                     res.end();
@@ -250,22 +268,20 @@ class ProfilePage {
                 }
             })
         } else {
-            // let productChunk = '';
-            // req.on('data', chunk => {
-            //     productChunk += chunk
-            // });
-            // req.on('end', async (err) => {
-            //     if (err) {
-            //         console.log(err);
-            //     } else {
-            //         let newProduct = qs.parse(productChunk);
-            //         console.log("lay du lieu", newProduct)
-            //         // await PRODUCT_SERVICE.editProduct(product, id);
-            //         await PROFILE_PAGE.editProduct(newProduct, product_id)
-            //         res.writeHead(301, {'location': '/myProfile'});
-            //         res.end();
-            //     }
-            // });
+            let productChunk = '';
+            req.on('data', chunk => {
+                productChunk += chunk
+            });
+            req.on('end', async (err) => {
+                if (err) {
+                    console.log(err);
+                } else {
+                    let newProduct = qs.parse(productChunk);
+                    await PROFILE_PAGE.delProduct(newProduct, product_id)
+                    res.writeHead(301, {'location': '/myProfile'});
+                    res.end();
+                }
+            });
         }
     }
 }
